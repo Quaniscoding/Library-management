@@ -49,7 +49,7 @@ class SinhvienRegister extends Component
         }
 
         // Đăng nhập sinh viên vừa tạo
-        Auth::guard('sinhvien')->login($sinhvien);
+        Auth::guard('student')->login($sinhvien);
 
         // Chuyển hướng sau khi đăng ký thành công
         $flasher->addSuccess('Đăng ký thành công!');

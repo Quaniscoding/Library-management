@@ -318,11 +318,18 @@
                                     </div>
                                     <div
                                         class="flex flex-col gap-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        @if(Auth::guard('sinhvien')->check() || Auth::guard('web')->check())
+                                        @if(Auth::guard('student')->check() || Auth::guard('web')->check())
+                                        @if($sach->con_count > 0)
                                         <button wire:click="borrowSach({{ $sach->id }})"
                                             class="bg-blue-600 px-4 py-2 rounded-full text-sm text-white hover:bg-blue-700 transition-colors">
                                             Mượn ngay
                                         </button>
+                                        @else
+                                        <button disabled
+                                            class="bg-gray-400 px-4 py-2 rounded-full text-sm text-white cursor-not-allowed">
+                                            Hết sách
+                                        </button>
+                                        @endif
                                         @else
                                         <button wire:click="alert"
                                             class="bg-gray-400 px-4 py-2 rounded-full text-sm text-white cursor-not-allowed">

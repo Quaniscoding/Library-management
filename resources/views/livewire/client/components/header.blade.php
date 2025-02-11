@@ -19,14 +19,14 @@
             </a>
         </div>
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            @if(Auth::guard('sinhvien')->check())
+            @if(Auth::guard('student')->check())
             <!-- Hiển thị menu dành cho sinh viên -->
             <button type="button"
                 class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                 data-dropdown-placement="bottom">
                 <span class="sr-only">Open user menu</span>
-                <img src="https://ui-avatars.com/api/{{ Auth::guard('sinhvien')->user()->ho_ten}}"
+                <img src="https://ui-avatars.com/api/{{ Auth::guard('student')->user()->ho_ten}}"
                     class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-gray-300 dark:border-gray-600 shadow-md"
                     alt="avatar">
             </button>
@@ -35,9 +35,9 @@
                 style="margin-top: 5px !important;" id="user-dropdown">
                 <div class="px-4 py-3">
                     <span class="block text-sm text-gray-900 dark:text-white">
-                        {{ Auth::guard('sinhvien')->user()->ho_ten}}</span>
+                        {{ Auth::guard('student')->user()->ho_ten}}</span>
                     <span class="block text-sm text-gray-500 truncate dark:text-gray-400">
-                        {{ Auth::guard('sinhvien')->user()->email }}</span>
+                        {{ Auth::guard('student')->user()->email }}</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
@@ -139,6 +139,11 @@
                     <a wire:navigate href="/lien-he"
                         class="block py-2 px-3 {{ request()->is('lien-he') ? 'text-blue-700 ' : 'dark:text-white' }} md:hover:bg-transparent md:hover:text-blue-700 rounded md:bg-transparent md:p-0">Liên
                         hệ</a>
+                </li>
+                <li>
+                    <a wire:navigate href="/phan-hoi"
+                        class="block py-2 px-3 {{ request()->is('phan-hoi') ? 'text-blue-700 ' : 'dark:text-white' }} md:hover:bg-transparent md:hover:text-blue-700 rounded md:bg-transparent md:p-0">Phản
+                        hồi</a>
                 </li>
             </ul>
         </div>

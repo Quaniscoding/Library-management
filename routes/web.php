@@ -17,6 +17,7 @@ use App\Livewire\Admin\Nganh\ManageNganh;
 use App\Livewire\Admin\Nhanvien\ManageNhanvien;
 use App\Livewire\Admin\Nhaxuatban\ManageNhaxuatban;
 use App\Livewire\Admin\Permissions\ManagePermissions;
+use App\Livewire\Admin\Phanhoi\ManagePhanhoi;
 use App\Livewire\Admin\Phat\ManagePhat;
 use App\Livewire\Admin\Phieumuon\ManagePhieumuon;
 use App\Livewire\Admin\Phieutra\ManagePhieutra;
@@ -39,7 +40,9 @@ use App\Livewire\Client\Components\Borrow;
 use App\Livewire\Client\Components\ChiTietSach;
 use App\Livewire\Client\Components\DeXuatSachTaiLieu;
 use App\Livewire\Client\Components\LichSuMuon;
+use App\Livewire\Client\Components\LichSuPhat;
 use App\Livewire\Client\Components\Lienhe;
+use App\Livewire\Client\Components\Phanhoi;
 use App\Livewire\Client\Components\Sach;
 use App\Livewire\Client\Components\TaiKhoan;
 use App\Livewire\Client\Components\Tailieu;
@@ -59,6 +62,7 @@ Route::middleware('web')->group(function () {
     Route::get('lien-he', Lienhe::class)->name('lienhe');
     Route::get('lich-su-muon', LichSuMuon::class)->name('lienhe');
     Route::get('de-xuat', DeXuatSachTaiLieu::class)->name('dexuat');
+    Route::get('phan-hoi', Phanhoi::class)->name('phanhoi');
     //sinhvien
     Route::get('/register', SinhvienRegister::class)->name('register');
     Route::get('/login', SinhvienLogin::class)->name('login');
@@ -70,7 +74,7 @@ Route::middleware('web')->group(function () {
 });
 // Sinh viên logout
 Route::get('/logout', function () {
-    Auth::guard('sinhvien')->logout();
+    Auth::guard('student')->logout();
     session()->invalidate(); // Xóa session
     session()->regenerateToken(); // Tạo token mới để tránh CSRF attack
     return redirect('/login');
@@ -122,5 +126,6 @@ Route::middleware(['auth', 'can:access-admin'])->group(function () {
     Route::get('/admin/manage-digitalresourcesubject', ManageDigitalresourcesubject::class)->name('admin.manage-digitalresourcesubject');
     Route::get('/admin/manage-hoadonphat', ManageHoadonphat::class)->name('admin.manage-hoadonphat');
     Route::get('/admin/manage-phat', ManagePhat::class)->name('admin.manage-phat');
+    Route::get('/admin/manage-phanhoi', ManagePhanhoi::class)->name('admin.manage-phanhoi');
     Route::get('/lich-su-muon/{sinh_vien_id}', LichSuMuon::class);
 });

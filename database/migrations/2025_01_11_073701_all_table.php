@@ -160,7 +160,7 @@ return new class extends Migration {
             $table->date('ngay_muon');
             $table->date('ngay_hen_tra')->nullable();
             $table->date('ngay_tra')->nullable();
-            $table->enum('tinh_trang', ['DangMuon', 'DaTra', 'QuaHan'])->default('DangMuon');
+            $table->enum('tinh_trang', ['DangMuon', 'DaTra', 'QuaHan', 'LamMat'])->default('DangMuon');
             $table->string('email_log_url')->nullable();
             $table->timestamps();
         });
@@ -187,10 +187,12 @@ return new class extends Migration {
         // 18. phats (Fines)
         Schema::create('phats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('phieu_tra_id')->constrained('phieu_tras')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('phieu_tra_id')->nullable()->constrained('phieu_tras')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('so_tien', 10, 2);
             $table->text('ly_do')->nullable();
             $table->enum('tinh_trang', ['ChuaThanhToan', 'DaThanhToan'])->default('ChuaThanhToan');
+            $table->foreignId('sinh_vien_id')->constrained('sinh_viens')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('sach_id')->constrained('sachs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
 
@@ -205,39 +207,38 @@ return new class extends Migration {
         });
 
         // 21.1 book_subject (Books and Subjects)
-        Schema::create('book_subject', function (Blueprint $table) {
-            $table->foreignId('sach_id')->constrained('sachs')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('mon_hoc_id')->constrained('mon_hocs')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
-
-            $table->primary(['sach_id', 'mon_hoc_id']);
-        });
+        // Schema::create('book_subject', function (Blueprint $table) {
+        //     $table->foreignId('sach_id')->constrained('sachs')->onDelete('cascade')->onUpdate('cascade');
+        //     $table->foreignId('mon_hoc_id')->constrained('mon_hocs')->onDelete('cascade')->onUpdate('cascade');
+        //     $table->timestamps();
+        //     $table->primary(['sach_id', 'mon_hoc_id']);
+        // });
 
         // 21.2 digital_resource_subject (Digital Resources and Subjects)
-        Schema::create('digital_resource_subject', function (Blueprint $table) {
-            $table->foreignId('tai_lieu_mo_id')->constrained('tai_lieu_mos')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('mon_hoc_id')->constrained('mon_hocs')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
+        // Schema::create('digital_resource_subject', function (Blueprint $table) {
+        //     $table->foreignId('tai_lieu_mo_id')->constrained('tai_lieu_mos')->onDelete('cascade')->onUpdate('cascade');
+        //     $table->foreignId('mon_hoc_id')->constrained('mon_hocs')->onDelete('cascade')->onUpdate('cascade');
+        //     $table->timestamps();
 
-            $table->primary(['tai_lieu_mo_id', 'mon_hoc_id']);
-        });
+        //     $table->primary(['tai_lieu_mo_id', 'mon_hoc_id']);
+        // });
 
         // 21.3 lien_ket_sach_nganhs (Books and Majors)
-        Schema::create('lien_ket_sach_nganhs', function (Blueprint $table) {
-            $table->foreignId('sach_id')->constrained('sachs')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('nganh_id')->constrained('nganhs')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
+        // Schema::create('lien_ket_sach_nganhs', function (Blueprint $table) {
+        //     $table->foreignId('sach_id')->constrained('sachs')->onDelete('cascade')->onUpdate('cascade');
+        //     $table->foreignId('nganh_id')->constrained('nganhs')->onDelete('cascade')->onUpdate('cascade');
+        //     $table->timestamps();
 
-            $table->primary(['sach_id', 'nganh_id']);
-        });
+        //     $table->primary(['sach_id', 'nganh_id']);
+        // });
 
         // 21.4 digital_resource_major (Digital Resources and Majors)
-        Schema::create('digital_resource_major', function (Blueprint $table) {
-            $table->foreignId('tai_lieu_mo_id')->constrained('tai_lieu_mos')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('nganh_id')->constrained('nganhs')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
-            $table->primary(['tai_lieu_mo_id', 'nganh_id']);
-        });
+        // Schema::create('digital_resource_major', function (Blueprint $table) {
+        //     $table->foreignId('tai_lieu_mo_id')->constrained('tai_lieu_mos')->onDelete('cascade')->onUpdate('cascade');
+        //     $table->foreignId('nganh_id')->constrained('nganhs')->onDelete('cascade')->onUpdate('cascade');
+        //     $table->timestamps();
+        //     $table->primary(['tai_lieu_mo_id', 'nganh_id']);
+        // });
         Schema::create('de_xuats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sinh_vien_id')->nullable()->constrained('sinh_viens')->onDelete('cascade')->onUpdate('cascade');
@@ -245,6 +246,13 @@ return new class extends Migration {
             $table->enum('loai', ['sach', 'tai_lieu'])->default('sach');
             $table->text('mo_ta')->nullable();
             $table->enum('trang_thai', ['ChuaXuLy', 'DaXuLy'])->default('ChuaXuLy');
+            $table->timestamps();
+        });
+        Schema::create('phan_hois', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('sinh_vien_id')->nullable()->constrained('sinh_viens')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('trang_thai', ['ChuaXuLy', 'DaXuLy'])->default('ChuaXuLy');
+            $table->text('noi_dung');
             $table->timestamps();
         });
     }

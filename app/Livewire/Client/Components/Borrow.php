@@ -50,7 +50,7 @@ class Borrow extends Component
             return;
         }
 
-        $sinhVien = Auth::guard('sinhvien')->user();
+        $sinhVien = Auth::guard('student')->user();
         $phieuMuon = PhieuMuon::create([
             'sinh_vien_id' => $sinhVien->id,
             'nhan_vien_id' => null,

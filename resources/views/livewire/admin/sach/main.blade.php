@@ -12,9 +12,96 @@
     <!-- Bảng Quản Lý Sách -->
     <div class="overflow-x-auto">
         <div class="flex justify-between">
-            <div class="mb-4 flex justify-start">
-                <input type="text" wire:model.live="searchName" placeholder="Tìm kiếm theo tên"
-                    class="border border-gray-300 px-4 py-2 rounded-md focus:outline-none " />
+            <div class="mb-4 flex justify-start gap-2">
+                <div>
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tên
+                        sách</label>
+                    <input type="text" id="first_name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        wire:model.live="searchName" placeholder="Tìm kiếm theo tên" />
+                </div>
+                <form class="max-w-sm mx-auto">
+                    <label for="tinh_trang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tình
+                        trạng</label>
+                    <select id="tinh_trang" wire:model.live="tinh_trang"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="">-- Tất cả --</option>
+                        <option value="Con">Còn</option>
+                        <option value="Muon">Mượn</option>
+                        <option value="Mat">Mất</option>
+                    </select>
+                </form>
+                <div>
+                    <label for="tacgia" class="block mb-2 text-sm font-medium text-gray-900">Tác giả</label>
+                    <select id="tacgia"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                        wire:model.live="selected_tacgia">
+                        <option value="">-- Tất cả --</option>
+                        @foreach($tacgias as $tacgia)
+                        <option value="{{ $tacgia->id }}">{{ $tacgia->ho_ten }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div>
+                    <label for="nhaxuatban" class="block mb-2 text-sm font-medium text-gray-900">Nhà xuất bản</label>
+                    <select id="nhaxuatban"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                        wire:model.live="selected_nhaxuatban">
+                        <option value="">-- Tất cả --</option>
+                        @foreach($nhaxuatbans as $nhaxuatban)
+                        <option value="{{ $nhaxuatban->id }}">{{ $nhaxuatban->ten_nha_xuat_ban }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div>
+                    <label for="theloai" class="block mb-2 text-sm font-medium text-gray-900">Thể loại</label>
+                    <select id="theloai"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                        wire:model.live="selected_theloai">
+                        <option value="">-- Tất cả --</option>
+                        @foreach($theloais as $theloai)
+                        <option value="{{ $theloai->id }}">{{ $theloai->ten_the_loai }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div>
+                    <label for="monhoc" class="block mb-2 text-sm font-medium text-gray-900">Môn học</label>
+                    <select id="monhoc"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                        wire:model.live="selected_monhoc">
+                        <option value="">-- Tất cả --</option>
+                        @foreach($monhocs as $monhoc)
+                        <option value="{{ $monhoc->id }}">{{ $monhoc->ten_mon_hoc }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div>
+                    <label for="nganh" class="block mb-2 text-sm font-medium text-gray-900">Ngành</label>
+                    <select id="nganh"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                        wire:model.live="selected_nganh">
+                        <option value="">-- Tất cả --</option>
+                        @foreach($nganhs as $nganh)
+                        <option value="{{ $nganh->id }}">{{ $nganh->ten_nganh }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div>
+                    <label for="khoa" class="block mb-2 text-sm font-medium text-gray-900">Khoa</label>
+                    <select id="khoa"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                        wire:model.live="selected_khoa">
+                        <option value="">-- Tất cả --</option>
+                        @foreach($khoas as $khoa)
+                        <option value="{{ $khoa->id }}">{{ $khoa->ten_khoa }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -24,15 +111,15 @@
                     <th class="border border-gray-300 px-4 py-2">ID</th>
                     <th class="border border-gray-300 px-4 py-2">Ảnh bìa</th>
                     <th class="border border-gray-300 px-4 py-2">Tên Sách</th>
-                    <th class="border border-gray-300 px-4 py-2">ID Tác Giả</th>
-                    <th class="border border-gray-300 px-4 py-2">ID NXB</th>
-                    <th class="border border-gray-300 px-4 py-2">ID Thể Loại</th>
+                    <th class="border border-gray-300 px-4 py-2">Tác Giả</th>
+                    <th class="border border-gray-300 px-4 py-2">NXB</th>
+                    <th class="border border-gray-300 px-4 py-2">Thể Loại</th>
                     <th class="border border-gray-300 px-4 py-2">Năm Xuất Bản</th>
                     <th class="border border-gray-300 px-4 py-2">Số Trang</th>
                     <th class="border border-gray-300 px-4 py-2">ISBN</th>
-                    <th class="border border-gray-300 px-4 py-2">ID Môn</th>
-                    <th class="border border-gray-300 px-4 py-2">ID Ngành</th>
-                    <th class="border border-gray-300 px-4 py-2">ID Khoa</th>
+                    <th class="border border-gray-300 px-4 py-2">Môn</th>
+                    <th class="border border-gray-300 px-4 py-2">Ngành</th>
+                    <th class="border border-gray-300 px-4 py-2">Khoa</th>
                     <th class="border border-gray-300 px-4 py-2">Hành động</th>
                 </tr>
             </thead>

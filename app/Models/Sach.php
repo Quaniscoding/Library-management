@@ -51,4 +51,8 @@ class Sach extends Model
     {
         return $this->belongsTo(TheLoai::class, 'the_loai_id');
     }
+    public function cuonSachs()
+    {
+        return $this->hasMany(CuonSach::class, 'sach_id');
+    }
 }

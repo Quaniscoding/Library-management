@@ -22,8 +22,8 @@
             <thead class="bg-gray-100">
                 <tr>
                     <th class="border border-gray-300 px-4 py-2">ID</th>
-                    <th class="border border-gray-300 px-4 py-2">ID Sinh Viên</th>
-                    <th class="border border-gray-300 px-4 py-2">ID Nhân Viên</th>
+                    <th class="border border-gray-300 px-4 py-2">Sinh Viên</th>
+                    <th class="border border-gray-300 px-4 py-2">Nhân Viên</th>
                     <th class="border border-gray-300 px-4 py-2">Ngày Mượn</th>
                     <th class="border border-gray-300 px-4 py-2">Ngày Hẹn Trả</th>
                     <th class="border border-gray-300 px-4 py-2">Ngày Trả</th>
@@ -48,7 +48,7 @@
                         {{ \Carbon\Carbon::parse($phieumuon->ngay_hen_tra)->format('d/m/Y') }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center">
-                        {{ $phieumuon->ngay_tra ? \Carbon\Carbon::parse($phieumuon->ngay_tra)->format('d/m/Y') : 'Chưa lập' }}
+                        {{ $phieumuon->ngay_tra ? \Carbon\Carbon::parse($phieumuon->ngay_tra)->format('d/m/Y') : 'Chưa trả' }}
 
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center">
@@ -61,6 +61,8 @@
                         @break
                         @case('QuaHan')
                         Quá Hạn
+                        @case('LamMat')
+                        Làm mất
                         @break
                         @default
                         Không xác định
@@ -107,27 +109,15 @@
             <form wire:submit.prevent="{{ $isEditMode ? 'updatePhieuMuon' : 'createPhieuMuon' }}"
                 class=" h-auto overflow-auto">
                 <div class="mb-4">
-                    <label for="sinh_vien_id" class="block font-semibold">ID Sinh Viên</label>
+                    <label for="sinh_vien_id" class="block font-semibold">Sinh Viên</label>
                     <select id="sinh_vien_id" wire:model.defer="sinh_vien_id"
                         class="w-full border border-gray-300 rounded-md px-3 py-2">
-                        <option value="">-- Chọn ID --</option>
+                        <option value="">-- Chọn sinh viên --</option>
                         @foreach($sinhviens as $sinhvien)
                         <option value="{{ $sinhvien->id }}">{{ $sinhvien->ho_ten }}</option>
                         @endforeach
                     </select>
                     @error('sinh_vien_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                </div>
-
-                <div class="mb-4">
-                    <label for="nhan_vien_id" class="block font-semibold">ID Nhân Viên</label>
-                    <select id="nhan_vien_id" wire:model.defer="nhan_vien_id"
-                        class="w-full border border-gray-300 rounded-md px-3 py-2">
-                        <option value="">-- Chọn ID --</option>
-                        @foreach($nhanviens as $nhanvien)
-                        <option value="{{ $nhanvien->id }}">{{ $nhanvien->ho_ten }}</option>
-                        @endforeach
-                    </select>
-                    @error('nhan_vien_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="mb-4">
@@ -159,6 +149,7 @@
                         <option value="DangMuon">Đang mượn</option>
                         <option value="DaTra">Đã trả</option>
                         <option value="QuaHan">Quá hạn</option>
+                        <option value="LamMat">Làm mất</option>
                     </select>
                     @error('tinh_trang') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>

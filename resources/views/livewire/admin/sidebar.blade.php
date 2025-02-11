@@ -197,7 +197,8 @@
         <div x-data="{ open:window.location.pathname.startsWith('/admin/manage-nhaxuatban') ||
         window.location.pathname.startsWith('/admin/manage-tacgia') ||
         window.location.pathname.startsWith('/admin/manage-theloai')||
-        window.location.pathname.startsWith('/admin/manage-dexuat')
+        window.location.pathname.startsWith('/admin/manage-dexuat')||
+        window.location.pathname.startsWith('/admin/manage-phanhoi')
         }">
             <button @click="open = !open"
                 class="flex justify-between items-center w-full px-3 py-2 text-left rounded-md text-black hover:bg-gray-300">
@@ -225,6 +226,11 @@
                     class="block px-3 py-2 rounded-md 
                 {{ request()->is('admin/manage-dexuat') ? 'bg-gray-400 text-blue-500' : 'text-black hover:bg-gray-300' }}">
                     Quản lý đề xuất sách, tài liệu
+                </a>
+                <a href="/admin/manage-phanhoi"
+                    class="block px-3 py-2 rounded-md 
+                {{ request()->is('admin/manage-phanhoi') ? 'bg-gray-400 text-blue-500' : 'text-black hover:bg-gray-300' }}">
+                    Quản lý phản hồi
                 </a>
             </div>
         </div>

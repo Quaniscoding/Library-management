@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\NhanVien;
 use App\Models\SinhVien;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -56,11 +57,28 @@ class RolesAndPermissionsSeeder extends Seeder
         ];
 
         foreach ($users as $userData) {
+            // Tạo user
             $user = User::create([
                 'name' => $userData['name'],
                 'email' => $userData['email'],
                 'password' => bcrypt($userData['password'])
             ]);
+
+            if ($userData['role'] === 'student') {
+                SinhVien::create([
+                    'ho_ten'    => $userData['name'],
+                    'email'     => $userData['email'],
+                    'password'  => bcrypt($userData['password']),
+                ]);
+            }
+            if (
+                $userData['role'] === 'librarian' || $userData['role'] === 'teacher'
+            ) {
+                NhanVien::create([
+                    'user_id'   => $user->id,
+                    'ho_ten'    => $userData['name'],
+                ]);
+            }
             $user->assignRole($userData['role']);
         }
     }

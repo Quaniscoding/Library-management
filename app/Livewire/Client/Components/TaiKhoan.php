@@ -13,7 +13,7 @@ class TaiKhoan extends Component
 
     public function mount()
     {
-        $sinhVien = Auth::guard('sinhvien')->user();
+        $sinhVien = Auth::guard('student')->user();
         $this->ho_ten = $sinhVien->ho_ten;
         $this->ngay_sinh = $sinhVien->ngay_sinh;
         $this->gioi_tinh = $sinhVien->gioi_tinh;
@@ -26,7 +26,7 @@ class TaiKhoan extends Component
 
     public function updateProfile(FlasherInterface $flasher)
     {
-        $sinhVien = Auth::guard('sinhvien')->user();
+        $sinhVien = Auth::guard('student')->user();
         $sinhVien->update([
             'ho_ten' => $this->ho_ten,
             'ngay_sinh' => $this->ngay_sinh,
@@ -48,7 +48,7 @@ class TaiKhoan extends Component
             'confirm_password' => 'same:new_password',
         ]);
 
-        $sinhVien = Auth::guard('sinhvien')->user();
+        $sinhVien = Auth::guard('student')->user();
         $sinhVien->update([
             'password' => Hash::make($this->new_password),
         ]);

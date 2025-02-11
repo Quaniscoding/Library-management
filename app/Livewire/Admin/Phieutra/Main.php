@@ -92,7 +92,7 @@ class Main extends Component
 
             // Lấy thông tin sách thông qua bản ghi đặt sách (DatSach)
             // (Giả sử sinh viên chỉ có 1 bản ghi đặt sách gần đây)
-            $sinhVien = Auth::guard('sinhvien')->user();
+            $sinhVien = Auth::guard('student')->user();
             $datSachRecord = DatSach::where('sinh_vien_id', $sinhVien->id)
                 ->orderBy('ngay_dat', 'desc')
                 ->first();
@@ -110,13 +110,13 @@ class Main extends Component
                 'ly_do'        => "Trễ trả sách: {$soNgayTre} ngày",
                 'tinh_trang'   => 'ChuaThanhToan',
             ]);
+            HoaDonPhat::create([
+                'phat_id'         => $phat->id,
+                'ngay_lap'        => Carbon::now(),
+                'ngay_thanh_toan' => null,
+                'trang_thai'      => 'ChuaThanhToan',
+            ]);
         }
-        HoaDonPhat::create([
-            'phat_id'         => $phat->id,
-            'ngay_lap'        => Carbon::now(),
-            'ngay_thanh_toan' => null,
-            'trang_thai'      => 'ChuaThanhToan',
-        ]);
         $flasher->addSuccess('Tạo phiếu trả thành công!');
         $this->closeModal();
         $this->resetForm();

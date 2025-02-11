@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Admin\Phat;
 
+use App\Models\HoaDonPhat;
 use App\Models\Phat;
 use App\Models\PhieuTra;
+use Carbon\Carbon;
 use Flasher\Prime\FlasherInterface;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -59,7 +61,6 @@ class Main extends Component
     public function createPhat(FlasherInterface $flasher)
     {
         $this->validate([
-            'phieu_tra_id' => 'required|exists:phieu_tras,id',
             'so_tien' => 'required',
             'ly_do' => 'required',
             'tinh_trang' => 'required',
@@ -92,7 +93,6 @@ class Main extends Component
     public function updatePhat(FlasherInterface $flasher)
     {
         $this->validate([
-            'phieu_tra_id' => 'required|exists:phieu_tras,id',
             'so_tien' => 'required',
             'ly_do' => 'required',
             'tinh_trang' => 'required',
@@ -104,6 +104,13 @@ class Main extends Component
             'ly_do' => $this->ly_do,
             'tinh_trang' => $this->tinh_trang,
         ]);
+        if ($this->tinh_trang === 'DaThanhToan') {
+            $hoadonphat = HoaDonPhat::findOrFail($this->id);
+            $hoadonphat->update([
+                'ngay_thanh_toan' => Carbon::now(),
+                'trang_thai' => 'DaThanhToan',
+            ]);
+        }
         $flasher->addSuccess('Cập nhật phạt thành công!');
         $this->closeModal();
         $this->resetForm();

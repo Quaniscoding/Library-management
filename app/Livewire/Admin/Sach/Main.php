@@ -22,19 +22,119 @@ class Main extends Component
 
     public $deleteSachId;
     public $searchName = '';
+    public $tinh_trang = '';
+    // Các biến filter cho các mối quan hệ
+    public $selected_tacgia = '';
+    public $selected_nhaxuatban = '';
+    public $selected_theloai = '';
+    public $selected_monhoc = '';
+    public $selected_nganh = '';
+    public $selected_khoa = '';
+
+    // Reset trang khi cập nhật filter (để phân trang hoạt động đúng)
+    public function updatingSearchName()
+    {
+        $this->resetPage();
+    }
+    public function updatingTinhTrang()
+    {
+        $this->resetPage();
+    }
+    public function updatingSelectedTacgia()
+    {
+        $this->resetPage();
+    }
+    public function updatingSelectedNhaxuatban()
+    {
+        $this->resetPage();
+    }
+    public function updatingSelectedTheloai()
+    {
+        $this->resetPage();
+    }
+    public function updatingSelectedMonhoc()
+    {
+        $this->resetPage();
+    }
+    public function updatingSelectedNganh()
+    {
+        $this->resetPage();
+    }
+    public function updatingSelectedKhoa()
+    {
+        $this->resetPage();
+    }
     public $isEditMode = false;
     public $isModalOpen = false;
     public $isConfirmModalOpen = false;
     public function render()
     {
-        $sachs = Sach::where('ten_sach', 'like', '%' . $this->searchName . '%')->paginate(10);
+        // Khởi tạo query từ model Sach
+        $query = Sach::query();
+
+        // Filter theo tên sách
+        if (!empty($this->searchName)) {
+            $query->where('ten_sach', 'like', '%' . $this->searchName . '%');
+        }
+
+        // Filter theo tình trạng
+        if (!empty($this->tinh_trang)) {
+            // Giả sử mối quan hệ với bảng cuốn sách đã được định nghĩa trong model Sach:
+            // public function cuonSachs() { return $this->hasMany(CuonSach::class, 'sach_id'); }
+            $query->whereHas('cuonSachs', function ($q) {
+                $q->where('tinh_trang', $this->tinh_trang);
+            });
+        }
+
+        // Filter theo tác giả
+        if (!empty($this->selected_tacgia)) {
+            $query->where('tac_gia_id', $this->selected_tacgia);
+        }
+
+        // Filter theo nhà xuất bản
+        if (!empty($this->selected_nhaxuatban)) {
+            $query->where('nha_xuat_ban_id', $this->selected_nhaxuatban);
+        }
+
+        // Filter theo thể loại
+        if (!empty($this->selected_theloai)) {
+            $query->where('the_loai_id', $this->selected_theloai);
+        }
+
+        // Filter theo môn học
+        if (!empty($this->selected_monhoc)) {
+            $query->where('mon_hoc_id', $this->selected_monhoc);
+        }
+
+        // Filter theo ngành
+        if (!empty($this->selected_nganh)) {
+            $query->where('nganh_id', $this->selected_nganh);
+        }
+
+        // Filter theo khoa
+        if (!empty($this->selected_khoa)) {
+            $query->where('khoa_id', $this->selected_khoa);
+        }
+
+        $sachs = $query->paginate(10);
+
+        // Lấy dữ liệu cho các select filter
         $tacgias = TacGia::all();
         $nhaxuatbans = NhaXuatBan::all();
-        $theloais = TheLoai::all();
-        $monhocs = MonHoc::all();
-        $nganhs = Nganh::all();
-        $khoas = Khoa::all();
-        return view('livewire.admin.sach.main', compact('sachs', 'tacgias', 'nhaxuatbans', 'theloais', 'monhocs', 'nganhs', 'khoas'));
+        $theloais   = TheLoai::all();
+        $monhocs    = MonHoc::all();
+        $nganhs     = Nganh::all();
+        $khoas      = Khoa::all();
+
+        return view('livewire.admin.sach.main', compact(
+            'sachs',
+            'tacgias',
+            'nhaxuatbans',
+            'theloais',
+            'monhocs',
+            'nganhs',
+            'khoas'
+        ));
     }
 
     public function openModal()

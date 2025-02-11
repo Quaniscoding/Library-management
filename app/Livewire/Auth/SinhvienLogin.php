@@ -28,7 +28,7 @@ class SinhvienLogin extends Component
         ]);
 
         // Thử đăng nhập với guard 'sinhvien'
-        if (Auth::guard('sinhvien')->attempt(['email' => $this->email, 'password' => $this->password]) || Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        if (Auth::guard('student')->attempt(['email' => $this->email, 'password' => $this->password]) || Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             $flasher->addSuccess('Đăng nhập thành công!');
             return redirect()->intended('/');
         } else {

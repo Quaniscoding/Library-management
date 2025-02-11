@@ -2,10 +2,15 @@
 
 namespace App\Livewire\Admin\Phieumuon;
 
+use App\Models\DatSach;
+use App\Models\HoaDonPhat;
 use App\Models\NhanVien;
+use App\Models\Phat;
 use App\Models\PhieuMuon;
 use App\Models\SinhVien;
+use Carbon\Carbon;
 use Flasher\Prime\FlasherInterface;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -71,13 +76,12 @@ class Main extends Component
     {
         $this->validate([
             'sinh_vien_id' => 'required',
-            'nhan_vien_id' => 'required',
             'ngay_muon' => 'required',
             'ngay_hen_tra' => 'required',
-            'ngay_tra' => 'required',
             'tinh_trang' => 'required',
         ]);
-
+        $admin = Auth::guard('web')->id();
+        $nhan_vien_id = NhanVien::findOrFail($admin);
         $exists = PhieuMuon::where('sinh_vien_id', $this->sinh_vien_id)->exists();
         if ($exists) {
             // Thêm thông báo lỗi
@@ -86,7 +90,7 @@ class Main extends Component
         }
         PhieuMuon::create([
             'sinh_vien_id' => $this->sinh_vien_id,
-            'nhan_vien_id' => $this->nhan_vien_id,
+            'nhan_vien_id' => $nhan_vien_id->id,
             'ngay_muon' => $this->ngay_muon,
             'ngay_hen_tra' => $this->ngay_hen_tra,
             'ngay_tra' => $this->ngay_tra,
@@ -117,21 +121,42 @@ class Main extends Component
     {
         $this->validate([
             'sinh_vien_id' => 'required',
-            'nhan_vien_id' => 'required',
             'ngay_muon' => 'required',
             'ngay_hen_tra' => 'required',
-            'ngay_tra' => 'required',
             'tinh_trang' => 'required',
         ]);
         $phieumuon = PhieuMuon::findOrFail($this->id);
+        $admin = Auth::guard('web')->id();
+        $nhan_vien_id = NhanVien::where('user_id', $admin)->first();
         $phieumuon->update([
             'sinh_vien_id' => $this->sinh_vien_id,
-            'nhan_vien_id' => $this->nhan_vien_id,
+            'nhan_vien_id' => $nhan_vien_id->id,
             'ngay_muon' => $this->ngay_muon,
             'ngay_hen_tra' => $this->ngay_hen_tra,
             'ngay_tra' => $this->ngay_tra,
             'tinh_trang' => $this->tinh_trang,
         ]);
+        if ($this->tinh_trang == 'LamMat') {
+            $datSachRecord = DatSach::where('sinh_vien_id', $this->sinh_vien_id)
+                ->orderBy('ngay_dat', 'desc')
+                ->first();
+            $sach_id = ($datSachRecord && $datSachRecord->cuonSach)
+                ? $datSachRecord->cuonSach->sach_id
+                : null;
+            $phat = Phat::create([
+                'sinh_vien_id' => $this->sinh_vien_id,
+                'sach_id'      => $sach_id,
+                'so_tien'      => 10000,
+                'ly_do'        => "Làm mất sách",
+                'tinh_trang'   => 'ChuaThanhToan',
+            ]);
+            HoaDonPhat::create([
+                'phat_id'         => $phat->id,
+                'ngay_lap'        => Carbon::now(),
+                'ngay_thanh_toan' => null,
+                'trang_thai'      => 'ChuaThanhToan',
+            ]);
+        }
         $flasher->addSuccess('Cập nhật phiếu mượn thành công!');
         $this->closeModal();
         $this->resetForm();

@@ -1,4 +1,4 @@
-<div class="bg-white shadow-lg rounded-xl p-6 mt-6">
+<div class="bg-white shadow-lg rounded-xl p-6 mt-6" wire:poll.1s>
     <!-- Header: tiêu đề và nút điều hướng (nếu cần) -->
     <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-bold text-gray-800">

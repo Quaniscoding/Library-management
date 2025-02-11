@@ -11,5 +11,7 @@
         @livewire('table.new-books')
         @livewire('table.bi-phat')
         @livewire('table.new-dat-sach')
+        @livewire('table.new-de-xuat')
+        @livewire('table.new-phan-hoi')
     </div>
 </main>

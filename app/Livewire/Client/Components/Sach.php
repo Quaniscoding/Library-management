@@ -122,6 +122,11 @@ class Sach extends Component
         ) {
             $query->whereBetween('nam_xuat_ban', [$this->start_year, $this->end_year]);
         }
+        $query->withCount([
+            'cuonSachs as con_count' => function ($q) {
+                $q->where('tinh_trang', 'Con');
+            }
+        ]);
         // Thực thi query
         $sachs = $query->paginate(20);
         return view('livewire.client.components.sach', [

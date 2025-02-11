@@ -281,7 +281,7 @@
                                     </div>
                                     <div
                                         class="flex flex-col gap-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        @if(Auth::guard('sinhvien')->check() || Auth::guard('web')->check())
+                                        @if(Auth::guard('student')->check() || Auth::guard('web')->check())
                                         <a href="{{ $tailieumo->link_tai_ve }}" target="_blank"
                                             rel="noopener noreferrer">
                                             <button

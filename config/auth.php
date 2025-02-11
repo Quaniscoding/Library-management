@@ -40,9 +40,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'sinhvien' => [
+        'student' => [
             'driver' => 'session',
-            'provider' => 'sinhviens',
+            'provider' => 'students',
         ],
     ],
 
@@ -69,7 +69,7 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'sinhviens' => [
+        'students' => [
             'driver' => 'eloquent',
             'model' => App\Models\Sinhvien::class,
         ],

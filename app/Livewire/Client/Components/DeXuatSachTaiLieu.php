@@ -20,7 +20,7 @@ class DeXuatSachTaiLieu extends Component
     public function submitProposal(FlasherInterface $flasher)
     {
         $this->validate();
-        $sinhVien = Auth::guard('sinhvien')->user();
+        $sinhVien = Auth::guard('student')->user();
         // Tạo đề xuất mới
         DeXuat::create([
             'sinh_vien_id'    => $sinhVien->id,
