@@ -117,9 +117,9 @@
                 <img src="/images/lib8.jpg" alt="Library" class="w-full h-48 object-cover">
                 <div class="p-4 flex flex-col flex-grow">
                     <h4 class="text-lg text-center font-semibold text-gray-800">Thư Viện</h4>
-                    <p class="text-gray-600 mt-2 flex-grow">Explore our extensive range of academic journals, offering
-                        insights
-                        and updates across multiple disciplines.</p>
+                    <p class="text-gray-600 mt-2 flex-grow">Lưu trữ và cung cấp tài liệu, sách, và các nguồn thông tin
+                        phục vụ học tập, nghiên cứu. Đây cũng là nơi giúp sinh viên
+                        tiếp cận tri thức, nâng cao hiểu biết và phát triển kỹ năng.</p>
                 </div>
             </div>
         </div>
