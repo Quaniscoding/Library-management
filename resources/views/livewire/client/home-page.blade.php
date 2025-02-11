@@ -36,9 +36,10 @@
     </main>
 
     <div class="max-w-6xl mx-auto mt-6 p-6 bg-white shadow-lg rounded-lg">
-        <h2 class="text-3xl text-center font-bold text-gray-800 mb-4">Tổng Quan</h2>
+        <h2 class="text-3xl text-center font-bold text-gray-800 mb-4" data-aos="fade-up" data-aos-delay="200">Giới Thiệu
+        </h2>
 
-        <div class="flex gap-6">
+        <div class="flex gap-6" data-aos="fade-up" data-aos-delay="300">
             <!-- Swiper Container (Chiếm 50%) -->
             <div class="w-1/2">
                 <div class="swiper mySwiper">
@@ -64,7 +65,8 @@
             </div>
 
             <!-- Phần Nội dung chữ (Chiếm 50%) -->
-            <div class="w-1/2 flex flex-col items-center justify-center bg-gray-50 p-6 rounded-lg shadow">
+            <div class="w-1/2 flex flex-col items-center justify-center bg-gray-50 p-6 rounded-lg shadow"
+                data-aos="fade-up" data-aos-delay="400">
                 <h3 class="self-center mt-auto mb-auto text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
                     style="font-family: 'Pacifico', cursive;">Khám Phá Kho Sách ITC
                 </h3>
@@ -93,7 +95,8 @@
 
         <div class="mt-8 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Card 1 -->
-            <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full" data-aos="fade-up"
+                data-aos-delay="100">
                 <img src="/images/classroom.jpg" alt="ClassRoom" class="w-full h-48 object-cover">
                 <div class="p-4 flex flex-col flex-grow">
                     <h4 class="text-lg text-center font-semibold text-gray-800">Phòng Máy Tính</h4>
@@ -103,7 +106,8 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full" data-aos="fade-up"
+                data-aos-delay="300">
                 <img src="/images/classroom2.jpg" alt="ClassRoom2" class="w-full h-48 object-cover">
                 <div class="p-4 flex flex-col flex-grow">
                     <h4 class="text-lg text-center font-semibold text-gray-800">Phòng Học</h4>
@@ -113,7 +117,8 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full" data-aos="fade-up"
+                data-aos-delay="500">
                 <img src="/images/lib8.jpg" alt="Library" class="w-full h-48 object-cover">
                 <div class="p-4 flex flex-col flex-grow">
                     <h4 class="text-lg text-center font-semibold text-gray-800">Thư Viện</h4>
@@ -123,8 +128,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <footer class="text-center p-4 mt-10 bg-gray-200 text-gray-700">
