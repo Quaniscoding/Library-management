@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Sach;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý sách - Thư viện ITC')]
+ITCLibITCLibITCLib
+#[Title('Quản lý sách - ITCLib')]
 
 class ManageSach extends Component
 {

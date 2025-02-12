@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Permissions;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý permissions - Thư viện ITC')]
+ITCLibITCLib
+#[Title('Quản lý permissions - ITCLib')]
 
 class ManagePermissions extends Component
 {

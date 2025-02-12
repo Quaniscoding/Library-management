@@ -13,24 +13,17 @@ use App\Models\TheLoai;
 use Flasher\Prime\FlasherInterface;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 
-#[Title('Sách - Thư viện ITC')]
+#[Title('Sách - ITCLib')]
 class Sach extends Component
 {
     use WithPagination;
-    #[Url]
     public $selected_tacgias = [];
-    #[Url]
     public $selected_nhaxuatbans = [];
-    #[Url]
     public $selected_mons = [];
-    #[Url]
     public $selected_khoas = [];
-    #[Url]
     public $selected_nganhs = [];
-    #[URL]
     public $selected_theloais = [];
     public $tacgias = [];
     public $nhaxuatbans = [];

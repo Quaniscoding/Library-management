@@ -8,7 +8,7 @@ use App\Models\User;
 use Flasher\Prime\FlasherInterface;
 use Livewire\Attributes\Title;
 
-#[Title('Đăng ký tài khoản - Thư viện ITC')]
+#[Title('Đăng ký tài khoản - ITCLib
 
 class Register extends Component
 {

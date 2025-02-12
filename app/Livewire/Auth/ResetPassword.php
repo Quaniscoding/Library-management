@@ -12,7 +12,7 @@ use Livewire\Component;
 use Livewire\Attributes\Url;
 use Illuminate\Support\Str;
 
-#[Title('Tạo lại mật khẩu - Thư viện ITC')]
+#[Title('Tạo lại mật khẩu - ITCLib')]
 
 class ResetPassword extends Component
 {

@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Lienketsachnganh;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý liên kết sách ngành - Thư viện ITC')]
+
+#[Title('Quản lý liên kết sách ngành - ITCLib')]
 
 class ManageLienketsachnganh extends Component
 {

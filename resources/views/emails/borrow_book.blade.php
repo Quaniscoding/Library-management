@@ -20,5 +20,5 @@ Vui lòng kiểm tra thông tin trên và liên hệ thư viện nếu có thắ
 Bạn vui lòng lấy sách trong vòng 3 ngày nếu không sách sẽ được cho người khác mượn.
 
 Trân trọng,<br>
-**Thư viện ITC**
+**ITCLib**
 @endcomponent

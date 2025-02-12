@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Title;
 
-#[Title('Đăng ký tài khoản - Thư viện ITC')]
+#[Title('Đăng ký tài khoản - ITCLib')]
 
 class SinhvienRegister extends Component
 {

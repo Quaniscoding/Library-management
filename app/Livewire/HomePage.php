@@ -6,7 +6,7 @@ use App\Models\Sach;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Trang chủ - Thư viện ITC')]
+#[Title('Trang chủ - ITCLib')]
 
 class HomePage extends Component
 {

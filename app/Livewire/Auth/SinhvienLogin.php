@@ -7,7 +7,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Title;
 
-#[Title('Đăng nhập - Thư viện ITC')]
+#[Title('Đăng nhập - ITCLib')]
 
 class SinhvienLogin extends Component
 {

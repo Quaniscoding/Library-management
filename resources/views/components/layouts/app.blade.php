@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'Thư viện ITC' }}</title>
+    <title>{{ $title ?? 'ITCLib' }}</title>
     <link rel="icon" type="image/x-icon" href="../../../../public//build/assets/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -16,6 +16,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        window.addEventListener('livewire:navigated', function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
 
     <!-- AOS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -31,14 +45,14 @@
     </section> -->
     {{ $slot }}
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            setTimeout(function () {
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
                 document.querySelector(".dots-container").style.display = "none";
             }, 1000);
         });
     </script>
     <script>
-        document.addEventListener("turbo:before-visit", function () {
+        document.addEventListener("turbo:before-visit", function() {
             let loader = document.querySelector(".dots-container");
             if (loader) {
                 loader.style.display = "block"; // Hiện lại loading
@@ -46,7 +60,12 @@
             }
         });
     </script>
-
+    <script>
+        document.addEventListener('livewire:update', () => {
+            const dropdownTriggers = document.querySelectorAll('[data-dropdown-toggle]');
+            dropdownTriggers.forEach(trigger => new Dropdown(trigger));
+        });
+    </script>
     @livewireScripts
     @vite('resources/js/app.js')
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>

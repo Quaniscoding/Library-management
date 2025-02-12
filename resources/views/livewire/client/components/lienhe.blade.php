@@ -1,9 +1,8 @@
-<div class="main">
+<div class="min-h-screen bg-gray-100 dark:bg-gray-900 overflow-hidden">
     @livewire('client.components.header')
-
     <div class="container mx-auto px-4 py-16 mt-32">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
+            <!-- Cột bên trái: Thông tin liên hệ -->
             <div class="pr-4">
                 <!-- Logo -->
                 <div class="mb-8 flex justify-center">
@@ -13,11 +12,11 @@
                     </a>
                 </div>
                 <div class="text-center">
-                    <h3 class="text-xl font-bold mb-6">
+                    <h3 class="text-xl font-bold mb-6 text-gray-800 dark:text-white">
                         TRƯỜNG CAO ĐẲNG <br>
                         CÔNG NGHỆ THÔNG TIN TP. HỒ CHÍ MINH
                     </h3>
-                    <ul class="space-y-4">
+                    <ul class="space-y-4 text-gray-700 dark:text-gray-300">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-2xl text-blue-500 mr-3"></i>
                             <div class="text-left">
@@ -56,19 +55,21 @@
                 </div>
             </div>
 
+            <!-- Cột bên phải: Bản đồ và liên kết mạng xã hội -->
             <div>
+                <!-- Bản đồ Google -->
                 <div class="mb-8">
                     <div class="relative w-full overflow-hidden rounded-lg shadow-lg" style="padding-top: 56.25%;">
                         <iframe class="absolute top-0 left-0 w-full h-full"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.477507676075!2d106.63214551528405!3d10.77469256217086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ea144839ef1%3A0x798819bdcd0522b0!2sInformation%20Technology%20College%20HoChiMinh%20City!5e0!3m2!1sen!2s!4v1652860864396!5m2!1sen!2s"
                             frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
 
+                <!-- Liên kết mạng xã hội -->
                 <div class="mb-4 text-center">
-                    <h3 class="text-xl font-bold">Kết nối mạng xã hội</h3>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">Kết nối mạng xã hội</h3>
                 </div>
                 <div class="flex justify-center space-x-4 mb-6">
                     <a href="https://www.facebook.com/itcportal247" target="_blank"
@@ -92,6 +93,7 @@
                     </a>
                 </div>
 
+                <!-- Widget: Counter (có thể giữ nguyên hoặc tùy chỉnh giao diện theo dark mode nếu cần) -->
                 <div class="flex justify-center">
                     <a href="https://livetrafficfeed.com/website-counter" id="LTF_counter_href" data-time="Asia/Bangkok"
                         data-root="1">
@@ -100,7 +102,6 @@
                     </a>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

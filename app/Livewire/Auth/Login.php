@@ -7,7 +7,7 @@ use Livewire\Component;
 use Flasher\Prime\FlasherInterface;
 use Livewire\Attributes\Title;
 
-#[Title('Đăng nhập - Thư viện ITC')]
+#[Title('Đăng nhập - ITCLib
 class Login extends Component
 {
     public $email;

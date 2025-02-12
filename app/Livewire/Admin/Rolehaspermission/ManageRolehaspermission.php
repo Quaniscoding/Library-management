@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Rolehaspermission;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý rolehaspermission - Thư viện ITC')]
+ITCLib
+#[Title('Quản lý rolehaspermission - ITCLib')]
 
 class ManageRolehaspermission extends Component
 {

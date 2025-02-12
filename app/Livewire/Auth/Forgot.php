@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Password;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Lấy lại mật khẩu - Thư viện ITC')]
+#[Title('Lấy lại mật khẩu - ITCLib')]
 
 class Forgot extends Component
 {

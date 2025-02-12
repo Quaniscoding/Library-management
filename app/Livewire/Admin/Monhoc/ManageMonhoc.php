@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Monhoc;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý môn học - Thư viện ITC')]
+
+#[Title('Quản lý môn học - ITCLib')]
 
 class ManageMonhoc extends Component
 {

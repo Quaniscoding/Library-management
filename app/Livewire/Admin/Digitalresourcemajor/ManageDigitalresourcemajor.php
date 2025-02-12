@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Digitalresourcemajor;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý DigitalResourceMajor - Thư viện ITC')]
+
+#[Title('Quản lý DigitalResourceMajor - ITCLib')]
 
 
 class ManageDigitalresourcemajor extends Component

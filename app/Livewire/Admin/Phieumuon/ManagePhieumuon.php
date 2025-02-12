@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Phieumuon;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý phiếu mượn - Thư viện ITC')]
+ITCLibITCLibITCLib
+#[Title('Quản lý phiếu mượn - ITCLib')]
 
 class ManagePhieumuon extends Component
 {

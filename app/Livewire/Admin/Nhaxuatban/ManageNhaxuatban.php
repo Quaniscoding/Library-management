@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Nhaxuatban;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý nhà xuất bản - Thư viện ITC')]
+ITCLibITCLib
+#[Title('Quản lý nhà xuất bản - ITCLib')]
 
 class ManageNhaxuatban extends Component
 {

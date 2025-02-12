@@ -11,23 +11,16 @@ use App\Models\TaiLieuMo;
 use App\Models\TheLoai;
 use Flasher\Prime\FlasherInterface;
 use Livewire\Attributes\Title;
-use Livewire\Attributes\Url;
 use Livewire\Component;
 
-#[Title('Tài liệu - Thư viện ITC')]
+#[Title('Tài liệu - ITCLib')]
 class Tailieu extends Component
 {
-    #[Url]
     public $selected_tacgias = [];
-    #[Url]
     public $selected_nhaxuatbans = [];
-    #[Url]
     public $selected_mons = [];
-    #[Url]
     public $selected_khoas = [];
-    #[Url]
     public $selected_nganhs = [];
-    #[URL]
     public $selected_theloais = [];
     public $tacgias = [];
     public $nhaxuatbans = [];
@@ -49,7 +42,6 @@ class Tailieu extends Component
     public $showModal = false;
     public $search;
     public $selectedTailieumo = null;
-    public $selectedTailieumoDetails = null;
     public function mount()
     {
         $this->tacgias = TacGia::all();
@@ -110,12 +102,19 @@ class Tailieu extends Component
             'theloais' => $this->theloais
         ]);
     }
-    public function showTaiLieuDetails($tai_lieu_mo_id)
+    // public function showTaiLieuDetails($id)
+    // {
+    //     $this->selectedTailieumo = TaiLieuMo::find($id);
+    //     $this->showModal = true;
+    // }
+    public function showTaiLieuDetails($id)
     {
-        $this->selectedTailieumo = TaiLieuMo::find($tai_lieu_mo_id);
-        // $this->selectedTailieumoDetails = CuonSach::where('sach_id', $sach_id)->first();
-        $this->showModal = true;
+        $taiLieu =
+            TaiLieuMo::with(['tacgia', 'nganh', 'mon', 'khoa', 'nhaxuatban', 'theloai'])
+            ->find($id);
+        $this->selectedTailieumo = $taiLieu ? $taiLieu->toArray() : null;
     }
+
     public function closeModal()
     {
         $this->showModal = false;

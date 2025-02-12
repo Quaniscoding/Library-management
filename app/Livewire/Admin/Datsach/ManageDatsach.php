@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Datsach;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý đặt sách - Thư viện ITC')]
+
+#[Title('Quản lý đặt sách - ITCLib')]
 
 
 class ManageDatsach extends Component

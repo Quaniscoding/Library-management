@@ -246,11 +246,7 @@
                                 <option value="oldest">Sắp xếp theo cũ nhất</option>
                             </select>
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-400 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7" />
-                                </svg>
+                                <i class="fa-solid fa-chevron-down"></i>
                             </div>
                         </div>
                     </div>
@@ -260,23 +256,34 @@
                             <div
                                 class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group mb-4 mx-16">
                                 <div class="p-4 flex flex-row justify-between">
-                                    <div class="flex gap-1">
+                                    <div class="flex gap-4">
                                         @if($tailieumo->anh_bia)
                                         <img src="{{ asset('storage/' . $tailieumo->anh_bia) }}" alt="Ảnh bìa"
-                                            width="150">
+                                            width="150" class="rounded-lg object-cover">
                                         @else
                                         <img src="https://placehold.co/150x150?text={{$tailieumo->ten_tai_lieu}}"
-                                            alt="{{ $tailieumo->ten_tai_lieu }}" width="150">
+                                            alt="{{ $tailieumo->ten_tai_lieu }}" width="150"
+                                            class="rounded-lg object-cover">
                                         @endif
                                         <div>
                                             <h3 class="font-semibold mb-2 line-clamp-2 text-gray-900 dark:text-white">
                                                 {{ $tailieumo->ten_tai_lieu }}
                                             </h3>
-                                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Tác giả:
-                                                {{ $tailieumo->tacGia->ho_ten ?? 'Không rõ' }}
+                                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Nhà xuất bản:
+                                                {{ $tailieumo->NhaXuatBan->ten_nha_xuat_ban ?? 'Không rõ' }}
                                             </p>
-                                            <span class="text-sm text-gray-500 dark:text-gray-400">Năm phát hành:
-                                                {{ $tailieumo->nam_phat_hanh }}</span>
+                                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Môn:
+                                                {{ $tailieumo->Mon->ten_mon ?? 'Không rõ' }}
+                                            </p>
+                                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Khoa:
+                                                {{ $tailieumo->Khoa->ten_khoa ?? 'Không rõ' }}
+                                            </p>
+                                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Ngành:
+                                                {{ $tailieumo->Nganh->ten_nganh ?? 'Không rõ' }}
+                                            </p>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Năm phát hành:
+                                                {{ $tailieumo->nam_phat_hanh }}
+                                            </p>
                                         </div>
                                     </div>
                                     <div
@@ -295,76 +302,145 @@
                                             Tải xuống
                                         </button>
                                         @endauth
-                                        <button wire:click="showTaiLieuDetails({{ $tailieumo->id }})"
-                                            class="bg-blue-600 px-4 py-2 rounded-full text-sm text-white hover:bg-blue-700 transition-colors">
-                                            Chi tiết
-                                        </button>
+                                        <div x-data="{ openModal: false, selectedTailieumo: @entangle('selectedTailieumo') }"
+                                            x-init="console.log('selectedTailieumo:', selectedTailieumo)">
+                                            <!-- Nút mở modal -->
+                                            <button
+                                                @click="openModal = true; $wire.showTaiLieuDetails({{ $tailieumo->id }})"
+                                                class="bg-blue-600 px-4 py-2 rounded-full text-sm text-white hover:bg-blue-700 transition-colors"
+                                                type="button">
+                                                Chi tiết
+                                            </button>
+                                            <!-- Modal -->
+                                            <div x-show="openModal" x-cloak
+                                                class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
+                                                <div @click.stop
+                                                    class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-3xl">
+                                                    <!-- Modal Header -->
+                                                    <div class="flex items-center justify-between mb-4">
+                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                            Chi tiết tài liệu</h3>
+                                                        <button @click="openModal = false; $wire.closeModal()"
+                                                            class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                            </svg>
+                                                            <span class="sr-only">Đóng modal</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Modal Body -->
+                                                    <div class="space-y-6">
+                                                        <template x-if="selectedTailieumo">
+                                                            <div class="border-b pb-4 mb-4">
+                                                                <h2
+                                                                    class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                                                                    Thông tin Tài liệu</h2>
+                                                                <div
+                                                                    class="mt-2 text-gray-700 dark:text-gray-300 space-y-2">
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Tên
+                                                                            sách:</strong>
+                                                                        <span
+                                                                            x-text="selectedTailieumo.ten_tai_lieu"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Tác
+                                                                            giả:</strong>
+                                                                        <span
+                                                                            x-text="selectedTailieumo.tac_gia_id ? selectedTailieumo.tacgia.ho_ten : 'Không rõ'"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Môn:</strong>
+                                                                        <span
+                                                                            x-text="selectedTailieumo.mon_hoc_id ? selectedTailieumo.mon.ten_mon : 'Không rõ'"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Ngành:</strong>
+                                                                        <span
+                                                                            x-text="selectedTailieumo.nganh_id ? selectedTailieumo.nganh.ten_nganh : 'Không rõ'"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Khoa:</strong>
+                                                                        <span
+                                                                            x-text="selectedTailieumo.khoa ? selectedTailieumo.khoa.ten_khoa : 'Không rõ'"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Nhà
+                                                                            xuất bản:</strong>
+                                                                        <span
+                                                                            x-text="selectedTailieumo.nha_xuat_ban_id ? selectedTailieumo.nhaxuatban.ten_nha_xuat_ban : 'Không rõ'"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Năm
+                                                                            phát hành:</strong>
+                                                                        <span
+                                                                            x-text="selectedTailieumo.nam_phat_hanh"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">ISBN:</strong>
+                                                                        <span x-text="selectedTailieumo.isbn"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Thể
+                                                                            loại:</strong>
+                                                                        <span
+                                                                            x-text="selectedTailieumo.theloai ? selectedTailieumo.theloai.ten_the_loai : 'Không rõ'"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Số
+                                                                            trang:</strong>
+                                                                        <span
+                                                                            x-text="selectedTailieumo.so_trang"></span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <strong
+                                                                            class="text-gray-900 dark:text-gray-100">Link
+                                                                            tải về:</strong>
+                                                                        <a :href="selectedTailieumo.link_tai_ve"
+                                                                            x-text="selectedTailieumo.link_tai_ve"
+                                                                            target="_blank"
+                                                                            class="text-blue-600 hover:underline"></a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </template>
+                                                        <template x-if="!selectedTailieumo">
+                                                            <div class="text-center text-gray-500 dark:text-gray-400">
+                                                                Không có dữ liệu.</div>
+                                                        </template>
+                                                    </div>
+
+                                                    <!-- Modal Footer -->
+                                                    <div class="mt-4 text-right">
+                                                        <button @click="openModal = false; $wire.closeModal()"
+                                                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                                            Đóng
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
                                 </div>
                             </div>
                             @endforeach
-                            <!-- Modal -->
-                            @if($showModal)
-                            <div
-                                class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
-                                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-md">
-                                    <div class="flex justify-between items-center mb-4">
-                                        <h2 class="text-lg font-bold text-gray-900 dark:text-white">Chi tiết tài liệu
-                                        </h2>
-                                        <button wire:click="closeModal"
-                                            class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 space-y-6">
-                                        @if($selectedTailieumo)
-                                        <div class="border-b pb-4 mb-4">
-                                            <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Thông tin
-                                                Tài liệu
-                                            </h2>
-                                            <div class="mt-2 text-gray-700 dark:text-gray-300 space-y-2">
-                                                <p><strong class="text-gray-900 dark:text-gray-100">Tên sách:</strong>
-                                                    {{ $selectedTailieumo->ten_tai_lieu }}
-                                                </p>
-                                                <p><strong class="text-gray-900 dark:text-gray-100">Tác giả:</strong>
-                                                    {{ $selectedTailieumo->tacGia->ho_ten ?? 'Không rõ' }}
-                                                </p>
-                                                <p><strong class="text-gray-900 dark:text-gray-100">Nhà xuất
-                                                        bản:</strong>
-                                                    {{ $selectedTailieumo->nhaXuatBan->ten_nha_xuat_ban ?? 'Không rõ' }}
-                                                </p>
-                                                <p><strong class="text-gray-900 dark:text-gray-100">Năm phát
-                                                        hành:</strong>
-                                                    {{ $selectedTailieumo->nam_phat_hanh }}
-                                                </p>
-                                                <p><strong class="text-gray-900 dark:text-gray-100">Thể loại:</strong>
-                                                    {{ $selectedTailieumo->theLoai->ten_the_loai ?? 'Không rõ' }}
-                                                </p>
-                                                <p><strong class="text-gray-900 dark:text-gray-100">Số trang:</strong>
-                                                    {{ $selectedTailieumo->so_trang }}
-                                                </p>
-                                                <p><strong class="text-gray-900 dark:text-gray-100">Link tải
-                                                        về:</strong>
-                                                    {{ $selectedTailieumo->link_tai_ve }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        @endif
-                                    </div>
 
-                                    <div class="mt-4 text-right">
-                                        <button wire:click="closeModal"
-                                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                                            Đóng
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
                         </div>
                     </div>
                 </div>

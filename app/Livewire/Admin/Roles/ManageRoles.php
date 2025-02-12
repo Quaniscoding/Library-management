@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Roles;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý roles - Thư viện ITC')]
+ITCLib
+#[Title('Quản lý roles - ITCLib')]
 
 class ManageRoles extends Component
 {

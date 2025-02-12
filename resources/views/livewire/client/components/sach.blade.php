@@ -280,13 +280,7 @@
                                 <option value="latest">Sắp xếp theo mới nhất</option>
                                 <option value="oldest">Sắp xếp theo cũ nhất</option>
                             </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-400 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </div>
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
                     <div class="w-full overflow-y-auto min-h-[74vh] max-h-[74vh]">
@@ -295,15 +289,16 @@
                             <div
                                 class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group mb-4 mx-16">
                                 <div class="p-4 flex flex-row justify-between">
-                                    <div class="flex gap-1">
+                                    <div class="flex gap-4">
                                         @if($sach->anh_bia)
-                                        <img src="{{ asset('storage/' . $sach->anh_bia) }}" alt="Ảnh bìa" width="150">
+                                        <img src="{{ asset('storage/' . $sach->anh_bia) }}" alt="Ảnh bìa" width="150"
+                                            class="rounded-lg object-cover">
                                         @else
                                         <img src="https://placehold.co/150x150?text={{$sach->ten_sach}}"
-                                            alt="{{ $sach->ten_sach }}" width="150">
+                                            alt="{{ $sach->ten_sach }}" width="150" class="rounded-lg object-cover">
                                         @endif
                                         <div>
-                                            <h3 class="font-semibold mb-2 line-clamp-2 text-gray-900 dark:text-white">
+                                            <h3 class=" font-semibold mb-2 line-clamp-2 text-gray-900 dark:text-white">
                                                 {{ $sach->ten_sach }}
                                             </h3>
                                             <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Tác giả:
@@ -312,8 +307,12 @@
                                             <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Thể loại:
                                                 {{ $sach->theLoai->ten_the_loai ?? 'Không rõ' }}
                                             </p>
-                                            <span class="text-sm text-gray-500 dark:text-gray-400">Năm xuất bản:
-                                                {{ $sach->nam_xuat_ban }}</span>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Năm xuất bản:
+                                                {{ $sach->nam_xuat_ban }}
+                                            </p>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Số trang:
+                                                {{ $sach->so_trang }}
+                                            </p>
                                         </div>
                                     </div>
                                     <div

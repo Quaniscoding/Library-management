@@ -4,7 +4,8 @@ namespace App\Livewire\Admin\Digitalresourcesubject;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-#[Title('Quản lý DigitalResourceSubject - Thư viện ITC')]
+ITCLibITCLib
+#[Title('Quản lý DigitalResourceSubject - ITCLib')]
 
 class ManageDigitalresourcesubject extends Component
 {

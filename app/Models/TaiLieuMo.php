@@ -34,6 +34,10 @@ class TaiLieuMo extends Model
     {
         return $this->belongsTo(TacGia::class, 'tac_gia_id');
     }
+    public function theloai()
+    {
+        return $this->belongsTo(TheLoai::class, 'tac_gia_id');
+    }
     public function mon()
     {
         return $this->belongsTo(MonHoc::class, 'mon_hoc_id');
