@@ -4,7 +4,7 @@ namespace App\Livewire\Admin\Theloai;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-ITCLib
+
 #[Title('Quản lý thể loại - ITCLib')]
 
 class ManageTheloai extends Component

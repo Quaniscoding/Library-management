@@ -4,7 +4,7 @@ namespace App\Livewire\Admin\Sinhvien;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-ITCLibITCLib
+
 #[Title('Quản lý sinh viên - ITCLib')]
 
 class ManageSinhvien extends Component

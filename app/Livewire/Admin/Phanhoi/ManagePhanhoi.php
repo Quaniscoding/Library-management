@@ -5,7 +5,7 @@ namespace App\Livewire\Admin\Phanhoi;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Quản lý phản hồi sinh viên - ITCLib
+#[Title('Quản lý phản hồi sinh viên - ITCLib')]
 
 class ManagePhanhoi extends Component
 {

@@ -4,7 +4,7 @@ namespace App\Livewire\Admin\Phieutra;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-ITCLibITCLibITCLibITCLib
+
 #[Title('Quản lý phiếu trả - ITCLib')]
 
 class ManagePhieutra extends Component

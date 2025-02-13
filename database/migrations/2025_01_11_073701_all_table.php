@@ -206,6 +206,23 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+
+        Schema::create('de_xuats', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('sinh_vien_id')->nullable()->constrained('sinh_viens')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('tieu_de');
+            $table->enum('loai', ['sach', 'tai_lieu'])->default('sach');
+            $table->text('mo_ta')->nullable();
+            $table->enum('trang_thai', ['ChuaXuLy', 'DaXuLy'])->default('ChuaXuLy');
+            $table->timestamps();
+        });
+        Schema::create('phan_hois', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('sinh_vien_id')->nullable()->constrained('sinh_viens')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('trang_thai', ['ChuaXuLy', 'DaXuLy'])->default('ChuaXuLy');
+            $table->text('noi_dung');
+            $table->timestamps();
+        });
         // 21.1 book_subject (Books and Subjects)
         // Schema::create('book_subject', function (Blueprint $table) {
         //     $table->foreignId('sach_id')->constrained('sachs')->onDelete('cascade')->onUpdate('cascade');
@@ -239,22 +256,6 @@ return new class extends Migration {
         //     $table->timestamps();
         //     $table->primary(['tai_lieu_mo_id', 'nganh_id']);
         // });
-        Schema::create('de_xuats', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('sinh_vien_id')->nullable()->constrained('sinh_viens')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('tieu_de');
-            $table->enum('loai', ['sach', 'tai_lieu'])->default('sach');
-            $table->text('mo_ta')->nullable();
-            $table->enum('trang_thai', ['ChuaXuLy', 'DaXuLy'])->default('ChuaXuLy');
-            $table->timestamps();
-        });
-        Schema::create('phan_hois', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('sinh_vien_id')->nullable()->constrained('sinh_viens')->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('trang_thai', ['ChuaXuLy', 'DaXuLy'])->default('ChuaXuLy');
-            $table->text('noi_dung');
-            $table->timestamps();
-        });
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Livewire\Admin\Phat;
 
 use Livewire\Attributes\Title;
 use Livewire\Component;
-ITCLibITCLibITCLib
+
 #[Title('Quản lý phạt - ITCLib')]
 
 class ManagePhat extends Component
