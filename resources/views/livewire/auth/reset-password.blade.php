@@ -13,57 +13,53 @@
                         <form wire:submit.prevent="save">
                             <div class="grid gap-y-4">
                                 <!-- Form Group: Mật khẩu mới -->
-                                <div>
-                                    <label for="password" class="block text-sm mb-2 text-gray-700 dark:text-gray-300">
+                                <div x-data="{ showPasswordConfirmation: false }">
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                         Mật khẩu mới
                                     </label>
                                     <div class="relative">
-                                        <input type="password" id="password" wire:model="password"
-                                            placeholder="Nhập mật khẩu mới" aria-describedby="password-error"
-                                            class="py-3 px-4 block w-full border border-gray-200 dark:border-gray-700 rounded-lg text-sm dark:bg-gray-700 dark:text-white focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                                        @error('password')
-                                        <div
-                                            class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
-                                            <svg class="h-5 w-5 text-red-500" width="16" height="16" fill="currentColor"
-                                                viewBox="0 0 16 16" aria-hidden="true">
-                                                <path
-                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                                            </svg>
-                                        </div>
-                                        @enderror
+                                        <input :type="showPasswordConfirmation ? 'text' : 'password'"
+                                            wire:model="password" placeholder="Nhập mật khẩu"
+                                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                                        <button type="button"
+                                            @click="showPasswordConfirmation = !showPasswordConfirmation"
+                                            class="absolute inset-y-0 right-3 flex items-center">
+                                            <!-- Icon: Hiển thị nếu đang ẩn -->
+                                            <i x-show="!showPasswordConfirmation"
+                                                class="fa-regular fa-eye-slash text-gray-500"></i>
+                                            <!-- Icon: Hiển thị nếu đang hiện -->
+                                            <i x-show="showPasswordConfirmation"
+                                                class="fa-regular fa-eye text-gray-500"></i>
+                                        </button>
                                     </div>
                                     @error('password')
-                                    <p class="text-red-600 dark:text-red-500 text-xs mt-2" id="password-error">
-                                        {{ $message }}</p>
+                                    <span class="text-red-500 text-xs">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <!-- End Form Group -->
 
                                 <!-- Form Group: Xác nhận mật khẩu mới -->
-                                <div>
-                                    <label for="password_confirmation"
-                                        class="block text-sm mb-2 text-gray-700 dark:text-gray-300">
+                                <div x-data="{ showPasswordConfirmation: false }">
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                         Xác nhận mật khẩu mới
                                     </label>
                                     <div class="relative">
-                                        <input type="password" id="password_confirmation"
-                                            wire:model="password_confirmation" placeholder="Nhập lại mật khẩu mới"
-                                            aria-describedby="password-confirmation-error"
-                                            class="py-3 px-4 block w-full border border-gray-200 dark:border-gray-700 rounded-lg text-sm dark:bg-gray-700 dark:text-white focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                                        @error('password_confirmation')
-                                        <div
-                                            class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
-                                            <svg class="h-5 w-5 text-red-500" width="16" height="16" fill="currentColor"
-                                                viewBox="0 0 16 16" aria-hidden="true">
-                                                <path
-                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                                            </svg>
-                                        </div>
-                                        @enderror
+                                        <input :type="showPasswordConfirmation ? 'text' : 'password'"
+                                            wire:model="password_confirmation" placeholder="Nhập mật khẩu"
+                                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                                        <button type="button"
+                                            @click="showPasswordConfirmation = !showPasswordConfirmation"
+                                            class="absolute inset-y-0 right-3 flex items-center">
+                                            <!-- Icon: Hiển thị nếu đang ẩn -->
+                                            <i x-show="!showPasswordConfirmation"
+                                                class="fa-regular fa-eye-slash text-gray-500"></i>
+                                            <!-- Icon: Hiển thị nếu đang hiện -->
+                                            <i x-show="showPasswordConfirmation"
+                                                class="fa-regular fa-eye text-gray-500"></i>
+                                        </button>
                                     </div>
-                                    @error('password_confirmation')
-                                    <p class="text-red-600 dark:text-red-500 text-xs mt-2"
-                                        id="password-confirmation-error">{{ $message }}</p>
+                                    @error('password')
+                                    <span class="text-red-500 text-xs">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <!-- End Form Group -->

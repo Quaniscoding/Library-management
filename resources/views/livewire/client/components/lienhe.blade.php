@@ -7,8 +7,7 @@
                 <!-- Logo -->
                 <div class="mb-8 flex justify-center">
                     <a href="/" class="flex items-center justify-center h-24">
-                        <img src="https://itc.edu.vn/Data/Sites/1/media/img/logo-2.png" alt="ITC Logo"
-                            class="max-h-full object-contain">
+                        <img src="/images/logo.png" alt="ITC Logo" class="max-h-full object-contain">
                     </a>
                 </div>
                 <div class="text-center">

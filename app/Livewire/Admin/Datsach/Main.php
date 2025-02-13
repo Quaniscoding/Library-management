@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Datsach;
 use App\Models\CuonSach;
 use App\Models\DatSach;
 use App\Models\SinhVien;
+use Carbon\Carbon;
 use Flasher\Prime\FlasherInterface;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -63,6 +64,7 @@ class Main extends Component
             'ngay_dat' => 'required',
             'tinh_trang' => 'required|in:DangDat,DaNhan,Huy',
         ]);
+        $this->ngay_dat   = Carbon::createFromFormat('d/m/Y', $this->ngay_dat);
 
         DatSach::create([
             'sinh_vien_id' => $this->sinh_vien_id,
@@ -99,6 +101,7 @@ class Main extends Component
             'tinh_trang' => 'required|in:DangDat,DaNhan,Huy',
         ]);
         $datsach = DatSach::findOrFail($this->id);
+        $this->ngay_dat   = Carbon::createFromFormat('d/m/Y', $this->ngay_dat);
         $datsach->update([
             'sinh_vien_id' => $this->sinh_vien_id,
             'cuon_sach_id' => $this->cuon_sach_id,

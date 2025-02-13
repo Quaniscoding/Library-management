@@ -116,8 +116,8 @@
 
                 <div class="mb-4">
                     <label for="ngay_dat" class="block font-semibold">Ngày Đặt</label>
-                    <input type="date" id="ngay_dat" wire:model.defer="ngay_dat"
-                        class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white rounded-md px-3 py-2">
+                    <input type="text" placeholder="Chọn ngày đặt" readonly id="ngay_dat" wire:model.defer="ngay_dat"
+                        class="date-picker w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white rounded-md px-3 py-2">
                     @error('ngay_dat') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
 

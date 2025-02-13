@@ -2,7 +2,8 @@
     <h1 class="text-center font-bold text-2xl mb-6">Thống Kê</h1>
 
     <div class="mb-4 flex items-center justify-center">
-        <input type="date" id="ngay" wire:model="ngay" class="w-full border border-gray-300 rounded-md px-3 py-2">
+        <input type="text" placeholder="Chọn ngày" readonly id="ngay" wire:model="ngay"
+            class="date-picker w-full border border-gray-300 rounded-md px-3 py-2">
         @error('ngay') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
     </div>
 
@@ -18,16 +19,16 @@
         </thead>
         <tbody>
             @forelse ($phieumuon as $pm)
-                <tr class="hover:bg-gray-100">
-                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $pm->id }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ $pm->sinhvien->ho_ten }}</td>
-                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $pm->ngay_muon }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ $pm->sach->ten_sach }}</td>
-                </tr>
+            <tr class="hover:bg-gray-100">
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $pm->id }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ $pm->sinhvien->ho_ten }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $pm->ngay_muon }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ $pm->sach->ten_sach }}</td>
+            </tr>
             @empty
-                <tr>
-                    <td colspan="4" class="text-center py-4">Không có dữ liệu</td>
-                </tr>
+            <tr>
+                <td colspan="4" class="text-center py-4">Không có dữ liệu</td>
+            </tr>
             @endforelse
         </tbody>
     </table>

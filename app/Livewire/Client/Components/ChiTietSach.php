@@ -5,7 +5,10 @@ namespace App\Livewire\Client\Components;
 use App\Models\CuonSach;
 use App\Models\Sach;
 use Flasher\Prime\FlasherInterface;
+use Livewire\Attributes\Title;
 use Livewire\Component;
+
+#[Title('Chi tiết sách - ITCLib')]
 
 class ChiTietSach extends Component
 {

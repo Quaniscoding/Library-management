@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Client\Components;
 
+use Carbon\Carbon;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Title;
 
+#[Title('Quản lý tài khoản - ITCLib')]
 class TaiKhoan extends Component
 {
     public $ho_ten, $ngay_sinh, $gioi_tinh, $lop, $email, $sdt, $dia_chi, $tai_khoan, $current_password, $new_password, $confirm_password;
@@ -28,6 +31,7 @@ class TaiKhoan extends Component
     public function updateProfile(FlasherInterface $flasher)
     {
         $sinhVien = Auth::guard('student')->user();
+        $this->ngay_sinh   = Carbon::createFromFormat('d/m/Y', $this->ngay_sinh);
         $sinhVien->update([
             'ho_ten' => $this->ho_ten,
             'ngay_sinh' => $this->ngay_sinh,

@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Sinhvien;
 use App\Exports\SinhVienExport;
 use App\Models\SinhVien;
 use App\Models\User;
+use Carbon\Carbon;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -89,6 +90,7 @@ class Main extends Component
             'sdt' => 'required|min:6|max:10',
             'dia_chi' => 'required',
         ]);
+        $this->ngay_sinh   = Carbon::createFromFormat('d/m/Y', $this->ngay_sinh);
         SinhVien::create([
             'ho_ten' => $this->ho_ten,
             'ngay_sinh' => $this->ngay_sinh,
@@ -138,6 +140,7 @@ class Main extends Component
             'dia_chi' => 'required',
         ]);
         $sinhvien = SinhVien::findOrFail($this->id);
+        $this->ngay_sinh   = Carbon::createFromFormat('d/m/Y', $this->ngay_sinh);
         $sinhvien->update([
             'ho_ten' => $this->ho_ten,
             'ngay_sinh' => $this->ngay_sinh,

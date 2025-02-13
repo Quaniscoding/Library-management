@@ -134,8 +134,8 @@
                     <label for="ngay_lap" class="block font-semibold text-gray-800 dark:text-white">
                         Ngày Lập
                     </label>
-                    <input type="date" id="ngay_lap" wire:model.defer="ngay_lap"
-                        class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+                    <input type="text" placeholder="Chọn ngày Lập" readonly id="ngay_lap" wire:model.defer="ngay_lap"
+                        class="date-picker w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
                     @error('ngay_lap') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
 
@@ -143,8 +143,9 @@
                     <label for="ngay_thanh_toan" class="block font-semibold text-gray-800 dark:text-white">
                         Ngày Thanh Toán
                     </label>
-                    <input type="date" id="ngay_thanh_toan" wire:model.defer="ngay_thanh_toan"
-                        class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+                    <input type="text" placeholder="Chọn Thanh Toán" readonly id="ngay_thanh_toan"
+                        wire:model.defer="ngay_thanh_toan"
+                        class="date-picker w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
                     @error('ngay_thanh_toan') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
 

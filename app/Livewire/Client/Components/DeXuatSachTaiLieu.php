@@ -5,7 +5,10 @@ namespace App\Livewire\Client\Components;
 use App\Models\DeXuat;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Title;
 use Livewire\Component;
+
+#[Title('Đề xuất sách, tài liệu - ITCLib')]
 
 class DeXuatSachTaiLieu extends Component
 {
@@ -21,6 +24,9 @@ class DeXuatSachTaiLieu extends Component
     {
         $this->validate();
         $sinhVien = Auth::guard('student')->user();
+        if (!$sinhVien) {
+            return $flasher->addError('Thông báo', 'Bạn phải là sinh viên!');
+        }
         // Tạo đề xuất mới
         DeXuat::create([
             'sinh_vien_id'    => $sinhVien->id,

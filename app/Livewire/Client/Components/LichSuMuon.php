@@ -9,8 +9,11 @@ use App\Models\PhieuMuon;
 use App\Models\Sach;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
+
+#[Title('Lịch sử mượn - ITCLib')]
 
 class LichSuMuon extends Component
 {

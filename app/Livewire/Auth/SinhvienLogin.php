@@ -13,7 +13,6 @@ class SinhvienLogin extends Component
 {
     public $email;
     public $password;
-    public $showPassword = false;
 
     public function login(FlasherInterface $flasher)
     {
@@ -36,10 +35,6 @@ class SinhvienLogin extends Component
         }
     }
 
-    public function togglePasswordVisibility()
-    {
-        $this->showPassword = !$this->showPassword;
-    }
     public function render()
     {
         return view('livewire.auth.sinhvien-login');

@@ -67,7 +67,7 @@ class Main extends Component
             'ngay_tra'      => 'required',
             'tinh_trang'    => 'required',
         ]);
-
+        $this->ngay_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_tra);
         // Tạo phiếu trả
         $phieuTra = PhieuTra::create([
             'phieu_muon_id' => $this->phieu_muon_id,
@@ -142,6 +142,7 @@ class Main extends Component
             'tinh_trang' => 'required',
         ]);
         $phieutra = PhieuTra::findOrFail($this->id);
+        $this->ngay_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_tra);
         $phieutra->update([
             'phieu_muon_id' => $this->phieu_muon_id,
             'ngay_tra' => $this->ngay_tra,

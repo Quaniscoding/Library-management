@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\SinhVien;
+use App\Models\User;
 use Flasher\Prime\FlasherInterface;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
@@ -42,12 +43,15 @@ class SinhvienRegister extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
-
-        // Nếu sử dụng Spatie Role thì thêm role
+        $user = User::create([
+            'name' => $this->ho_ten,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+        ]);
         if (method_exists($sinhvien, 'assignRole')) {
             $sinhvien->assignRole('student');
         }
-
+        $user->assignRole('student');
         // Đăng nhập sinh viên vừa tạo
         Auth::guard('student')->login($sinhvien);
 

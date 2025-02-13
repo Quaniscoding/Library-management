@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Hoadonphat;
 
 use App\Models\HoaDonPhat;
 use App\Models\Phat;
+use Carbon\Carbon;
 use Flasher\Prime\FlasherInterface;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -64,6 +65,8 @@ class Main extends Component
             'ngay_thanh_toan' => 'required',
             'trang_thai' => 'required',
         ]);
+        $this->ngay_lap   = Carbon::createFromFormat('d/m/Y', $this->ngay_lap);
+        $this->ngay_thanh_toan   = Carbon::createFromFormat('d/m/Y', $this->ngay_thanh_toan);
 
         Phat::create([
             'phat_id' => $this->phat_id,
@@ -98,6 +101,8 @@ class Main extends Component
             'trang_thai' => 'required',
         ]);
         $hoadonphat = HoaDonPhat::findOrFail($this->id);
+        $this->ngay_lap   = Carbon::createFromFormat('d/m/Y', $this->ngay_lap);
+        $this->ngay_thanh_toan   = Carbon::createFromFormat('d/m/Y', $this->ngay_thanh_toan);
         $hoadonphat->update([
             'phat_id' => $this->phat_id,
             'ngay_lap' => $this->ngay_lap,

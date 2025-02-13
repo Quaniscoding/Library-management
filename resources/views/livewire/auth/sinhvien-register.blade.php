@@ -31,23 +31,44 @@
                     @enderror
                 </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mật khẩu</label>
-                    <input type="password" wire:model="password"
-                        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                        placeholder="Nhập mật khẩu của bạn" />
+                <div x-data="{ showPassword: false }">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Mật khẩu:
+                    </label>
+                    <div class="relative">
+                        <input :type="showPassword ? 'text' : 'password'" wire:model="password"
+                            placeholder="Nhập mật khẩu"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                        <button type="button" @click="showPassword = !showPassword"
+                            class="absolute inset-y-0 right-3 flex items-center">
+                            <!-- Icon: Hiển thị nếu đang ẩn -->
+                            <i x-show="!showPassword" class="fa-regular fa-eye-slash text-gray-500"></i>
+                            <!-- Icon: Hiển thị nếu đang hiện -->
+                            <i x-show="showPassword" class="fa-regular fa-eye text-gray-500"></i>
+                        </button>
+                    </div>
                     @error('password')
                     <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nhập lại Mật
-                        khẩu</label>
-                    <input type="password" wire:model="password_confirmation"
-                        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                        placeholder="Nhập lại mật khẩu của bạn" />
-                    @error('password_confirmation')
+                <div x-data="{ showPasswordConfirmation: false }">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Nhập lại mật khẩu:
+                    </label>
+                    <div class="relative">
+                        <input :type="showPasswordConfirmation ? 'text' : 'password'" wire:model="password_confirmation"
+                            placeholder="Nhập mật khẩu"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                        <button type="button" @click="showPasswordConfirmation = !showPasswordConfirmation"
+                            class="absolute inset-y-0 right-3 flex items-center">
+                            <!-- Icon: Hiển thị nếu đang ẩn -->
+                            <i x-show="!showPasswordConfirmation" class="fa-regular fa-eye-slash text-gray-500"></i>
+                            <!-- Icon: Hiển thị nếu đang hiện -->
+                            <i x-show="showPasswordConfirmation" class="fa-regular fa-eye text-gray-500"></i>
+                        </button>
+                    </div>
+                    @error('password')
                     <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
@@ -77,22 +98,22 @@
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const lazyBgElements = document.querySelectorAll(".lazy-bg");
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyBgElements = document.querySelectorAll(".lazy-bg");
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    let el = entry.target;
-                    el.style.backgroundImage = `url('${el.dataset.bg}')`;
-                    observer.unobserve(el);
-                }
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        let el = entry.target;
+                        el.style.backgroundImage = `url('${el.dataset.bg}')`;
+                        observer.unobserve(el);
+                    }
+                });
+            }, {
+                rootMargin: "100px"
             });
-        }, {
-            rootMargin: "100px"
-        });
 
-        lazyBgElements.forEach(el => observer.observe(el));
-    });
+            lazyBgElements.forEach(el => observer.observe(el));
+        });
     </script>
 </div>

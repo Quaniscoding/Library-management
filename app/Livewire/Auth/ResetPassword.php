@@ -56,7 +56,7 @@ class ResetPassword extends Component
             $flasher->addSuccess('Mật khẩu của bạn đã được tạo lại thành công!');
             return redirect('/login');
         } else {
-            $flasher->addSuccess('Lỗi khi tạo lại mật khẩu!');
+            $flasher->addError('Lỗi khi tạo lại mật khẩu!');
         }
     }
     public function render()

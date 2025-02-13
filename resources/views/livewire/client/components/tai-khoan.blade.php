@@ -13,8 +13,8 @@
                     </div>
                     <div>
                         <label class="block text-gray-700 dark:text-gray-300 mb-2">Ngày sinh:</label>
-                        <input type="date" wire:model="ngay_sinh"
-                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                        <input type="text" placeholder="Chọn ngày sinh" readonly wire:model="ngay_sinh"
+                            class="date-picker w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
                     </div>
                 </div>
 
@@ -62,11 +62,11 @@
             <!-- Nút bấm hiển thị Modal -->
             <div x-data="{ open: false }" x-init="window.addEventListener('password-updated', () => { open = false; })">
                 <script>
-                    window.addEventListener('password-updated', () => {
-                        Alpine.store('modal', {
-                            open: false
-                        });
+                window.addEventListener('password-updated', () => {
+                    Alpine.store('modal', {
+                        open: false
                     });
+                });
                 </script>
 
                 <!-- Nút mở modal -->
@@ -107,8 +107,7 @@
                                         <div class="relative">
                                             <input :type="showCurrent ? 'text' : 'password'"
                                                 wire:model="current_password" placeholder="Nhập mật khẩu hiện tại"
-                                                class="w-full px-4 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 
-            text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all">
+                                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
                                             <button type="button" @click="showCurrent = !showCurrent"
                                                 class="absolute inset-y-0 right-3 flex items-center">
                                                 <!-- Icon: Hiển thị nếu đang ẩn -->
@@ -143,8 +142,8 @@
                                         </label>
                                         <div class="relative">
                                             <input :type="showNew ? 'text' : 'password'" wire:model="new_password"
-                                                placeholder="Nhập mật khẩu mới" class="w-full px-4 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 
-            text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all">
+                                                placeholder="Nhập mật khẩu mới"
+                                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
                                             <button type="button" @click="showNew = !showNew"
                                                 class="absolute inset-y-0 right-3 flex items-center">
                                                 <i x-show="!showNew" class="fa-regular fa-eye-slash text-gray-500"></i>
@@ -165,8 +164,8 @@
                                         </label>
                                         <div class="relative">
                                             <input :type="showConfirm ? 'text' : 'password'"
-                                                wire:model="confirm_password" placeholder="Xác nhận mật khẩu mới" class="w-full px-4 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 
-            text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all">
+                                                wire:model="confirm_password" placeholder="Xác nhận mật khẩu mới"
+                                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
                                             <button type="button" @click="showConfirm = !showConfirm"
                                                 class="absolute inset-y-0 right-3 flex items-center">
                                                 <i x-show="!showConfirm"

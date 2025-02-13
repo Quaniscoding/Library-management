@@ -82,12 +82,16 @@ class Main extends Component
         ]);
         $admin = Auth::guard('web')->id();
         $nhan_vien_id = NhanVien::findOrFail($admin);
+        $this->ngay_muon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
+        $this->ngay_hen_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
         $exists = PhieuMuon::where('sinh_vien_id', $this->sinh_vien_id)->exists();
         if ($exists) {
             // Thêm thông báo lỗi
             $flasher->addError('Phiếu mượn đã tồn tại.');
             return;
         }
+        $this->ngay_muon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
+        $this->ngay_hen_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
         PhieuMuon::create([
             'sinh_vien_id' => $this->sinh_vien_id,
             'nhan_vien_id' => $nhan_vien_id->id,
@@ -128,6 +132,8 @@ class Main extends Component
         $phieumuon = PhieuMuon::findOrFail($this->id);
         $admin = Auth::guard('web')->id();
         $nhan_vien_id = NhanVien::where('user_id', $admin)->first();
+        $this->ngay_muon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
+        $this->ngay_hen_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
         $phieumuon->update([
             'sinh_vien_id' => $this->sinh_vien_id,
             'nhan_vien_id' => $nhan_vien_id->id,

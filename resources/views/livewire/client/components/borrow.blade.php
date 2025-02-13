@@ -37,15 +37,17 @@
                         <label for="ngay_muon" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Ngày mượn:
                         </label>
-                        <input type="date" id="ngay_muon" wire:model="ngay_muon" required
-                            class="mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm dark:bg-gray-700 dark:text-gray-200 focus:border-blue-500 focus:ring-blue-500">
+                        <input type="text" id="ngay_muon" wire:model="ngay_muon" required
+                            class="date-picker mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm dark:bg-gray-700 dark:text-gray-200 focus:border-blue-500 focus:ring-blue-500"
+                            placeholder="Chọn ngày trả" readonly>
                     </div>
                     <div>
                         <label for="ngay_hen_tra" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Ngày hẹn trả:
                         </label>
-                        <input type="date" id="ngay_hen_tra" wire:model="ngay_hen_tra" required
-                            class="mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm dark:bg-gray-700 dark:text-gray-200 focus:border-blue-500 focus:ring-blue-500">
+                        <input type="text" placeholder="Chọn hẹn trả" readonly id="ngay_hen_tra"
+                            wire:model="ngay_hen_tra" required
+                            class="date-picker mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm dark:bg-gray-700 dark:text-gray-200 focus:border-blue-500 focus:ring-blue-500">
                     </div>
                     <button type="submit"
                         class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-2xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">

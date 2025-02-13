@@ -12,7 +12,10 @@ use Carbon\Carbon;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Livewire\Attributes\Title;
 use Livewire\Component;
+
+#[Title('Mượn sách - ITCLib')]
 
 class Borrow extends Component
 {
@@ -36,15 +39,22 @@ class Borrow extends Component
             return;
         }
 
+        // Chuyển đổi giá trị input (dd/mm/yyyy) sang đối tượng Carbon
+        try {
+            $ngayMuon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
+            $ngayHenTra = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
+        } catch (\Exception $e) {
+            $flasher->addError('error', 'Định dạng ngày không hợp lệ.');
+            return;
+        }
+
         // Kiểm tra ngày hẹn trả phải sau ngày mượn
-        if (strtotime($this->ngay_hen_tra) <= strtotime($this->ngay_muon)) {
+        if ($ngayHenTra->lessThanOrEqualTo($ngayMuon)) {
             $flasher->addError('error', 'Ngày hẹn trả phải sau ngày mượn.');
             return;
         }
 
-        // Sử dụng Carbon để tính khoảng cách ngày, nếu vượt quá 30 ngày thì báo lỗi
-        $ngayMuon = Carbon::parse($this->ngay_muon);
-        $ngayHenTra = Carbon::parse($this->ngay_hen_tra);
+        // Kiểm tra khoảng cách ngày, nếu vượt quá 30 ngày thì báo lỗi
         if ($ngayMuon->diffInDays($ngayHenTra) > 30) {
             $flasher->addError('error', 'Thời gian mượn không được vượt quá 30 ngày.');
             return;
@@ -54,11 +64,13 @@ class Borrow extends Component
         $phieuMuon = PhieuMuon::create([
             'sinh_vien_id' => $sinhVien->id,
             'nhan_vien_id' => null,
-            'ngay_muon' => $this->ngay_muon,
-            'ngay_hen_tra' => $this->ngay_hen_tra,
+            // Lưu dưới dạng định dạng Y-m-d chuẩn cho cơ sở dữ liệu
+            'ngay_muon' => $ngayMuon->format('Y-m-d'),
+            'ngay_hen_tra' => $ngayHenTra->format('Y-m-d'),
             'tinh_trang' => 'DangMuon',
             'email_log_url' => null
         ]);
+
         $datSach = DatSach::create([
             'sinh_vien_id' => $sinhVien->id,
             'cuon_sach_id' => $cuonSach->id,
@@ -74,6 +86,7 @@ class Borrow extends Component
 
         $flasher->addSuccess('success', 'Mượn sách thành công! Thông tin mượn được gửi tới email của bạn!');
     }
+
 
 
     public function render()
