@@ -2,7 +2,7 @@
     @livewire('admin.sidebar')
     <!-- Main Content -->
     <div class="flex-1 flex flex-col h-full">
-        @livewire('admin.header')
+
         @livewire('admin.roles.main')
     </div>
 </div>

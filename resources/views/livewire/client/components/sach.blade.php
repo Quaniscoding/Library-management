@@ -274,14 +274,32 @@
             <div class="px-2">
                 <div class="items-center justify-between px-2 py-2 bg-gray-100 dark:bg-gray-900 ">
                     <div class="flex items-center justify-between">
-                        <div class="relative pb-1">
-                            <select wire:model.live="sort"
-                                class="block w-56 px-4 py-2 text-base bg-white border border-gray-300 rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:focus:ring-blue-500 dark:text-gray-400 cursor-pointer">
-                                <option value="latest">Sắp xếp theo mới nhất</option>
-                                <option value="oldest">Sắp xếp theo cũ nhất</option>
-                            </select>
-                            <i class="fa-solid fa-chevron-down"></i>
+                        <div x-data="{ sort: 'latest', open: false }" class="relative pb-1">
+                            <!-- Nút hiển thị lựa chọn hiện tại -->
+                            <button @click="open = !open" type="button"
+                                class="block w-56 px-4 py-2 text-base bg-white border border-gray-300 rounded-lg shadow-sm appearance-none 
+               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
+               dark:bg-gray-900 dark:border-gray-700 dark:focus:ring-blue-500 dark:text-gray-400 cursor-pointer text-left">
+                                <span
+                                    x-text="sort === 'latest' ? 'Sắp xếp theo mới nhất' : 'Sắp xếp theo cũ nhất'"></span>
+                                <i
+                                    class="fa-solid fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2"></i>
+                            </button>
+
+                            <!-- Danh sách lựa chọn -->
+                            <div x-show="open" @click.away="open = false" x-transition
+                                class="absolute z-10 mt-1 w-56 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg">
+                                <div @click="sort = 'latest'; open = false"
+                                    class="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800">
+                                    Sắp xếp theo mới nhất
+                                </div>
+                                <div @click="sort = 'oldest'; open = false"
+                                    class="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800">
+                                    Sắp xếp theo cũ nhất
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                     <div class="w-full overflow-y-auto min-h-[74vh] max-h-[74vh]">
                         <div class="w-full overflow-y-auto overflow-x-hidden">
