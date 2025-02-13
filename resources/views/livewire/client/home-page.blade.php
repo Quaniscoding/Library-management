@@ -3,7 +3,7 @@
     @livewire('client.components.header')
 
     <!-- Nội dung chính -->
-    <main class="mx-auto mt-0 pt-24 p-6 bg-blue-200 shadow-lg rounded-lg dark:bg-blue-900 dark:shadow-2xl">
+    <main class="mx-auto mt-0 pt-24 p-6 bg-blue-200 shadow-lg rounded-lg dark:bg-blue-900 dark:shadow-2xl" wire:ignore>
         <aside>
             <h1 class="text-4xl font-semibold text-center text-gray-800 mb-4 dark:text-white" data-aos="fade-up"
                 data-aos-duration="1000">
@@ -35,10 +35,52 @@
                     <p class="text-gray-700 dark:text-gray-300">Sinh viên sử dụng</p>
                 </div>
             </div>
+            <div x-data="{ open: false }" class="relative flex flex-col items-center">
+                <input type="text" name="text" placeholder="Tìm kiếm sách, tài liệu" class="input"
+                    wire:model.live="search" @focus="open = true" @click.away="open = false" />
+
+                <!-- Hiệu ứng loading: chỉ hiển thị khi wire đang xử lý giá trị của search -->
+                <div wire:loading wire:target="search"
+                    class="absolute right-[46.5rem] top-1/2 transform -translate-y-1/2">
+                    <!-- Ví dụ spinner sử dụng SVG -->
+                    <svg class="animate-spin h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                    </svg>
+                </div>
+
+                <ul x-show="open && $wire.search.length > 0" x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 transform scale-95"
+                    x-transition:enter-end="opacity-100 transform scale-100"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 transform scale-100"
+                    x-transition:leave-end="opacity-0 transform scale-95"
+                    class="autocomplete-list absolute bg-white border mt-2 rounded-lg shadow-lg z-10 overflow-auto max-h-[400px]"
+                    style="width: 400px;">
+
+                    @foreach($sachs as $sach)
+                    <li class="autocomplete-item book-item p-3 text-left cursor-pointer hover:bg-blue-100 m-2"
+                        wire:click="$set('search', '{{ $sach->ten_sach }}')">
+                        <span class="item-label" wire:click="showSachDetails({{ $sach->id }})">📚
+                            Sách:{{ $sach->ten_sach }}</span>
+                    </li>
+                    @endforeach
+
+                    @foreach($tailieus as $tailieu)
+                    <li class="autocomplete-item document-item p-3 text-left cursor-pointer hover:bg-green-100 m-2"
+                        wire:click="$set('search', '{{ $tailieu->ten_tai_lieu }}')">
+                        <span class="item-label">📄 Tài liệu:</span> {{ $tailieu->ten_tai_lieu }}
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+
         </aside>
     </main>
 
-    <div class="max-w-6xl mx-auto mt-6 p-6 bg-white shadow-lg rounded-lg dark:bg-gray-800 dark:shadow-xl">
+    <div class="max-w-6xl mx-auto mt-6 p-6 bg-white shadow-lg roudivd-lg dark:bg-gray-800 dark:shadow-xl" wire:ignore>
         <h2 class="text-3xl text-center font-bold text-gray-800 mb-4 dark:text-white" data-aos="fade-up"
             data-aos-delay="200">
             Giới Thiệu
@@ -177,14 +219,23 @@
             });
         });
 
-        // Animation
+        Animation
         document.addEventListener("DOMContentLoaded", function() {
             AOS.init({
                 duration: 1200, // Thời gian hiệu ứng
                 easing: "ease-in-out", // Hiệu ứng mượt
-                once: true, // Chạy 1 lần khi xuất hiện
+                once: false, // Chạy 1 lần khi xuất hiện
             });
         });
+        setTimeout(() => {
+            document.querySelectorAll('[data-aos]').forEach(el => {
+                el.removeAttribute('data-aos');
+                el.removeAttribute('data-aos-duration');
+                // ... Xóa các attr khác nếu có
+            });
+        }, 1500);
+    </script>
+
     </script>
 
     <style>
@@ -192,7 +243,6 @@
             display: inline-block;
             animation: wave 2s infinite ease-in-out;
             text-shadow: 2px 2px 5px rgba(255, 140, 0, 0.6);
-            /* Màu cam nhạt */
         }
 
         @keyframes wave {
@@ -207,6 +257,63 @@
                 transform: translateY(-5px);
                 text-shadow: 3px 3px 10px rgba(255, 140, 0, 1);
             }
+        }
+
+        .input[type="text"] {
+            display: block;
+            color: rgb(34, 34, 34);
+            background: linear-gradient(142.99deg, rgba(217, 217, 217, 0.63) 15.53%, rgba(243, 243, 243, 0.63) 88.19%);
+            box-shadow: 0px 12px 24px -1px rgba(0, 0, 0, 0.18);
+            border-color: rgba(7, 4, 14, 0);
+            border-radius: 50px;
+            block-size: 20px;
+            margin: 20px auto;
+            padding: 18px 15px;
+            outline: none;
+            text-align: center;
+            width: 400px;
+            transition: 0.5s;
+            height: 50px;
+        }
+
+        .input[type="text"]:hover {
+            width: 440px;
+        }
+
+        .input[type="text"]:focus {
+            width: 480px;
+        }
+
+        .autocomplete-list {
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            margin-top: 80px;
+            overflow: hidden;
+        }
+
+
+        .autocomplete-item {
+            transition: background-color 0.3s;
+        }
+
+        .autocomplete-item:hover {
+            background: linear-gradient(142.99deg, rgba(217, 217, 217, 0.63) 15.53%, rgba(243, 243, 243, 0.63) 88.19%);
+        }
+
+        .book-item {
+            border-left: 4px solid #3182ce;
+            /* Viền xanh */
+        }
+
+        .document-item {
+            border-left: 4px solid #38a169;
+        }
+
+        .item-label {
+            font-weight: bold;
+            margin-right: 4px;
         }
     </style>
 </div>

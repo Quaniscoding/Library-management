@@ -16,56 +16,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <script>
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-        window.addEventListener('livewire:navigated', function() {
-            if (localStorage.getItem('theme') === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
-    </script>
-
     <!-- AOS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 
-<body class="bg-gray-100 min-h-screen dark:bg-gray-900">
-    <!-- <section class="dots-container">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </section> -->
+<body class="bg-gray-100 min-h-screen dark:bg-gray-900 overflow-hidden">
+    @livewire('loading')
     {{ $slot }}
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() {
-                document.querySelector(".dots-container").style.display = "none";
-            }, 1000);
-        });
-    </script>
-    <script>
-        document.addEventListener("turbo:before-visit", function() {
-            let loader = document.querySelector(".dots-container");
-            if (loader) {
-                loader.style.display = "block"; // Hiện lại loading
-                loader.style.opacity = "1"; // Hiển thị từ từ
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener('livewire:update', () => {
-            const dropdownTriggers = document.querySelectorAll('[data-dropdown-toggle]');
-            dropdownTriggers.forEach(trigger => new Dropdown(trigger));
-        });
-    </script>
     @livewireScripts
     @vite('resources/js/app.js')
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>

@@ -113,19 +113,19 @@
         <table class="table-auto w-full border-collapse border border-gray-300 dark:border-gray-600">
             <thead class="bg-gray-100 dark:bg-gray-700">
                 <tr>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">ID</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ảnh bìa</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Tên Sách</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Tác Giả</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">NXB</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Thể Loại</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Năm Xuất Bản</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Số Trang</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">ISBN</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Môn</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ngành</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Khoa</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Hành động</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">ID</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Ảnh bìa</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Tên Sách</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Tác Giả</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">NXB</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Thể Loại</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Năm Xuất Bản</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Số Trang</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">ISBN</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Môn</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Ngành</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Khoa</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -230,14 +230,14 @@
                             <label for="anh_bia" class="block font-semibold text-gray-800 dark:text-white">Ảnh bìa
                                 sách</label>
                             <input type="file" accept="image/*" id="anh_bia" wire:model="anh_bia"
-                                class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700">
+                                class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700 dark:text-white">
                         </div>
 
                         <div class="mb-4">
                             <label for="tac_gia_id" class="block font-semibold text-gray-800 dark:text-white">Tác
                                 Giả</label>
                             <select id="tac_gia_id" wire:model.defer="tac_gia_id"
-                                class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700">
+                                class="w-full border border-gray-300 dark:text-white dark:border-gray-600 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700">
                                 <option value="">-- Chọn tác giả --</option>
                                 @foreach($tacgias as $tacgia)
                                 <option value="{{ $tacgia->id }}">{{ $tacgia->ho_ten }}</option>
@@ -250,7 +250,7 @@
                             <label for="nha_xuat_ban_id"
                                 class="block font-semibold text-gray-800 dark:text-white">NXB</label>
                             <select id="nha_xuat_ban_id" wire:model.defer="nha_xuat_ban_id"
-                                class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700">
+                                class="w-full border border-gray-300 dark:text-white dark:border-gray-600 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700">
                                 <option value="">-- Chọn nhà xuất bản --</option>
                                 @foreach($nhaxuatbans as $nhaxuatban)
                                 <option value="{{ $nhaxuatban->id }}">{{ $nhaxuatban->ten_nha_xuat_ban }}</option>
@@ -263,7 +263,7 @@
                             <label for="the_loai_id" class="block font-semibold text-gray-800 dark:text-white">Thể
                                 Loại</label>
                             <select id="the_loai_id" wire:model.defer="the_loai_id"
-                                class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700">
+                                class="w-full border border-gray-300 dark:text-white dark:border-gray-600 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700">
                                 <option value="">-- Chọn thể loại --</option>
                                 @foreach($theloais as $theloai)
                                 <option value="{{ $theloai->id }}">{{ $theloai->ten_the_loai }}</option>
@@ -289,7 +289,7 @@
                                 class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white">
                             @error('so_trang') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4 h-20">
                             @if ($anh_bia)
                             @if (is_object($anh_bia))
                             <img src="{{ $anh_bia->temporaryUrl() }}" width="100">
