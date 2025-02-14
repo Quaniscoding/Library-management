@@ -36,8 +36,8 @@
                 </div>
             </div>
             <div x-data="{ open: false }" class="relative flex flex-col items-center">
-                <input type="text" name="text" placeholder="Tìm kiếm sách, tài liệu" class="input"
-                    wire:model.live="search" @focus="open = true" @click.away="open = false" />
+                <input type="text" name="text" placeholder="Tìm kiếm sách, tài liệu" class="input" wire:model="search"
+                    @focus="open = true" @click.away="open = false" />
 
                 <!-- Hiệu ứng loading: chỉ hiển thị khi wire đang xử lý giá trị của search -->
                 <div wire:loading wire:target="search"
@@ -200,7 +200,7 @@
 
     <!-- Custom -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var swiper = new Swiper(".mySwiper", {
                 loop: true,
                 spaceBetween: 10,
@@ -220,7 +220,7 @@
         });
 
         Animation
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             AOS.init({
                 duration: 1200, // Thời gian hiệu ứng
                 easing: "ease-in-out", // Hiệu ứng mượt

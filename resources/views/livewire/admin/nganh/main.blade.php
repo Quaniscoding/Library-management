@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-white">
     <h1 class="text-center font-bold text-2xl mb-6 text-gray-900 dark:text-white">Quản lý Ngành</h1>
 
     <!-- Button Tạo Ngành Mới -->
@@ -15,7 +15,7 @@
         <div class="flex justify-between">
             <div class="mb-4 flex justify-start">
                 <input type="text" wire:model.live="searchName" placeholder="Tìm kiếm theo tên"
-                    class="border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2 rounded-md focus:outline-none" />
+                    class="border border-gray-300 px-4 py-2 rounded-md focus:outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
             </div>
         </div>
 
