@@ -135,7 +135,7 @@
                             Kho tàng sách học thuật và kỹ năng. Bao gồm hơn 250 quyển sách với nhiều thể loại khác nhau.
                         </p>
                         <button wire:navigate href="/sach"
-                            class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800">
+                            class="mt-10 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800">
                             Xem ngay
                         </button>
                     </div>
@@ -198,13 +198,11 @@
         </div>
     </div>
 
-    <footer class="text-center p-4 mt-10 bg-gray-200 text-gray-700 dark:bg-gray-900 dark:text-gray-300">
-        &copy; 2025 ITCLibrights reserved.
-    </footer>
+    @livewire('client.components.footer')
 
     <!-- Custom -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var swiper = new Swiper(".mySwiper", {
                 loop: true,
                 spaceBetween: 10,
@@ -224,7 +222,7 @@
         });
 
         Animation
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             AOS.init({
                 duration: 1200, // Thời gian hiệu ứng
                 easing: "ease-in-out", // Hiệu ứng mượt

@@ -1,7 +1,7 @@
-<div class="main bg-gray-100 dark:bg-gray-900 min-h-screen">
+<div class="main bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col">
     @livewire('client.components.header')
 
-    <div class="container mx-auto mt-32 px-4">
+    <div class="container mx-auto mt-32 px-4 flex-grow">
         <h1 class="mb-8 text-3xl font-bold text-center text-gray-800 dark:text-white">
             Phản hồi về sách, tài liệu
         </h1>
@@ -30,4 +30,5 @@
             </div>
         </form>
     </div>
+    @livewire('client.components.footer')
 </div>
