@@ -366,38 +366,39 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="flex justify-center mt-2">
-        <div class="inline-flex items-center space-x-2">
-            <!-- Previous Page Button -->
-            @if($sachs->onFirstPage())
-            <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed">Previous</span>
-            @else
-            <a href="{{ $sachs->previousPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Previous</a>
-            @endif
+        <div class="flex justify-center mt-2">
+            <div class="inline-flex items-center space-x-2">
+                <!-- Previous Page Button -->
+                @if($sachs->onFirstPage())
+                <span
+                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed">Previous</span>
+                @else
+                <a href="{{ $sachs->previousPageUrl() }}"
+                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Previous</a>
+                @endif
 
-            <!-- Page Numbers -->
-            @foreach ($sachs->getUrlRange(1, $sachs->lastPage()) as $page => $url)
-            @if ($page == $sachs->currentPage())
-            <span class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-500 rounded-md">{{ $page }}</span>
-            @else
-            <a href="{{ $url }}"
-                class="px-4 py-2 text-blue-600 border border-gray-300 rounded-md hover:bg-gray-100 dark:text-blue-400 dark:border-gray-600 dark:hover:bg-gray-700">{{
-                $page }}</a>
-            @endif
-            @endforeach
+                <!-- Page Numbers -->
+                @foreach ($sachs->getUrlRange(1, $sachs->lastPage()) as $page => $url)
+                @if ($page == $sachs->currentPage())
+                <span class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-500 rounded-md">{{ $page }}</span>
+                @else
+                <a href="{{ $url }}"
+                    class="px-4 py-2 text-blue-600 border border-gray-300 rounded-md hover:bg-gray-100 dark:text-blue-400 dark:border-gray-600 dark:hover:bg-gray-700">{{
+                    $page }}</a>
+                @endif
+                @endforeach
 
-            <!-- Next Page Button -->
-            @if($sachs->hasMorePages())
-            <a href="{{ $sachs->nextPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Next</a>
-            @else
-            <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed">Next</span>
-            @endif
+                <!-- Next Page Button -->
+                @if($sachs->hasMorePages())
+                <a href="{{ $sachs->nextPageUrl() }}"
+                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Next</a>
+                @else
+                <span
+                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed">Next</span>
+                @endif
+            </div>
         </div>
     </div>
+
 
 </div>

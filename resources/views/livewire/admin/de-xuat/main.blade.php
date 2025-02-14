@@ -79,7 +79,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="6"
+                    <td colspan="8"
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-white">
                         Không có dữ liệu.
                     </td>

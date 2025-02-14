@@ -1,11 +1,9 @@
-<div class="main">
+<div class="min-h-screen flex flex-col">
     @livewire('client.components.header')
-
-    <div class="container mx-auto mt-32 px-4">
+    <div class="container mx-auto mt-32 px-4 flex-grow">
         <h1 class="mb-8 text-3xl font-bold text-center text-gray-800 dark:text-white">
             📚 Đề xuất Sách & Tài Liệu
         </h1>
-
         <form wire:submit.prevent="submitProposal"
             class="max-w-lg mx-auto bg-white dark:bg-gray-800 shadow-md dark:shadow-lg rounded-lg p-8">
             <!-- Tiêu đề đề xuất -->
@@ -21,7 +19,6 @@
                 <span class="text-red-500 text-xs italic">{{ $message }}</span>
                 @enderror
             </div>
-
             <!-- Loại đề xuất -->
             <div class="mb-6">
                 <label for="loai" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">
@@ -37,7 +34,6 @@
                 <span class="text-red-500 text-xs italic">{{ $message }}</span>
                 @enderror
             </div>
-
             <!-- Mô tả (Tùy chọn) -->
             <div class="mb-6">
                 <label for="mo_ta" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">
@@ -51,7 +47,6 @@
                 <span class="text-red-500 text-xs italic">{{ $message }}</span>
                 @enderror
             </div>
-
             <!-- Nút Gửi -->
             <div class="flex items-center justify-center">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 
@@ -61,4 +56,5 @@
             </div>
         </form>
     </div>
+    @livewire('client.components.footer')
 </div>

@@ -2,63 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type="range"]::-webkit-slider-thumb {
-    width: 16px;
-    height: 16px;
-    background: #3b82f6;
-    border-radius: 50%;
-    cursor: pointer;
-    appearance: none;
-}
-
-input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background: #3b82f6;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.dots-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3); /* Nền mờ */
-    backdrop-filter: blur(5px); /* Làm mờ nền */
-    z-index: 99999999999999;
-}
-
-.dot {
-    height: 20px;
-    width: 20px;
-    margin-right: 10px;
-    border-radius: 50%;
-    background-color: #b3d4fc;
-    animation: pulse 1.5s infinite ease-in-out;
-}
-
-.dot:last-child {
-    margin-right: 0;
-}
-
-.dot:nth-child(1) {
-    animation-delay: -0.3s; 
-}
-
-.dot:nth-child(2) {
-    animation-delay: -0.1s;
-}
-
-.dot:nth-child(3) {
-    animation-delay: 0.1s;
-}
-
 @keyframes pulse {
     0% {
         transform: scale(0.8);
@@ -77,4 +20,59 @@ input[type="range"]::-moz-range-thumb {
         background-color: #b3d4fc;
         box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
     }
+}
+
+/* From Uiverse.io by adamgiebl */
+.cssbuttons-io-button {
+    background: #6793fb;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #714da6;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+}
+
+.cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+    right: 0.3em;
+    transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #7b52b9;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
 }

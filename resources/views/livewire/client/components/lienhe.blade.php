@@ -1,6 +1,6 @@
-<div class="min-h-screen bg-gray-100 dark:bg-gray-900 overflow-hidden">
+<div class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900 overflow-hidden">
     @livewire('client.components.header')
-    <div class="container mx-auto px-4 py-16 mt-32">
+    <div class="container mx-auto px-4 py-16 mt-32 flex-grow">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Cột bên trái: Thông tin liên hệ -->
             <div class="pr-4">
@@ -89,15 +89,6 @@
                     <a href="https://zalo.me/0938861080" target="_blank" class="transition transform hover:scale-110">
                         <img src="https://itc.edu.vn/Data/Sites/1/media/img/icon/icon-4.png" alt="Zalo"
                             class="w-10 h-10">
-                    </a>
-                </div>
-
-                <!-- Widget: Counter (có thể giữ nguyên hoặc tùy chỉnh giao diện theo dark mode nếu cần) -->
-                <div class="flex justify-center">
-                    <a href="https://livetrafficfeed.com/website-counter" id="LTF_counter_href" data-time="Asia/Bangkok"
-                        data-root="1">
-                        <img src="//livetrafficfeed.com/static/static-counter/feed.jpg?d=itc.edu.vn&amp;c=4526a62f9893c6ea2af135772079ba9a&amp;timezone=Asia%2FBangkok&amp;r=265750261"
-                            alt="Free Blog Counter" class="w-72">
                     </a>
                 </div>
             </div>

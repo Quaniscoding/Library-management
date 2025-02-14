@@ -6,7 +6,7 @@ use App\Models\Khoa;
 use App\Models\MonHoc;
 use App\Models\Nganh;
 use App\Models\NhaXuatBan;
-use App\Models\Sach;
+use App\Models\Sach as ModelsSach;
 use App\Models\TacGia;
 use App\Models\TaiLieuMo;
 use App\Models\TheLoai;
@@ -19,13 +19,17 @@ use Livewire\WithPagination;
 
 class HomePage extends Component
 {
-    public $search = '';
+    use WithPagination;
+    public $search;
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
-        $sachs = [];
-        $tailieus = [];
-        $querySach = Sach::query();
+        $querySach = ModelsSach::query();
         $queryTaiLieu = TaiLieuMo::query();
         if (!empty($this->search)) {
             $querySach->where('ten_sach', 'like', '%' . $this->search . '%');
@@ -35,6 +39,7 @@ class HomePage extends Component
         }
         $sachs = $querySach->paginate(10);
         $tailieus = $queryTaiLieu->paginate(10);
+
         return view('livewire.client.home-page', ['sachs' => $sachs, 'tailieus' => $tailieus]);
     }
     public function showSachDetails($id)

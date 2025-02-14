@@ -63,6 +63,8 @@ Route::middleware('web')->group(function () {
     Route::get('lich-su-muon', LichSuMuon::class)->name('lich-su-muon');
     Route::get('de-xuat', DeXuatSachTaiLieu::class)->name('dexuat');
     Route::get('phan-hoi', Phanhoi::class)->name('phanhoi');
+});
+Route::middleware('guest')->group(function () {
     //sinhvien
     Route::get('/register', SinhvienRegister::class)->name('register');
     Route::get('/login', SinhvienLogin::class)->name('login');
@@ -70,8 +72,9 @@ Route::middleware('web')->group(function () {
     Route::get('/reset/{token}', action: ResetPassword::class)->name('password.reset');
     //admin
     Route::get('/admin/login', Login::class)->name('admin-login');
-    Route::get('/admin/register', Register::class)->name('admin-register');
+    // Route::get('/admin/register', Register::class)->name('admin-register');
 });
+
 // Sinh viên logout
 Route::get('/logout', function () {
     Auth::guard('student')->logout();

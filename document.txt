@@ -50,6 +50,7 @@ protected function create(array $data)
     return $user;
 }
 php artisan config:clear
+//Khi nào sửa lại file web.php thì chạy lệnh dưới:
 php artisan route:clear
 php artisan view:clear
 php artisan cache:clear
