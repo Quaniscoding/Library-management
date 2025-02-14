@@ -91,15 +91,6 @@
                             class="w-10 h-10">
                     </a>
                 </div>
-
-                <!-- Widget: Counter (có thể giữ nguyên hoặc tùy chỉnh giao diện theo dark mode nếu cần) -->
-                <div class="flex justify-center">
-                    <a href="https://livetrafficfeed.com/website-counter" id="LTF_counter_href" data-time="Asia/Bangkok"
-                        data-root="1">
-                        <img src="//livetrafficfeed.com/static/static-counter/feed.jpg?d=itc.edu.vn&amp;c=4526a62f9893c6ea2af135772079ba9a&amp;timezone=Asia%2FBangkok&amp;r=265750261"
-                            alt="Free Blog Counter" class="w-72">
-                    </a>
-                </div>
             </div>
         </div>
     </div>

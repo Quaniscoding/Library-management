@@ -3,14 +3,14 @@
     @livewire('client.components.header')
 
     <!-- Nội dung chính -->
-    <main class="mx-auto mt-0 pt-24 p-6 bg-blue-200 shadow-lg rounded-lg dark:bg-blue-900 dark:shadow-2xl" wire:ignore>
+    <main class="mx-auto mt-0 pt-24 p-6 bg-blue-200 shadow-lg rounded-lg dark:bg-blue-900 dark:shadow-2xl">
         <aside>
             <h1 class="text-4xl font-semibold text-center text-gray-800 mb-4 dark:text-white" data-aos="fade-up"
-                data-aos-duration="1000">
+                data-aos-duration="1000" wire:ignore>
                 Chào mừng đến <span class="wave-effect">ITCLib</span> - Thư viện số của bạn
             </h1>
             <p class="text-gray-600 text-center dark:text-gray-300" data-aos="fade-up" data-aos-delay="300"
-                data-aos-duration="1200">
+                data-aos-duration="1200" wire:ignore>
                 Discover a display of digital resources tailored for students and faculty. Explore books, research
                 papers to
                 enhance your learning experience.
@@ -18,19 +18,19 @@
             <div class="mt-6 flex justify-center space-x-6 text-center">
                 <!-- Card 1 -->
                 <div class="bg-gray-100 p-4 rounded-lg shadow w-1/4 dark:bg-gray-800" data-aos="zoom-in"
-                    data-aos-delay="400">
+                    data-aos-delay="400" wire:ignore>
                     <p class="text-2xl font-semibold text-blue-600 dark:text-blue-400">📚 250+</p>
                     <p class="text-gray-700 dark:text-gray-300">Sách học thuật</p>
                 </div>
                 <!-- Card 2 -->
                 <div class="bg-gray-100 p-4 rounded-lg shadow w-1/4 dark:bg-gray-800" data-aos="zoom-in"
-                    data-aos-delay="500">
+                    data-aos-delay="500" wire:ignore>
                     <p class="text-2xl font-semibold text-green-600 dark:text-green-400">🎓 1000+</p>
                     <p class="text-gray-700 dark:text-gray-300">Tài liệu tham khảo</p>
                 </div>
                 <!-- Card 3 -->
                 <div class="bg-gray-100 p-4 rounded-lg shadow w-1/4 dark:bg-gray-800" data-aos="zoom-in"
-                    data-aos-delay="600">
+                    data-aos-delay="600" wire:ignore>
                     <p class="text-2xl font-semibold text-orange-600 dark:text-orange-400">👨‍🎓 5000+</p>
                     <p class="text-gray-700 dark:text-gray-300">Sinh viên sử dụng</p>
                 </div>
@@ -38,18 +38,6 @@
             <div x-data="{ open: false }" class="relative flex flex-col items-center">
                 <input type="text" name="text" placeholder="Tìm kiếm sách, tài liệu" class="input"
                     wire:model.live="search" @focus="open = true" @click.away="open = false" />
-                <!-- Hiệu ứng loading: chỉ hiển thị khi wire đang xử lý giá trị của search -->
-                <div wire:loading wire:target="search"
-                    class="absolute right-[46.5rem] top-1/2 transform -translate-y-1/2">
-                    <svg class="animate-spin h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
-                        </circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-                    </svg>
-                </div>
-
-                <!-- Danh sách autocomplete -->
                 <ul x-show="open && $wire.search.length > 0" x-transition:enter="transition ease-out duration-300"
                     x-transition:enter-start="opacity-0 transform scale-95"
                     x-transition:enter-end="opacity-100 transform scale-100"
@@ -59,6 +47,11 @@
                     class="autocomplete-list absolute bg-white dark:bg-gray-800 border dark:border-gray-700 mt-2 rounded-lg shadow-lg z-10 overflow-auto max-h-[400px]"
                     style="width: 400px;">
 
+                    @if($sachs->isEmpty() && $tailieus->isEmpty())
+                    <li class="p-3 text-left text-gray-500 dark:text-gray-300">
+                        Không tìm thấy sách hoặc tài liệu nào.
+                    </li>
+                    @else
                     @foreach($sachs as $sach)
                     <li
                         class="autocomplete-item book-item p-3 text-left cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900 m-2">
@@ -71,15 +64,16 @@
                     @foreach($tailieus as $tailieu)
                     <li
                         class="autocomplete-item document-item p-3 text-left cursor-pointer hover:bg-green-100 dark:hover:bg-green-900 m-2">
-                        <span class="item-label dark:text-white">📄 Tài liệu: {{ $tailieu->ten_tai_lieu }}
+                        <span class="item-label dark:text-white">
+                            📄 Tài liệu: {{ $tailieu->ten_tai_lieu }}
                         </span>
                     </li>
                     @endforeach
-
+                    @endif
 
                 </ul>
-
             </div>
+
 
         </aside>
     </main>
@@ -156,10 +150,10 @@
             </div>
         </div>
 
-        <div class="mt-8 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="mt-8 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6" wire:ignore>
             <!-- Card 1 -->
             <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full dark:bg-gray-800"
-                data-aos="fade-up" data-aos-delay="100">
+                data-aos="fade-up" data-aos-delay="100" wire:ignore>
                 <img src="/images/classroom.jpg" alt="ClassRoom" class="w-full h-48 object-cover">
                 <div class="p-4 flex flex-col flex-grow">
                     <h4 class="text-lg text-center font-semibold text-gray-800 dark:text-white">Phòng Máy Tính</h4>
@@ -172,7 +166,7 @@
 
             <!-- Card 2 -->
             <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full dark:bg-gray-800"
-                data-aos="fade-up" data-aos-delay="300">
+                data-aos="fade-up" data-aos-delay="300" wire:ignore>
                 <img src="/images/classroom2.jpg" alt="ClassRoom2" class="w-full h-48 object-cover">
                 <div class="p-4 flex flex-col flex-grow">
                     <h4 class="text-lg text-center font-semibold text-gray-800 dark:text-white">Phòng Học</h4>
@@ -185,7 +179,7 @@
 
             <!-- Card 3 -->
             <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full dark:bg-gray-800"
-                data-aos="fade-up" data-aos-delay="500">
+                data-aos="fade-up" data-aos-delay="500" wire:ignore>
                 <img src="/images/lib8.jpg" alt="Library" class="w-full h-48 object-cover">
                 <div class="p-4 flex flex-col flex-grow">
                     <h4 class="text-lg text-center font-semibold text-gray-800 dark:text-white">Thư Viện</h4>
@@ -228,7 +222,7 @@
             AOS.init({
                 duration: 1200, // Thời gian hiệu ứng
                 easing: "ease-in-out", // Hiệu ứng mượt
-                once: false, // Chạy 1 lần khi xuất hiện
+                once: true, // Chạy 1 lần khi xuất hiện
             });
         });
     </script>
