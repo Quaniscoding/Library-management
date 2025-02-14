@@ -1,6 +1,6 @@
-<div class="min-h-screen bg-gray-100 dark:bg-gray-900 overflow-hidden">
+<div class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900 overflow-hidden">
     @livewire('client.components.header')
-    <div class="container mx-auto px-4 py-16 mt-32">
+    <div class="container mx-auto px-4 py-16 mt-32 flex-grow">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Cột bên trái: Thông tin liên hệ -->
             <div class="pr-4">
