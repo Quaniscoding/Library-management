@@ -1,4 +1,4 @@
-<div>
+<div class="min-h-screen overflow-auto">
     <!-- Header -->
     @livewire('client.components.header')
 
@@ -38,11 +38,8 @@
             <div x-data="{ open: false }" class="relative flex flex-col items-center">
                 <input type="text" name="text" placeholder="Tìm kiếm sách, tài liệu" class="input"
                     wire:model.live="search" @focus="open = true" @click.away="open = false" />
-
-                <!-- Hiệu ứng loading: chỉ hiển thị khi wire đang xử lý giá trị của search -->
                 <div wire:loading wire:target="search"
                     class="absolute right-[46.5rem] top-1/2 transform -translate-y-1/2">
-                    <!-- Ví dụ spinner sử dụng SVG -->
                     <svg class="animate-spin h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
@@ -51,30 +48,36 @@
                     </svg>
                 </div>
 
+                <!-- Danh sách autocomplete -->
                 <ul x-show="open && $wire.search.length > 0" x-transition:enter="transition ease-out duration-300"
                     x-transition:enter-start="opacity-0 transform scale-95"
                     x-transition:enter-end="opacity-100 transform scale-100"
                     x-transition:leave="transition ease-in duration-300"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="autocomplete-list absolute bg-white border mt-2 rounded-lg shadow-lg z-10 overflow-auto max-h-[400px]"
+                    class="autocomplete-list absolute bg-white dark:bg-gray-800 border dark:border-gray-700 mt-2 rounded-lg shadow-lg z-10 overflow-auto max-h-[400px]"
                     style="width: 400px;">
 
                     @foreach($sachs as $sach)
-                    <li class="autocomplete-item book-item p-3 text-left cursor-pointer hover:bg-blue-100 m-2"
-                        wire:click="$set('search', '{{ $sach->ten_sach }}')">
-                        <span class="item-label" wire:click="showSachDetails({{ $sach->id }})">📚
-                            Sách:{{ $sach->ten_sach }}</span>
+                    <li
+                        class="autocomplete-item book-item p-3 text-left cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900 m-2">
+                        <span class="item-label dark:text-white" wire:click="showSachDetails({{ $sach->id }})">
+                            📚 Sách: {{ $sach->ten_sach }}
+                        </span>
                     </li>
                     @endforeach
 
                     @foreach($tailieus as $tailieu)
-                    <li class="autocomplete-item document-item p-3 text-left cursor-pointer hover:bg-green-100 m-2"
-                        wire:click="$set('search', '{{ $tailieu->ten_tai_lieu }}')">
-                        <span class="item-label">📄 Tài liệu:</span> {{ $tailieu->ten_tai_lieu }}
+                    <li
+                        class="autocomplete-item document-item p-3 text-left cursor-pointer hover:bg-green-100 dark:hover:bg-green-900 m-2">
+                        <span class="item-label dark:text-white">📄 Tài liệu: {{ $tailieu->ten_tai_lieu }}
+                        </span>
                     </li>
                     @endforeach
+
+
                 </ul>
+
             </div>
 
         </aside>
@@ -227,13 +230,6 @@
                 once: false, // Chạy 1 lần khi xuất hiện
             });
         });
-        setTimeout(() => {
-            document.querySelectorAll('[data-aos]').forEach(el => {
-                el.removeAttribute('data-aos');
-                el.removeAttribute('data-aos-duration');
-                // ... Xóa các attr khác nếu có
-            });
-        }, 1500);
     </script>
 
     </script>

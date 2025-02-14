@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
-<body class="bg-gray-100 min-h-screen dark:bg-gray-900 overflow-hidden">
+<body class="bg-gray-100 min-h-screen dark:bg-gray-900">
     @livewire('loading')
     {{ $slot }}
     @livewireScripts

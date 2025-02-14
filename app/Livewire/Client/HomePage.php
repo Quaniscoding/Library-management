@@ -19,12 +19,11 @@ use Livewire\WithPagination;
 
 class HomePage extends Component
 {
-    public $search = '';
+    use WithPagination;
+    public $search;
 
     public function render()
     {
-        $sachs = [];
-        $tailieus = [];
         $querySach = Sach::query();
         $queryTaiLieu = TaiLieuMo::query();
         if (!empty($this->search)) {

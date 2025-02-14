@@ -115,7 +115,7 @@
             @else
             <!-- Hiển thị khi chưa đăng nhập -->
             <div class="pt-3 md:pt-0">
-                <a wire:navigate href="/login"
+                <a href="/login"
                     class="py-2 px-3 sm:py-2.5 sm:px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                     <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

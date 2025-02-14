@@ -55,11 +55,11 @@
             </button>
         </form>
 
-        <div class="mt-6 text-center text-sm text-gray-600 dark:text-gray-300">
+        <!-- <div class="mt-6 text-center text-sm text-gray-600 dark:text-gray-300">
             Chưa có tài khoản?
             <a href="register" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 font-medium">
                 Đăng ký
             </a>
-        </div>
+        </div> -->
     </div>
 </div>
