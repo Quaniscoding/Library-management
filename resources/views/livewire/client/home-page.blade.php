@@ -38,6 +38,7 @@
             <div x-data="{ open: false }" class="relative flex flex-col items-center">
                 <input type="text" name="text" placeholder="Tìm kiếm sách, tài liệu" class="input"
                     wire:model.live="search" @focus="open = true" @click.away="open = false" />
+                <!-- Hiệu ứng loading: chỉ hiển thị khi wire đang xử lý giá trị của search -->
                 <div wire:loading wire:target="search"
                     class="absolute right-[46.5rem] top-1/2 transform -translate-y-1/2">
                     <svg class="animate-spin h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
