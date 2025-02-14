@@ -1,0 +1,23 @@
+[0;1;32m●[0m docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Tue 2025-02-11 10:24:52 +07; 3 days ago
+TriggeredBy: [0;1;32m●[0m docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 32597 (dockerd)
+      Tasks: 31
+     Memory: 362.2M
+     CGroup: /system.slice/docker.service
+             ├─ 32597 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+             ├─487230 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8000 -container-ip 172.18.0.2 -container-port 80
+             └─487241 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 8000 -container-ip 172.18.0.2 -container-port 80
+
+Feb 14 22:53:00 rum dockerd[32597]: time="2025-02-14T22:53:00.715154641+07:00" level=error msg="failed to close container stdin" container=c849fd48d9e67e2dfe00cf8445df87ef849e4cce44b8270810a6b74f2f536515 error="process does not exist 6eeec0e86fdf3ca5e9a521be7ee3065a49574b6efc1cc7c6531ed833693f51d5: not found" module=libcontainerd namespace=moby
+Feb 14 22:53:05 rum dockerd[32597]: time="2025-02-14T22:53:05.851618795+07:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Feb 14 22:53:06 rum dockerd[32597]: time="2025-02-14T22:53:06.679894812+07:00" level=info msg="ignoring event" container=f9c77f6cd3322103935bde6383d63b1588f362e459b7612ace4cca9b7753e31b module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Feb 14 22:54:05 rum dockerd[32597]: time="2025-02-14T22:54:05.890498752+07:00" level=error msg="stream copy error: reading from a closed fifo"
+Feb 14 22:54:05 rum dockerd[32597]: time="2025-02-14T22:54:05.895089095+07:00" level=error msg="Error running exec f4201e496606b17349b352576f8237332c260b35ac1659223b06ed1be8470180 in container: OCI runtime exec failed: exec failed: unable to start container process: exec: \"composer\": executable file not found in $PATH: unknown" spanID=20f614fac034905f traceID=a6f306327b62148c7bcf10e661862efe
+Feb 14 22:54:05 rum dockerd[32597]: time="2025-02-14T22:54:05.898194077+07:00" level=error msg="failed to close container stdin" container=c849fd48d9e67e2dfe00cf8445df87ef849e4cce44b8270810a6b74f2f536515 error="process does not exist f4201e496606b17349b352576f8237332c260b35ac1659223b06ed1be8470180: not found" module=libcontainerd namespace=moby
+Feb 14 22:54:06 rum dockerd[32597]: time="2025-02-14T22:54:06.733713839+07:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Feb 14 22:54:07 rum dockerd[32597]: time="2025-02-14T22:54:07.561919433+07:00" level=info msg="ignoring event" container=f9c77f6cd3322103935bde6383d63b1588f362e459b7612ace4cca9b7753e31b module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Feb 14 22:55:07 rum dockerd[32597]: time="2025-02-14T22:55:07.614570939+07:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Feb 14 22:55:08 rum dockerd[32597]: time="2025-02-14T22:55:08.522385362+07:00" level=info msg="ignoring event" container=f9c77f6cd3322103935bde6383d63b1588f362e459b7612ace4cca9b7753e31b module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
