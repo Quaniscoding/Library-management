@@ -11,9 +11,10 @@
             </h1>
             <p class="text-gray-600 text-center dark:text-gray-300" data-aos="fade-up" data-aos-delay="300"
                 data-aos-duration="1200" wire:ignore>
-                Discover a display of digital resources tailored for students and faculty. Explore books, research
-                papers to
-                enhance your learning experience.
+                Khám phá hiển thị các tài nguyên kỹ thuật số được thiết kế riêng cho sinh viên và giảng viên. Tìm sách,
+                nghiên cứu
+                tài liệu để
+                nâng cao trải nghiệm học tập của bạn.
             </p>
             <div class="mt-6 flex justify-center space-x-6 text-center">
                 <!-- Card 1 -->
@@ -37,7 +38,7 @@
             </div>
             <div x-data="{ open: false }" class="relative flex flex-col items-center">
                 <input type="text" name="text" placeholder="Tìm kiếm sách, tài liệu" class="input"
-                    wire:model.live="search" @focus="open = true" @click.away="open = false" />
+                    wire:model.live="search" @focus="open = true" @click.away="open = false" autocomplete="off" />
                 <ul x-show="open && $wire.search.length > 0" x-transition:enter="transition ease-out duration-300"
                     x-transition:enter-start="opacity-0 transform scale-95"
                     x-transition:enter-end="opacity-100 transform scale-100"
@@ -196,7 +197,7 @@
 
     <!-- Custom -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             var swiper = new Swiper(".mySwiper", {
                 loop: true,
                 spaceBetween: 10,
@@ -216,7 +217,7 @@
         });
 
         Animation
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             AOS.init({
                 duration: 1200, // Thời gian hiệu ứng
                 easing: "ease-in-out", // Hiệu ứng mượt
