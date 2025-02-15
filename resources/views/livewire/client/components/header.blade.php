@@ -1,4 +1,5 @@
-<nav class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+<nav class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+    wire:poll.1s>
     <div class="flex flex-wrap items-center justify-between mx-auto p-4">
         <div class="flex items-center justify-start rtl:justify-end">
             <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
@@ -18,7 +19,7 @@
                     style="font-family: 'Pacifico', cursive;">ITCLib</span>
             </a>
         </div>
-        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
+        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-5"
             x-data="{ navbarOpen: false }">
 
             @if(Auth::guard('student')->check())

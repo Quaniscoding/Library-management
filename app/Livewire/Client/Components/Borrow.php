@@ -33,13 +33,15 @@ class Borrow extends Component
         $cuonSach = CuonSach::where('sach_id', $this->sach->id)
             ->where('tinh_trang', 'Con')
             ->first();
+        $sach = Sach::where('id', $this->sach->id)
+            ->where('so_luong', '>', 0)
+            ->first();
 
-        if (!$cuonSach) {
+        if (!$cuonSach || !$sach) {
             $flasher->addError('error', 'Hiện tại không có cuốn sách nào sẵn sàng để mượn.');
             return;
         }
-
-        // Chuyển đổi giá trị input (dd/mm/yyyy) sang đối tượng Carbon
+        $sach->update(['so_luong' => $sach->so_luong - 1]);
         try {
             $ngayMuon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
             $ngayHenTra = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
@@ -48,13 +50,11 @@ class Borrow extends Component
             return;
         }
 
-        // Kiểm tra ngày hẹn trả phải sau ngày mượn
         if ($ngayHenTra->lessThanOrEqualTo($ngayMuon)) {
             $flasher->addError('error', 'Ngày hẹn trả phải sau ngày mượn.');
             return;
         }
 
-        // Kiểm tra khoảng cách ngày, nếu vượt quá 30 ngày thì báo lỗi
         if ($ngayMuon->diffInDays($ngayHenTra) > 30) {
             $flasher->addError('error', 'Thời gian mượn không được vượt quá 30 ngày.');
             return;
@@ -64,18 +64,18 @@ class Borrow extends Component
         $phieuMuon = PhieuMuon::create([
             'sinh_vien_id' => $sinhVien->id,
             'nhan_vien_id' => null,
-            // Lưu dưới dạng định dạng Y-m-d chuẩn cho cơ sở dữ liệu
             'ngay_muon' => $ngayMuon->format('Y-m-d'),
             'ngay_hen_tra' => $ngayHenTra->format('Y-m-d'),
             'tinh_trang' => 'DangMuon',
             'email_log_url' => null
         ]);
 
-        $datSach = DatSach::create([
+        DatSach::create([
             'sinh_vien_id' => $sinhVien->id,
             'cuon_sach_id' => $cuonSach->id,
             'ngay_dat' => now(),
             'tinh_trang' => 'DangDat',
+            'so_luong' => 1
         ]);
         $cuonSach->update(['tinh_trang' => 'Muon']);
 

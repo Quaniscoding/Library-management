@@ -47,6 +47,7 @@ use App\Livewire\Client\Components\Sach;
 use App\Livewire\Client\Components\TaiKhoan;
 use App\Livewire\Client\Components\Tailieu;
 use App\Livewire\Client\HomePage;
+use App\Livewire\NotFound;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -64,7 +65,7 @@ Route::middleware('web')->group(function () {
     Route::get('de-xuat', DeXuatSachTaiLieu::class)->name('dexuat');
     Route::get('phan-hoi', Phanhoi::class)->name('phanhoi');
 });
-Route::middleware('guest')->group(function () {
+Route::middleware('guest:student,web')->group(function () {
     //sinhvien
     Route::get('/register', SinhvienRegister::class)->name('register');
     Route::get('/login', SinhvienLogin::class)->name('login');
@@ -131,4 +132,7 @@ Route::middleware(['auth', 'can:access-admin'])->group(function () {
     Route::get('/admin/manage-phat', ManagePhat::class)->name('admin.manage-phat');
     Route::get('/admin/manage-phanhoi', ManagePhanhoi::class)->name('admin.manage-phanhoi');
     Route::get('/lich-su-muon/{sinh_vien_id}', LichSuMuon::class);
+});
+Route::fallback(function () {
+    return app(\App\Livewire\NotFound::class)->render();
 });

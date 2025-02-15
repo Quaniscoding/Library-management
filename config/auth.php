@@ -71,7 +71,7 @@ return [
 
         'students' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Sinhvien::class,
+            'model' => App\Models\SinhVien::class,
         ],
     ],
 

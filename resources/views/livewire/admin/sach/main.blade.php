@@ -121,6 +121,7 @@
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Thể Loại</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Năm Xuất Bản</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Số Trang</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Số Lượng</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">ISBN</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Môn</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Ngành</th>
@@ -161,6 +162,10 @@
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
                         {{ $sach->so_trang }}
+                    </td>
+                    <td
+                        class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
+                        {{ $sach->so_luong }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">

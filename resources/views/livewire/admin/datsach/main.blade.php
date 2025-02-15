@@ -27,6 +27,7 @@
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">ID Cuốn Sách</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ngày Đặt</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Tình Trạng</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Số lượng</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Hành động</th>
                 </tr>
             </thead>
@@ -49,6 +50,9 @@
                         default => 'Huỷ'
                         }
                         }}
+                    </td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">
+                        {{ $datsach->so_luong }}
                     </td>
                     <td class="border border-gray-300 dark:border-gray-600 px-4 py-2 flex justify-center space-x-2">
                         <button wire:click="editDatSach({{ $datsach->id }})"

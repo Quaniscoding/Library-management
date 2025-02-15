@@ -20,7 +20,8 @@ class Sach extends Model
         'isbn',
         'mon_hoc_id',
         'nganh_id',
-        'khoa_id'
+        'khoa_id',
+        'so_luong'
     ];
     public function getAnhBiaUrlAttribute()
     {

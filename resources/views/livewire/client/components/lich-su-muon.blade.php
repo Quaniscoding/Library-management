@@ -1,4 +1,4 @@
-<div class="main overflow-hidden bg-gray-100 dark:bg-gray-900">
+<div class="main overflow-hidden bg-gray-100 dark:bg-gray-900" wire:poll.1s>
     @livewire('client.components.header')
 
     <div class="mt-32 container mx-auto px-4 min-h-[720px]">
