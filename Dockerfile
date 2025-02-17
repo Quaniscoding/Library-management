@@ -47,7 +47,7 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    libmysqlclient-dev  # Thêm thư viện MySQL client
+    libmariadb-dev-compat  # Thêm thư viện MySQL client
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
