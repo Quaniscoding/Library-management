@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-white">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-white" wire:poll.1s>
     <h1 class="text-center font-bold text-2xl mb-6">Quản lý sách trong thư viện</h1>
 
     <!-- Button Tạo Cuốn Sách Mới -->

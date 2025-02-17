@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900">
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900" wire:poll.1s>
     <h1 class="text-center font-bold text-2xl mb-6 text-gray-900 dark:text-white">
         Quản Lý Hóa Đơn Phạt
     </h1>

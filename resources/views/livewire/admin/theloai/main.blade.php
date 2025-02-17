@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200" wire:poll.1s>
     <h1 class="text-center font-bold text-2xl mb-6 dark:text-white">Quản Lý Thể Loại</h1>
 
     <!-- Button Tạo Thể Loại Mới -->
@@ -34,9 +34,10 @@
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">{{ $theloai->id }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $theloai->ten_the_loai }}</td>
+                        {{ $theloai->ten_the_loai }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {!! $theloai->mo_ta ? $theloai->mo_ta : '<span class="text-gray-400 dark:text-gray-400">Chưa
+                        { $theloai->mo_ta ? $theloai->mo_ta : '<span class="text-gray-400 dark:text-gray-400">Chưa
                             có</span>' !!}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 flex justify-center space-x-2 dark:border-gray-600">

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Sach;
 
+use App\Exports\SachExport;
 use App\Models\Khoa;
 use App\Models\MonHoc;
 use App\Models\Nganh;
@@ -14,11 +15,12 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Main extends Component
 {
     use WithPagination, WithFileUploads;
-    public $id, $anh_bia, $ten_sach, $tac_gia_id, $nha_xuat_ban_id, $the_loai_id, $nam_xuat_ban, $so_trang, $isbn, $mon_hoc_id, $nganh_id, $khoa_id;
+    public $id, $anh_bia, $ten_sach, $tac_gia_id, $nha_xuat_ban_id, $the_loai_id, $nam_xuat_ban, $so_trang, $isbn, $mon_hoc_id, $nganh_id, $khoa_id, $so_luong;
 
     public $deleteSachId;
     public $searchName = '';
@@ -67,6 +69,9 @@ class Main extends Component
     public $isEditMode = false;
     public $isModalOpen = false;
     public $isConfirmModalOpen = false;
+    public $filterType = 'year'; // Mặc định lọc theo năm. Giá trị có thể là 'year', 'month', 'week'
+    public $filterValue; // Giá trị cụ thể (năm, tháng, tuần) nếu cần lọc chính xác
+    public $chartData = [];
     public function render()
     {
         // Khởi tạo query từ model Sach
@@ -79,8 +84,6 @@ class Main extends Component
 
         // Filter theo tình trạng
         if (!empty($this->tinh_trang)) {
-            // Giả sử mối quan hệ với bảng cuốn sách đã được định nghĩa trong model Sach:
-            // public function cuonSachs() { return $this->hasMany(CuonSach::class, 'sach_id'); }
             $query->whereHas('cuonSachs', function ($q) {
                 $q->where('tinh_trang', $this->tinh_trang);
             });
@@ -136,7 +139,12 @@ class Main extends Component
             'khoas'
         ));
     }
-
+    public function exportExcel()
+    {
+        $fileName = 'sach_' . now()->format('Ymd_His') . '.xlsx';
+        // Nếu muốn xuất theo khoảng thời gian, bạn có thể truyền $filterType và $filterValue vào export class
+        return Excel::download(new SachExport($this->filterType, $this->filterValue), $fileName);
+    }
     public function openModal()
     {
         $this->isModalOpen = true;
@@ -172,6 +180,7 @@ class Main extends Component
         $this->mon_hoc_id = '';
         $this->nganh_id = '';
         $this->khoa_id = '';
+        $this->so_luong = '';
         $this->isEditMode = false;
     }
 
@@ -185,6 +194,7 @@ class Main extends Component
             'the_loai_id' => 'required',
             'nam_xuat_ban' => 'nullable|regex:/^\d{4}$/',
             'so_trang' => 'nullable',
+            'so_luong' => 'nullable',
             'isbn' => 'nullable',
             'mon_hoc_id' => 'required',
             'nganh_id' => 'required',
@@ -210,6 +220,7 @@ class Main extends Component
             'nha_xuat_ban_id' => $this->nha_xuat_ban_id,
             'the_loai_id' => $this->the_loai_id,
             'nam_xuat_ban' => $this->nam_xuat_ban,
+            'so_luong' => $this->so_luong,
             'so_trang' => $this->so_trang,
             'isbn' => $this->isbn,
             'mon_hoc_id' => $this->mon_hoc_id,
@@ -234,6 +245,7 @@ class Main extends Component
         $this->the_loai_id = $sach->the_loai_id;
         $this->nam_xuat_ban = $sach->nam_xuat_ban;
         $this->so_trang = $sach->so_trang;
+        $this->so_luong = $sach->so_luong;
         $this->isbn = $sach->isbn;
         $this->mon_hoc_id = $sach->mon_hoc_id;
         $this->nganh_id = $sach->nganh_id;
@@ -250,6 +262,7 @@ class Main extends Component
             'tac_gia_id' => 'required',
             'nha_xuat_ban_id' => 'required',
             'the_loai_id' => 'required',
+            'so_luong' => 'nullable',
             'nam_xuat_ban' => 'nullable|regex:/^\d{4}$/',
             'so_trang' => 'nullable|integer',
             'isbn' => 'nullable|string',
@@ -277,6 +290,7 @@ class Main extends Component
             'the_loai_id' => $this->the_loai_id,
             'nam_xuat_ban' => $this->nam_xuat_ban,
             'so_trang' => $this->so_trang,
+            'so_luong' => $this->so_luong,
             'isbn' => $this->isbn,
             'mon_hoc_id' => $this->mon_hoc_id,
             'nganh_id' => $this->nganh_id,

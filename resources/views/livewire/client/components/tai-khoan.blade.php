@@ -1,4 +1,4 @@
-<div class="main min-h-screen bg-gray-100 dark:bg-gray-900 py-10">
+<div class="main min-h-screen bg-gray-100 dark:bg-gray-900 py-10" wire:poll.1s>
     @livewire('client.components.header')
     <div class="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-32">
         <!-- Left: Cập nhật thông tin cá nhân -->
@@ -62,11 +62,11 @@
             <!-- Nút bấm hiển thị Modal -->
             <div x-data="{ open: false }" x-init="window.addEventListener('password-updated', () => { open = false; })">
                 <script>
-                window.addEventListener('password-updated', () => {
-                    Alpine.store('modal', {
-                        open: false
+                    window.addEventListener('password-updated', () => {
+                        Alpine.store('modal', {
+                            open: false
+                        });
                     });
-                });
                 </script>
 
                 <!-- Nút mở modal -->

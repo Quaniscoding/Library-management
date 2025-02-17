@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200" wire:poll.1s>
     <h1 class="text-center font-bold text-2xl mb-6 dark:text-white">Quản lý phản hồi sách, tài liệu</h1>
 
     <!-- Bảng Quản lý phản hồi sách, tài liệu -->
@@ -27,9 +27,11 @@
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">{{ $phanhoi->id }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $phanhoi->sinhvien->ho_ten }}</td>
+                        {{ $phanhoi->sinhvien->ho_ten }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $phanhoi->noi_dung }}</td>
+                        {{ $phanhoi->noi_dung }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
                         {{ match ($phanhoi->trang_thai) {
                                 'ChuaXuLy' => 'Chưa xử lý',

@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200" wire:poll.1s>
     <h1 class="text-center font-bold text-2xl mb-6 dark:text-white">Quản lý Permission</h1>
 
     <!-- Button Tạo Permission Mới -->
@@ -34,9 +34,11 @@
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">{{ $permission->id }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $permission->name }}</td>
+                        {{ $permission->name }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $permission->guard_name }}</td>
+                        {{ $permission->guard_name }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 flex justify-center space-x-2 dark:border-gray-600">
                         <button wire:click="editPermission({{ $permission->id }})"
                             class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700">

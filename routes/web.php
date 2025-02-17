@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChartController;
 use App\Livewire\Admin\AdminLayout;
 use App\Livewire\Admin\Booksubject\ManageBooksubject;
 use App\Livewire\Admin\Bophan\ManageBophan;
@@ -64,6 +65,7 @@ Route::middleware('web')->group(function () {
     Route::get('lich-su-muon', LichSuMuon::class)->name('lich-su-muon');
     Route::get('de-xuat', DeXuatSachTaiLieu::class)->name('dexuat');
     Route::get('phan-hoi', Phanhoi::class)->name('phanhoi');
+    Route::get('/lich-su-muon/{sinh_vien_id}', LichSuMuon::class);
 });
 Route::middleware('guest:student,web')->group(function () {
     //sinhvien
@@ -131,8 +133,7 @@ Route::middleware(['auth', 'can:access-admin'])->group(function () {
     Route::get('/admin/manage-hoadonphat', ManageHoadonphat::class)->name('admin.manage-hoadonphat');
     Route::get('/admin/manage-phat', ManagePhat::class)->name('admin.manage-phat');
     Route::get('/admin/manage-phanhoi', ManagePhanhoi::class)->name('admin.manage-phanhoi');
-    Route::get('/lich-su-muon/{sinh_vien_id}', LichSuMuon::class);
 });
 Route::fallback(function () {
-    return app(\App\Livewire\NotFound::class)->render();
+    return app(NotFound::class)->render();
 });

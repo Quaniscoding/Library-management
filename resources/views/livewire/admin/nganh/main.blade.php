@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-white">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-white" wire:poll.1s>
     <h1 class="text-center font-bold text-2xl mb-6 text-gray-900 dark:text-white">Quản lý Ngành</h1>
 
     <!-- Button Tạo Ngành Mới -->
@@ -33,10 +33,12 @@
                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-800">
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-900 dark:text-white">
-                        {{ $nganh->id }}</td>
+                        {{ $nganh->id }}
+                    </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-900 dark:text-white">
-                        {{ $nganh->ten_nganh }}</td>
+                        {{ $nganh->ten_nganh }}
+                    </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-900 dark:text-white">
                         {{ $nganh->khoa->ten_khoa }}
