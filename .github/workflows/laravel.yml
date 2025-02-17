@@ -19,7 +19,7 @@ jobs:
     - name: Install sshpass
       run: sudo apt-get update && sudo apt-get install -y sshpass
 
-    - name: Deploy Laravel to VPS
+    - name: Build and deploy Docker container
       env:
         VPS_IP: ${{ secrets.VPS_IP }}
         VPS_USER: ${{ secrets.VPS_USER }}
@@ -27,7 +27,6 @@ jobs:
       run: |
         # SSH vào VPS và thực hiện các lệnh
         sshpass -p $PASS ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_IP << EOF
-        
 
           cd /home/$VPS_USER || exit
 
@@ -36,21 +35,10 @@ jobs:
 
           cd /home/$VPS_USER/laravel_app || exit
 
-          # Cài đặt các dependency của Laravel
-          composer install --no-interaction
+          # Build Docker image with user and uid arguments
+          docker build --build-arg user=laravel --build-arg uid=1000 -t laravel_app .
 
-          # Cấu hình file .env nếu cần
-          cp .env.example .env
-          php artisan key:generate
-
-          # Dừng và xóa container cũ nếu có
-          docker stop laravel_app || true
-          docker rm laravel_app || true
-          
-          # Xây dựng lại Docker image (nếu cần)
-          docker build -t laravel_app .
-
-          # Run Laravel container và liên kết đến MySQL container đã có
+          # Run Docker container
           docker run --restart=always -d --name laravel_app --network laravel_network -p 8000:80 laravel_app
 
           # Dọn dẹp repository clone sau khi deploy
