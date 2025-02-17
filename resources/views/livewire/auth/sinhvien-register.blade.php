@@ -6,7 +6,7 @@
     </div>
 
     <!-- Left Section - Library Image & Info -->
-    <div class="md:w-1/2 p-8 flex items-center justify-center relative overflow-hidden">
+    <div class="md:w-1/2 p-8 sm:flex items-center justify-center relative overflow-hidden hidden">
         <div class="absolute inset-0 bg-cover bg-center filter blur-[2px]"
             style="background-image: url('/images/login-img.jpg');">
         </div>
@@ -31,7 +31,7 @@
     </div>
 
     <!-- Right Section - Registration Form -->
-    <div class="md:w-1/2 flex items-center justify-center p-8">
+    <div class="md:w-1/2 flex items-center justify-center p-8 sm:mt-0 mt-28">
         <div class="w-full max-w-md">
             <div
                 class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700">

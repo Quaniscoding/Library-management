@@ -51,7 +51,8 @@ if (currentTheme === 'dark') {
 flatpickr(".date-picker", {
     dateFormat: "d/m/Y",
     minDate: "today",
-    locale: "vn"
+    locale: "vn",
+    disableMobile: true
 });
 
 (function (global, factory) {
