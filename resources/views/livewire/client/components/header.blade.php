@@ -1,9 +1,8 @@
-<nav class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
     wire:poll.1s>
     <div class="flex flex-wrap items-center justify-between mx-auto p-4">
         <div class="flex items-center justify-start rtl:justify-end">
-            <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
-                type="button"
+            <button @click="sidebarOpen = !sidebarOpen"
                 class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                 <span class="sr-only">Open sidebar</span>
                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -21,7 +20,6 @@
         </div>
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-5"
             x-data="{ navbarOpen: false }">
-
             @if(Auth::guard('student')->check())
             <!-- Menu dành cho Sinh viên -->
             <div class="relative" x-data="{ open: false }">

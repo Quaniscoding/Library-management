@@ -85,7 +85,7 @@
 
         <div class="flex flex-col md:flex-row gap-6" data-aos="fade-up" data-aos-delay="300">
             <!-- Swiper Container (Chiếm 50% trên md trở lên) -->
-            <div class="w-full md:w-1/2">
+            <div class="md:w-1/2">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -112,7 +112,7 @@
             </div>
 
             <!-- Phần Nội dung chữ (Chiếm 50% trên md trở lên) -->
-            <div class="w-full md:w-1/2 flex flex-col items-center justify-center bg-gray-50 p-6 rounded-lg shadow dark:bg-gray-700"
+            <div class="md:w-1/2 flex flex-col items-center justify-center bg-gray-50 p-6 rounded-lg shadow dark:bg-gray-700"
                 data-aos="fade-up" data-aos-delay="400">
                 <h3 class="self-center mt-auto mb-auto text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
                     style="font-family: 'Pacifico', cursive;">
