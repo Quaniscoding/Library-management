@@ -1,0 +1,48 @@
+name: Deploy Laravel to VPS Docker
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Install sshpass
+      run: sudo apt-get update && sudo apt-get install -y sshpass
+
+    - name: Build and deploy Docker container
+      env:
+        VPS_IP: ${{ secrets.VPS_IP }}
+        VPS_USER: ${{ secrets.VPS_USER }}
+        PASS: ${{ secrets.PASS }}
+      run: |
+        # SSH vào VPS và thực hiện các lệnh
+        sshpass -p $PASS ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_IP << EOF
+
+          cd /home/$VPS_USER || exit
+
+          # Clone repository
+          git clone https://github.com/Quaniscoding/Library-management.git /home/$VPS_USER/laravel_app
+
+          cd /home/$VPS_USER/laravel_app || exit
+
+          # Build Docker image with user and uid arguments
+          docker build --build-arg user=laravel --build-arg uid=1000 -t laravel_app .
+
+          # Run Docker container
+          docker run --restart=always -d --name laravel_app --network laravel_network -p 8000:80 laravel_app
+
+          # Dọn dẹp repository clone sau khi deploy
+          cd ..
+          rm -rf laravel_app
+          docker image prune -f
+        EOF
