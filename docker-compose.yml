@@ -10,7 +10,13 @@ services:
       - "8000:8000"  # Port Laravel
     networks:
       - laravel-network  # Dùng mạng người dùng
-    command: php artisan serve --host 0.0.0.0 --port 8000
+    #command: php artisan serve --host 0.0.0.0 --port 8000
+    command: >
+      sh -c "php artisan serve --host 0.0.0.0 --port 8000 &
+             sleep 30 &&
+             php artisan migrate &&
+             php artisan db:seed &&
+             tail -f /dev/null"
   db:
     image: mysql:8.0
     container_name: "mysql-container"
