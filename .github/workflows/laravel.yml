@@ -51,8 +51,16 @@ jobs:
 
           # Build and start services using docker-compose
           docker-compose up -d --build
-          
-          sleep 5
+
+            echo "Waiting for the container to be ready..."
+          while ! docker-compose exec app curl -s http://localhost:8000 | grep -q "Welcome"; do
+            echo "Waiting for the app to be fully initialized..."
+            sleep 5
+          done
+
+          # Run database migrations and seeds
+          sudo docker-compose exec app php artisan migrate --force
+          sudo docker-compose exec app php artisan db:seed
           
 
           # Run database migrations and seeds
