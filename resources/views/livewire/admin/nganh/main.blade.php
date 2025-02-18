@@ -24,7 +24,7 @@
                 <tr>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">ID</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Tên ngành</th>
-                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Khoa ID</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Khoa</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Hành động</th>
                 </tr>
             </thead>
@@ -41,7 +41,7 @@
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-900 dark:text-white">
-                        {{ $nganh->khoa->ten_khoa }}
+                        {{ $nganh->khoa->ten_khoa ?? "" }}
                     </td>
                     <td class="border border-gray-300 dark:border-gray-600 px-4 py-2 flex justify-center space-x-2">
                         <button wire:click="editNganh({{ $nganh->id }})"
