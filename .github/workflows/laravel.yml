@@ -31,34 +31,37 @@ jobs:
           # Navigate to the home directory
           cd /home/$VPS_USER || exit
 
-          # Check if laravel_app directory exists, if yes, clean up
-          if [ -d "/home/$VPS_USER/Library-management" ]; then
-            cd Library-management || exit
-
-            # Stop and remove old containers if they exist
-            docker-compose down || true 
-
-            # Clean up old cloned repository
+            # Stop existing containers and remove volumes
+          if [ -d "Library-management" ]; then
+            cd Library-management
+            docker compose down -v
             cd ..
-            rm -rf Library-management
           fi
-
-          # Clone the repository into the laravel_app directory
-          git clone https://github.com/Quaniscoding/Library-management.git 
-
-          # Navigate to the Laravel app directory
-          cd /home/$VPS_USER/Library-management || exit
-
-
+          
+          # Remove old directory
+          rm -rf Library-management
+          
+          # Clone the repository
+          git clone https://github.com/Quaniscoding/Library-management.git
+          
+          # Navigate to project directory
+          cd Library-management
+          
+          # Ensure Git safe directory
           git config --global --add safe.directory /var/www
-
-          # Build and start services using docker-compose
-          docker-compose up -d --build
-
-        
-
-          # Clean up old Docker images
-          echo "Cleaning up old Docker images..."
-          docker image prune -f
+          
+          # Stop any existing containers with the same names
+          docker compose down --remove-orphans
+          
+          # Remove existing containers and images
+          docker compose rm -f
+          docker image rm laravel-app:latest mysql:8.0 nginx:alpine || true
+          
+          # Build and start services
+          docker compose up -d --build --force-recreate
+          
+          # Clean up unused images and volumes
+          docker system prune -af
+          docker volume prune -f
           
         EOF
