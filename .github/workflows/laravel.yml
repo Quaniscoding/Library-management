@@ -32,32 +32,32 @@ jobs:
           cd /home/$VPS_USER || exit
 
           # Check if laravel_app directory exists, if yes, clean up
-          if [ -d "/home/$VPS_USER/laravel_app" ]; then
-            cd laravel_app || exit
+          if [ -d "/home/$VPS_USER/Library-management" ]; then
+            cd Library-management || exit
 
             # Stop and remove old containers if they exist
             docker-compose down || true 
 
             # Clean up old cloned repository
             cd ..
-            rm -rf laravel_app
+            rm -rf Library-management
           fi
 
           # Clone the repository into the laravel_app directory
-          git clone https://github.com/Quaniscoding/Library-management.git /home/$VPS_USER/laravel_app
+          git clone https://github.com/Quaniscoding/Library-management.git 
 
           # Navigate to the Laravel app directory
-          cd /home/$VPS_USER/laravel_app || exit
+          cd /home/$VPS_USER/Library-management || exit
 
           # Build and start services using docker-compose
           docker-compose up -d --build
 
-          # Wait for the container to be ready
-          echo "Waiting for the container to be ready..."
-          while ! docker-compose exec app curl -s http://localhost:8000 | grep -q "Welcome"; do
-            echo "Waiting for the app to be fully initialized..."
-            sleep 5
-          done
+          # # Wait for the container to be ready
+          # echo "Waiting for the container to be ready..."
+          # while ! docker-compose exec app curl -s http://localhost:8000 | grep -q "Welcome"; do
+          #   echo "Waiting for the app to be fully initialized..."
+          #   sleep 5
+          # done
 
           # Run database migrations and seeds
           echo "Running database migrations..."
