@@ -50,8 +50,7 @@ jobs:
           # Ensure Git safe directory
           git config --global --add safe.directory /var/www
           
-          # Stop any existing containers with the same names
-          docker compose down --remove-orphans
+         
           
           # Remove existing containers and images
           docker compose rm -f
