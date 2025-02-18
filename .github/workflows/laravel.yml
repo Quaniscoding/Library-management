@@ -52,14 +52,16 @@ jobs:
           # Build and start services using docker-compose
           docker-compose up -d --build
 
-          cd ..
-          cd Library-management 
-
+         
+          
+          
+          
           # Run database migrations and seeds
+          docker exec laravel-app
           echo "Running database migrations..."
-          sudo docker-compose exec -T app php artisan migrate --force
+          php artisan migrate
           echo "Running database seeding..."
-          sudo docker-compose exec -T app php artisan db:seed
+          php artisan db:seed
 
           # Clean up old Docker images
           echo "Cleaning up old Docker images..."
