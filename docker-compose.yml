@@ -44,4 +44,4 @@ services:
       - laravel-network
 networks:
   laravel-network:  # Mạng người dùng sẽ tự tạo
-    driver: bridge  # Dùng driver 'bridge' cho mạng người dùng final
+    driver: bridge  # Dùng driver 'bridge' cho mạng người dùng  case firt time
