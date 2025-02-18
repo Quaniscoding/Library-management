@@ -51,12 +51,10 @@ jobs:
 
           # Build and start services using docker-compose
           docker-compose up -d --build
-
-          while ! docker-compose exec app curl -s http://localhost | grep -q "Welcome"; do
-            echo "Waiting for the app to be ready..."
-            sleep 5
-          done
           
+          sleep 5
+          
+
           # Run database migrations and seeds
           sudo docker-compose exec app php artisan migrate --force
           sudo docker-compose exec app php artisan db:seed
