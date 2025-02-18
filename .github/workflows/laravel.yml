@@ -57,11 +57,11 @@ jobs:
 
          
           
-          docker exec laravel-app sh -c 'until nc -z mysql 3306; do echo "Waiting for MySQL..."; sleep 2; done'
+          #docker exec laravel-app sh -c 'until nc -z mysql 3306; do echo "Waiting for MySQL..."; sleep 2; done'
 
           
           # Run database migrations and seeds
-          docker exec laravel-app composer install
+          #docker exec laravel-app composer install
 
         
           docker exec laravel-app php artisan migrate
