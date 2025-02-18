@@ -29,11 +29,15 @@ jobs:
         sshpass -p $PASS ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_IP << EOF
 
           # Navigate to deployment directory
-          cd /home/$VPS_USER || exit
+          cd /home/$VPS_USER/laravel_app || exit
 
           # Stop and remove old containers if they exist
-          docker-compose down || true
+          docker-compose down || true 
 
+          # Clean up cloned repository
+          cd ..
+          rm -rf laravel_app
+          
           # Clone the repository
           git clone https://github.com/Quaniscoding/Library-management.git /home/$VPS_USER/laravel_app
 
@@ -50,9 +54,7 @@ jobs:
           sudo docker-compose exec app php artisan migrate --force
           sudo docker-compose exec app php artisan db:seed
 
-          # Clean up cloned repository
-          cd ..
-          rm -rf laravel_app
+      
 
           # Clean up old Docker images
           docker image prune -f
