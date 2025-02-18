@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900" wire:poll.1s>
+<main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900" wire:poll.10s>
     <h1 class="text-center font-bold text-2xl mb-6 text-gray-900 dark:text-white">
         Quản Lý Hóa Đơn Phạt
     </h1>
@@ -209,12 +209,12 @@
             @if($hoadonphats->onFirstPage())
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-300 rounded-md cursor-not-allowed">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </span>
             @else
             <a href="{{ $hoadonphats->previousPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-700 rounded-md hover:bg-blue-700 dark:hover:bg-blue-800">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </a>
             @endif
 
@@ -230,12 +230,12 @@
             @if($hoadonphats->hasMorePages())
             <a href="{{ $hoadonphats->nextPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-700 rounded-md hover:bg-blue-700 dark:hover:bg-blue-800">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </a>
             @else
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-300 rounded-md cursor-not-allowed">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </span>
             @endif
         </div>

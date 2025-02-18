@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6" wire:poll.1s>
+<main class="flex-1 overflow-y-auto p-6" wire:poll.10s>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         @livewire('user-count')
         @livewire('sinh-vien-count')

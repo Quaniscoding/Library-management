@@ -1,4 +1,4 @@
-<div class="main" wire:poll.1s
+<div class="main" wire:poll.100s
     x-data="{ sidebarOpen: window.location.pathname === '/sach' || window.location.pathname === '/tai-lieu' }">
     @livewire('client.components.header')
     <aside id="logo-sidebar" x-show="sidebarOpen" x-transition:enter="transition transform ease-out duration-300"
@@ -399,10 +399,10 @@
                 <!-- Previous Page Button -->
                 @if($sachs->onFirstPage())
                 <span
-                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed">Previous</span>
+                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i class="fa-solid fa-backward"></i></span>
                 @else
                 <a href="{{ $sachs->previousPageUrl() }}"
-                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Previous</a>
+                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-backward"></i></a>
                 @endif
 
                 <!-- Page Numbers -->
@@ -419,10 +419,10 @@
                 <!-- Next Page Button -->
                 @if($sachs->hasMorePages())
                 <a href="{{ $sachs->nextPageUrl() }}"
-                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Next</a>
+                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-forward"></i></a>
                 @else
                 <span
-                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed">Next</span>
+                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i class="fa-solid fa-forward"></i></span>
                 @endif
             </div>
         </div>

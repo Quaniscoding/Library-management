@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200" wire:poll.1s>
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200" wire:poll.10s>
     <h1 class="text-center font-bold text-2xl mb-6 dark:text-white">Quản lý Permission</h1>
 
     <!-- Button Tạo Permission Mới -->
@@ -124,12 +124,12 @@
             @if($permissions->onFirstPage())
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </span>
             @else
             <a href="{{ $permissions->previousPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </a>
             @endif
 
@@ -151,12 +151,12 @@
             @if($permissions->hasMorePages())
             <a href="{{ $permissions->nextPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </a>
             @else
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </span>
             @endif
         </div>

@@ -1,4 +1,4 @@
-<div class="main min-h-screen bg-gray-100 dark:bg-gray-900 sm:py-10" wire:poll.1s>
+<div class="main min-h-screen bg-gray-100 dark:bg-gray-900 sm:py-10" wire:poll.10s>
     @livewire('client.components.header')
     <div class="mx-6 sm:mx-0 p-5 sm:p-0">
         <div class="max-w-4xl mx-auto p-8 sm:p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-32">

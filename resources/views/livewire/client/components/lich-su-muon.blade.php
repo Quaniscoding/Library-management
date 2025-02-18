@@ -1,4 +1,4 @@
-<div class="main overflow-hidden bg-gray-100 dark:bg-gray-900" wire:poll.1s>
+<div class="main overflow-hidden bg-gray-100 dark:bg-gray-900" wire:poll.10s>
     @livewire('client.components.header')
 
     <div class="mt-32 container mx-auto px-4 min-h-[720px]">
@@ -175,12 +175,12 @@
             @if($datSachs->onFirstPage())
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </span>
             @else
             <a href="{{ $datSachs->previousPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </a>
             @endif
 
@@ -202,12 +202,12 @@
             @if($datSachs->hasMorePages())
             <a href="{{ $datSachs->nextPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </a>
             @else
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </span>
             @endif
         </div>

@@ -1,5 +1,5 @@
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
-    wire:poll.1s>
+    wire:poll.10s>
     <div class="flex flex-wrap items-center justify-between mx-auto p-4">
         <div class="flex items-center justify-start rtl:justify-end">
             <div x-data="{ showButton: ['/sach', '/tai-lieu'].includes(window.location.pathname) }">
