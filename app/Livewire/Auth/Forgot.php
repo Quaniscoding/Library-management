@@ -22,7 +22,6 @@ class Forgot extends Component
         ]);
         try {
             $status = Password::sendResetLink(['email' => $this->email]);
-
             if ($status === Password::RESET_LINK_SENT) {
                 session()->flash('success', __('A password reset link has been sent to your email address.'));
                 $flasher->addSuccess('Đường link tạo lại mật khẩu đã được gửi tới email của bạn!');
