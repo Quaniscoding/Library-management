@@ -16,6 +16,7 @@ services:
              sleep 30 &&
              php artisan migrate &&
              php artisan db:seed &&
+             php artisan storage:link &&
              tail -f /dev/null"
   db:
     image: mysql:8.0

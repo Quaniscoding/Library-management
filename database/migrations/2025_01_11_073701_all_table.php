@@ -225,6 +225,15 @@ return new class extends Migration {
             $table->text('noi_dung');
             $table->timestamps();
         });
+        Schema::create(
+            'subcribe_m_q_t_t_s',
+            function (Blueprint $table) {
+                $table->id();
+                $table->string('topic');
+                $table->string('message');
+                $table->timestamps();
+            }
+        );
     }
 
     /**
@@ -259,5 +268,6 @@ return new class extends Migration {
         Schema::dropIfExists('nganhs');
         Schema::dropIfExists('khoas');
         Schema::dropIfExists('bo_phans');
+        Schema::dropIfExists('subcribe_m_q_t_t_s');
     }
 };

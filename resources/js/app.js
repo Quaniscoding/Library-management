@@ -54,7 +54,12 @@ flatpickr(".date-picker", {
     locale: "vn",
     disableMobile: true
 });
-
+flatpickr("#ngay_sinh", {
+    dateFormat: "d/m/Y",
+    maxDate: "today", // Hoặc bỏ tùy chọn này nếu cần chọn ngày xa hơn
+    locale: "vn",
+    disableMobile: true
+});
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
         typeof define === 'function' && define.amd ? define(['exports'], factory) :

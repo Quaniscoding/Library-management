@@ -16,7 +16,7 @@
                             <label class="block text-gray-700 dark:text-gray-300 mb-2">Ngày sinh:</label>
                             <input type="text" id="ngay_sinh" placeholder="Chọn ngày sinh" readonly
                                 wire:model="ngay_sinh"
-                                class="date-picker w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
                         </div>
                     </div>
 
@@ -65,11 +65,11 @@
                 <div x-data="{ open: false }"
                     x-init="window.addEventListener('password-updated', () => { open = false; })">
                     <script>
-                    window.addEventListener('password-updated', () => {
-                        Alpine.store('modal', {
-                            open: false
+                        window.addEventListener('password-updated', () => {
+                            Alpine.store('modal', {
+                                open: false
+                            });
                         });
-                    });
                     </script>
 
                     <!-- Nút mở modal -->

@@ -12,8 +12,11 @@
             </div>
             <div class="absolute inset-0 bg-black/40"></div>
             <div class="relative z-10 text-white text-center max-w-lg">
-                <img src="/images/logo-white.png" alt="LibITC Logo" class="mx-auto mb-6 rounded-2xl shadow-lg" />
-                <h1 class="text-4xl font-bold mb-4">Thư Viện LibITC</h1>
+                <a href="/">
+                    <img src="/images/logo-white.png" alt="LibITC Logo" class="mx-auto mb-6 rounded-2xl shadow-lg" />
+                    <h1 class="text-4xl font-bold mb-4">Thư Viện LibITC
+                    </h1>
+                </a>
                 <p class="text-lg text-gray-200 mb-4">Khám phá kho tàng tri thức không giới hạn</p>
                 <div class="flex justify-center space-x-8 text-gray-200">
                     <div class="text-center">

@@ -12,6 +12,6 @@ class KhoaSeeder extends Seeder
      */
     public function run(): void
     {
-        Khoa::factory()->count(20)->create();
+        Khoa::factory()->count(8)->create();
     }
 }

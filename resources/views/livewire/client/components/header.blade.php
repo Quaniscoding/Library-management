@@ -70,7 +70,6 @@
                     </ul>
                 </div>
             </div>
-
             @elseif(Auth::guard('web')->check())
             <!-- Menu dành cho Admin -->
             <div class="relative" x-data="{ open: false }">
@@ -147,33 +146,39 @@
                 x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
                 x-transition:leave="transition transform ease-in duration-300" x-transition:leave-start="translate-x-0"
                 x-transition:leave-end="translate-x-full"
-                class="absolute top-16 left-[60%] w-52 bg-white border border-gray-200 rounded-lg shadow-lg md:hidden dark:bg-gray-800 dark:border-gray-700 m-2"
+                class="absolute top-16 right-0 w-52 bg-white border border-gray-200 rounded-lg shadow-lg md:hidden dark:bg-gray-800 dark:border-gray-700 m-2"
                 x-cloak>
                 <ul class="flex flex-col font-medium p-4 space-y-2">
                     <li>
+                        <a wire:navigate href="/"
+                            class="block py-2 px-3 {{ request()->is('/') ? 'text-white bg-gray-400 ' : 'dark:text-white' }} hover:text-white rounded">Trang
+                            chủ</a>
+                    </li>
+                    <li>
                         <a wire:navigate href="/sach"
-                            class="block py-2 px-3 {{ request()->is('sach') ? 'text-blue-700 ' : 'dark:text-white' }} hover:text-blue-700 rounded">Sách</a>
+                            class="block py-2 px-3 {{ request()->is('sach') ? 'text-white bg-gray-400' : 'dark:text-white' }} hover:text-white rounded">Sách</a>
                     </li>
                     <li>
                         <a wire:navigate href="/tai-lieu"
-                            class="block py-2 px-3 {{ request()->is('tai-lieu') ? 'text-blue-700 ' : 'dark:text-white' }} hover:text-blue-700 rounded">Tài
+                            class="block py-2 px-3 {{ request()->is('tai-lieu') ? 'text-white bg-gray-400' : 'dark:text-white' }} hover:text-white rounded">Tài
                             liệu</a>
                     </li>
                     <li>
                         <a wire:navigate href="/de-xuat"
-                            class="block py-2 px-3 {{ request()->is('de-xuat') ? 'text-blue-700 ' : 'dark:text-white' }} hover:text-blue-700 rounded">Đề
+                            class="block py-2 px-3 {{ request()->is('de-xuat') ? 'text-white bg-gray-400' : 'dark:text-white' }} hover:text-white rounded">Đề
                             xuất sách/tài liệu</a>
                     </li>
                     <li>
                         <a wire:navigate href="/lien-he"
-                            class="block py-2 px-3 {{ request()->is('lien-he') ? 'text-blue-700 ' : 'dark:text-white' }} hover:text-blue-700 rounded">Liên
+                            class="block py-2 px-3 {{ request()->is('lien-he') ? 'text-white bg-gray-400' : 'dark:text-white' }} hover:text-white rounded">Liên
                             hệ</a>
                     </li>
                     <li>
                         <a wire:navigate href="/phan-hoi"
-                            class="block py-2 px-3 {{ request()->is('phan-hoi') ? 'text-blue-700 ' : 'dark:text-white' }} hover:text-blue-700 rounded">Phản
+                            class="block py-2 px-3 {{ request()->is('phan-hoi') ? 'text-white bg-gray-400' : 'dark:text-white' }} hover:text-white rounded">Phản
                             hồi</a>
                     </li>
+                    @if(!Auth::guard('student')->check())
                     <li>
                         <div class="pt-3 md:pt-0">
                             <a href="/login"
@@ -188,6 +193,7 @@
                             </a>
                         </div>
                     </li>
+                    @endif
                 </ul>
             </div>
 

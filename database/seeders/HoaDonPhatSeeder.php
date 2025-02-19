@@ -13,6 +13,6 @@ class HoaDonPhatSeeder extends Seeder
      */
     public function run(): void
     {
-        HoaDonPhat::factory()->count(20)->create();
+        HoaDonPhat::factory()->count(0)->create();
     }
 }

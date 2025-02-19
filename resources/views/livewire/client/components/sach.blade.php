@@ -9,6 +9,7 @@
         aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
+                <h1>Lọc</h1>
                 <input type="text" wire:model.live="search" placeholder="Nhập tên sách"
                     class="w-full px-4 py-2 mt-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 dark:placeholder-gray-500 dark:focus:ring-blue-500 focus:outline-none" />
                 <!-- Filter: TacGia -->
@@ -399,10 +400,12 @@
                 <!-- Previous Page Button -->
                 @if($sachs->onFirstPage())
                 <span
-                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i class="fa-solid fa-backward"></i></span>
+                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i
+                        class="fa-solid fa-backward"></i></span>
                 @else
                 <a href="{{ $sachs->previousPageUrl() }}"
-                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-backward"></i></a>
+                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i
+                        class="fa-solid fa-backward"></i></a>
                 @endif
 
                 <!-- Page Numbers -->
@@ -419,10 +422,12 @@
                 <!-- Next Page Button -->
                 @if($sachs->hasMorePages())
                 <a href="{{ $sachs->nextPageUrl() }}"
-                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-forward"></i></a>
+                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i
+                        class="fa-solid fa-forward"></i></a>
                 @else
                 <span
-                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i class="fa-solid fa-forward"></i></span>
+                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i
+                        class="fa-solid fa-forward"></i></span>
                 @endif
             </div>
         </div>

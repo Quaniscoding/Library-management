@@ -50,10 +50,11 @@ class RolesAndPermissionsSeeder extends Seeder
         // Tạo tài khoản mẫu
         $users = [
             ['name' => 'Quân', 'email' => 'vquan.dev@gmail.com', 'password' => 'vanquan2509', 'role' => 'admin'],
+            ['name' => 'Admin', 'email' => 'admin@gmail.com', 'password' => 'password', 'role' => 'admin'],
             ['name' => 'Hoàng', 'email' => 'nguyenvanhoang130820@gmail.com', 'password' => 'vanhoang123', 'role' => 'admin'],
-            ['name' => 'Librarian User', 'email' => 'librarian@example.com', 'password' => 'password', 'role' => 'librarian'],
-            ['name' => 'Teacher User', 'email' => 'teacher@example.com', 'password' => 'password', 'role' => 'teacher'],
-            ['name' => 'Student User', 'email' => 'student@example.com', 'password' => 'password', 'role' => 'student']
+            ['name' => 'Librarian User', 'email' => 'librarian@gmail.com', 'password' => 'password', 'role' => 'librarian'],
+            ['name' => 'Teacher User', 'email' => 'teacher@gmail.com', 'password' => 'password', 'role' => 'teacher'],
+            ['name' => 'Student User', 'email' => 'student@gmail.com', 'password' => 'password', 'role' => 'student']
         ];
 
         foreach ($users as $userData) {

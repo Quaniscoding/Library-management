@@ -32,6 +32,7 @@ class NganhFactory extends Factory
             'Trí Tuệ Nhân Tạo',
             'Khoa Học Dữ Liệu',
             'Công Nghệ Đa Phương Tiện',
+            'Marketing',
         ];
 
         return [

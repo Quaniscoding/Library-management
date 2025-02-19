@@ -26,10 +26,14 @@ class SinhvienLogin extends Component
             'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
         ]);
 
-        // Thử đăng nhập với guard 'sinhvien'
-        if (Auth::guard('student')->attempt(['email' => $this->email, 'password' => $this->password]) || Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        if (Auth::guard('student')->attempt(['email' => $this->email, 'password' => $this->password])) {
             $flasher->addSuccess('Đăng nhập thành công!');
+            // Nếu đăng nhập bằng tài khoản sinh viên, chuyển hướng đến trang chủ (hoặc trang phù hợp)
             return redirect()->intended('/');
+        } elseif (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+            $flasher->addSuccess('Đăng nhập thành công!');
+            // Nếu đăng nhập bằng tài khoản auth (admin), chuyển hướng đến /admin/dashboard
+            return redirect()->intended('/admin');
         } else {
             $flasher->addError('Email hoặc mật khẩu không đúng!');
         }

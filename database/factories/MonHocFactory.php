@@ -17,9 +17,16 @@ class MonHocFactory extends Factory
     public function definition(): array
     {
         return [
-            'ten_mon' => $this->faker->randomElement(['Toán Học', 'Vật Lý', 'Hóa Học', 'Sinh Học', 'Lịch Sử']),
+            'ten_mon' => $this->faker->randomElement([
+                'Quản trị kinh doanh',
+                'Marketing',
+                'Kế toán',
+                'Công nghệ thông tin',
+                'Ngôn ngữ Anh',
+                'Du lịch',
+                'Luật kinh tế'
+            ]),
             'nganh_id' => \App\Models\Nganh::inRandomOrder()->first()->id ?? null,
         ];
     }
-
 }

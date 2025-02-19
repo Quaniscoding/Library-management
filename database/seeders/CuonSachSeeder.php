@@ -13,6 +13,6 @@ class CuonSachSeeder extends Seeder
      */
     public function run(): void
     {
-        CuonSach::factory()->count(20)->create();
+        CuonSach::factory()->count(30)->create();
     }
 }

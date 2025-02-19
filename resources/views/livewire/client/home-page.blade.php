@@ -2,7 +2,6 @@
     <!-- Header -->
     @livewire('client.components.header')
 
-    <!-- Nội dung chính -->
     <main class="mx-auto mt-0 pt-24 p-6 bg-blue-200 shadow-lg rounded-lg dark:bg-blue-900 dark:shadow-2xl">
         <aside>
             <h1 class="text-4xl font-semibold text-center text-gray-800 mb-4 dark:text-white" data-aos="fade-up"
@@ -189,139 +188,187 @@
             </div>
         </div>
     </div>
+    <div class="max-w-6xl mx-auto mt-6 p-6 bg-white shadow-lg rounded-lg dark:bg-gray-800 dark:shadow-xl" wire:ignore>
+        <h2 class="text-3xl text-center font-bold text-gray-800 mb-4 dark:text-white" data-aos="fade-up"
+            data-aos-delay="200">
+            Đề xuất sách
+        </h2>
+
+        @if($recommendedBooks->isNotEmpty())
+        <div class="swiper swiperRCM" data-aos="fade-up" data-aos-delay="300">
+            <div class="swiper-wrapper">
+                @foreach($recommendedBooks as $sach)
+                <div class="swiper-slide cursor-pointer transform transition duration-300 ease-in-out hover:translate-y-2 hover:shadow-lg rounded-lg"
+                    wire:click="showSachDetails({{ $sach->id }})">
+                    <img src="{{ asset('storage/' . $sach->anh_bia) }}" alt="{{ $sach->ten_sach }}"
+                        class="rounded-lg w-full min-h-[340px] h-[340px] object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-600 dark:text-white">{{ $sach->ten_sach }}</h3>
+                        <p class="text-gray-600 dark:text-white">
+                            {{ $sach->nganh->ten_nganh ?? 'Chưa xác định ngành' }}
+                        </p>
+                    </div>
+                </div>
+
+                @endforeach
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        @else
+        <p class="text-center text-gray-600 dark:text-white">Chưa có đề xuất sách nào.</p>
+        @endif
+    </div>
 
     @livewire('client.components.footer')
 
     <!-- Custom -->
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var swiper = new Swiper(".mySwiper", {
-            loop: true,
-            spaceBetween: 10,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
+        document.addEventListener("DOMContentLoaded", function() {
+            var swiper = new Swiper(".mySwiper", {
+                loop: true,
+                spaceBetween: 10,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+            var swiper = new Swiper(".swiperRCM", {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                },
+            });
         });
-    });
 
-    Animation
-    document.addEventListener("DOMContentLoaded", function() {
-        AOS.init({
-            duration: 1200, // Thời gian hiệu ứng
-            easing: "ease-in-out", // Hiệu ứng mượt
-            once: true, // Chạy 1 lần khi xuất hiện
+        Animation
+        document.addEventListener("DOMContentLoaded", function() {
+            AOS.init({
+                duration: 1200, // Thời gian hiệu ứng
+                easing: "ease-in-out", // Hiệu ứng mượt
+                once: true, // Chạy 1 lần khi xuất hiện
+            });
         });
-    });
     </script>
 
     <style>
-    .wave-effect {
-        display: inline-block;
-        animation: wave 2s infinite ease-in-out;
-        text-shadow: 2px 2px 5px rgba(255, 140, 0, 0.6);
-    }
-
-    @keyframes wave {
-
-        0%,
-        100% {
-            transform: translateY(0);
+        .wave-effect {
+            display: inline-block;
+            animation: wave 2s infinite ease-in-out;
             text-shadow: 2px 2px 5px rgba(255, 140, 0, 0.6);
         }
 
-        50% {
-            transform: translateY(-5px);
-            text-shadow: 3px 3px 10px rgba(255, 140, 0, 1);
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                text-shadow: 2px 2px 5px rgba(255, 140, 0, 0.6);
+            }
+
+            50% {
+                transform: translateY(-5px);
+                text-shadow: 3px 3px 10px rgba(255, 140, 0, 1);
+            }
         }
-    }
 
-    /* Sử dụng width: 100% và max-width cho input để tự động co giãn */
-    .input[type="text"] {
-        display: block;
-        color: rgb(34, 34, 34);
-        background: linear-gradient(142.99deg, rgba(217, 217, 217, 0.63) 15.53%, rgba(243, 243, 243, 0.63) 88.19%);
-        box-shadow: 0px 12px 24px -1px rgba(0, 0, 0, 0.18);
-        border-color: rgba(7, 4, 14, 0);
-        border-radius: 50px;
-        margin: 20px 0;
-        padding: 18px 15px;
-        outline: none;
-        text-align: center;
-        width: 100%;
-        max-width: 400px;
-        transition: 0.5s;
-        height: 50px;
-    }
-
-    /* Trên màn hình lớn, input mở rộng khi hover/focus */
-    .input[type="text"]:hover {
-        max-width: 440px;
-    }
-
-    .input[type="text"]:focus {
-        max-width: 480px;
-    }
-
-    /* Đối với màn hình nhỏ, giữ kích thước input ổn định */
-    @media (max-width: 640px) {
+        /* Sử dụng width: 100% và max-width cho input để tự động co giãn */
         .input[type="text"] {
-            max-width: 90%;
+            display: block;
+            color: rgb(34, 34, 34);
+            background: linear-gradient(142.99deg, rgba(217, 217, 217, 0.63) 15.53%, rgba(243, 243, 243, 0.63) 88.19%);
+            box-shadow: 0px 12px 24px -1px rgba(0, 0, 0, 0.18);
+            border-color: rgba(7, 4, 14, 0);
+            border-radius: 50px;
+            margin: 20px 0;
+            padding: 18px 15px;
+            outline: none;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            transition: 0.5s;
+            height: 50px;
         }
 
-        .input[type="text"]:hover,
+        /* Trên màn hình lớn, input mở rộng khi hover/focus */
+        .input[type="text"]:hover {
+            max-width: 440px;
+        }
+
         .input[type="text"]:focus {
-            max-width: 90%;
+            max-width: 480px;
         }
-    }
 
-    /* Autocomplete list tự động co giãn */
-    .autocomplete-list {
-        border: 1px solid #e2e8f0;
-        border-radius: 15px;
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-        background: #fff;
-        margin-top: 80px;
-        overflow: hidden;
-        width: 100%;
-        max-width: 400px;
-    }
+        /* Đối với màn hình nhỏ, giữ kích thước input ổn định */
+        @media (max-width: 640px) {
+            .input[type="text"] {
+                max-width: 90%;
+            }
 
-    @media (max-width: 640px) {
+            .input[type="text"]:hover,
+            .input[type="text"]:focus {
+                max-width: 90%;
+            }
+        }
+
+        /* Autocomplete list tự động co giãn */
         .autocomplete-list {
-            max-width: 90%;
-            margin-top: 60px;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            margin-top: 80px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
         }
-    }
 
-    .autocomplete-item {
-        transition: background-color 0.3s;
-    }
+        @media (max-width: 640px) {
+            .autocomplete-list {
+                max-width: 90%;
+                margin-top: 60px;
+            }
+        }
 
-    .autocomplete-item:hover {
-        background: linear-gradient(142.99deg, rgba(217, 217, 217, 0.63) 15.53%, rgba(243, 243, 243, 0.63) 88.19%);
-    }
+        .autocomplete-item {
+            transition: background-color 0.3s;
+        }
 
-    .book-item {
-        border-left: 4px solid #3182ce;
-    }
+        .autocomplete-item:hover {
+            background: linear-gradient(142.99deg, rgba(217, 217, 217, 0.63) 15.53%, rgba(243, 243, 243, 0.63) 88.19%);
+        }
 
-    .document-item {
-        border-left: 4px solid #38a169;
-    }
+        .book-item {
+            border-left: 4px solid #3182ce;
+        }
 
-    .item-label {
-        font-weight: bold;
-        margin-right: 4px;
-    }
+        .document-item {
+            border-left: 4px solid #38a169;
+        }
+
+        .item-label {
+            font-weight: bold;
+            margin-right: 4px;
+        }
     </style>
 
 </div>

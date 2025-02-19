@@ -13,6 +13,6 @@ class MonHocSeeder extends Seeder
      */
     public function run(): void
     {
-        MonHoc::factory()->count(10)->create();
+        MonHoc::factory()->count(7)->create();
     }
 }

@@ -13,6 +13,6 @@ class DatSachSeeder extends Seeder
      */
     public function run(): void
     {
-        DatSach::factory()->count(10)->create();
+        DatSach::factory()->count(50)->create();
     }
 }

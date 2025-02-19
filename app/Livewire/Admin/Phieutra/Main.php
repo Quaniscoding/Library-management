@@ -92,8 +92,7 @@ class Main extends Component
 
             // Lấy thông tin sách thông qua bản ghi đặt sách (DatSach)
             // (Giả sử sinh viên chỉ có 1 bản ghi đặt sách gần đây)
-            $sinhVien = Auth::guard('student')->user();
-            $datSachRecord = DatSach::where('sinh_vien_id', $sinhVien->id)
+            $datSachRecord = DatSach::where('sinh_vien_id', $phieuMuon->sinh_vien_id)
                 ->orderBy('ngay_dat', 'desc')
                 ->first();
 

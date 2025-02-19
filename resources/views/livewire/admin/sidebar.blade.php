@@ -6,9 +6,11 @@
         <div>
             <div class="p-4 border-b border-gray-700 dark:border-gray-600 flex justify-between items-center">
                 <!-- Logo và tiêu đề chỉ hiện khi chưa collapse -->
-                <div class="flex flex-col items-center space-x-2" x-show="!sidebarCollapsed">
+                <div class="flex flex-col items-center space-x-2 cursor-pointer" x-show="!sidebarCollapsed">
                     <img src="/images/logo.png" alt="Logo" class="h-16">
-                    <h1 class="text-lg font-bold text-gray-900 dark:text-white">Quản lý thư viện</h1>
+                    <h1 class="text-lg font-bold text-gray-900 dark:text-white">
+                        <a href="/admin">Quản lý thư viện</a>
+                    </h1>
                 </div>
                 <!-- Nút Toggle -->
                 <button @click="sidebarCollapsed = !sidebarCollapsed"

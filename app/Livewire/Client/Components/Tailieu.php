@@ -31,15 +31,15 @@ class Tailieu extends Component
     public $nams = [];
     public $start_year;
     public $end_year;
-    public $showTacGias = false;
-    public $showNhaXuatBans = false;
-    public $showMons = false;
-    public $showKhoas = false;
-    public $showNganhs = false;
-    public $showTheLoais = false;
+    public $showTacGias = true;
+    public $showNhaXuatBans = true;
+    public $showMons = true;
+    public $showKhoas = true;
+    public $showNganhs = true;
+    public $showTheLoais = true;
     public $showNams = true;
     public $sort = 'latest';
-    public $showModal = false;
+    public $showModal = true;
     public $search;
     public $selectedTailieumo = null;
     public function mount()
