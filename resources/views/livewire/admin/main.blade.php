@@ -7,14 +7,14 @@
         @livewire('tai-lieu-count')
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @livewire('charts.sach-chart')
+        @livewire('charts.muon-tra-sach-chart')
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @livewire('table.new-books')
         @livewire('table.bi-phat')
         @livewire('table.new-dat-sach')
         @livewire('table.new-de-xuat')
         @livewire('table.new-phan-hoi')
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        @livewire('charts.sach-chart')
-        @livewire('charts.muon-tra-sach-chart')
     </div>
 </main>

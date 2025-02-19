@@ -40,7 +40,7 @@
                         window.location.pathname.startsWith('/admin/manage-rolehaspermission') }">
                         <button @click="open = !open"
                             class="flex justify-between items-center w-full px-3 py-2 text-left rounded-md text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700">
-                            Người dùng
+                            Người dùng hệ thống
                             <span x-show="!open">▼</span>
                             <span x-show="open">▲</span>
                         </button>
@@ -48,22 +48,22 @@
                             <a href="/admin/manage-user"
                                 class="block px-3 py-2 rounded-md 
             {{ request()->is('admin/manage-user') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
-                                Users
+                                Người dùng
                             </a>
                             <a href="/admin/manage-roles"
                                 class="block px-3 py-2 rounded-md 
             {{ request()->is('admin/manage-roles') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
-                                Roles
+                                Vai trò
                             </a>
                             <a href="/admin/manage-permissions"
                                 class="block px-3 py-2 rounded-md 
             {{ request()->is('admin/manage-permissions') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
-                                Permissions
+                                Phân quyền
                             </a>
                             <a href="/admin/manage-rolehaspermission"
                                 class="block px-3 py-2 rounded-md 
             {{ request()->is('admin/manage-rolehaspermission') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
-                                Role has Permission
+                                Vai trò được phân quyền
                             </a>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                             window.location.pathname.startsWith('/admin/manage-datsach') }">
                         <button @click="open = !open"
                             class="flex justify-between items-center w-full px-3 py-2 text-left rounded-md text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700">
-                            Sách
+                            Quản lý sách
                             <span x-show="!open">▼</span>
                             <span x-show="open">▲</span>
                         </button>
@@ -137,7 +137,7 @@
                             <a href="/admin/manage-sach"
                                 class="block px-3 py-2 rounded-md 
             {{ request()->is('admin/manage-sach') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
-                                Sách
+                                Danh mục sách
                             </a>
                             <a href="/admin/manage-datsach"
                                 class="block px-3 py-2 rounded-md 

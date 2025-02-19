@@ -124,10 +124,10 @@ class Main extends Component
         // Lấy dữ liệu cho các select filter
         $tacgias = TacGia::all();
         $nhaxuatbans = NhaXuatBan::all();
-        $theloais   = TheLoai::all();
-        $monhocs    = MonHoc::all();
-        $nganhs     = Nganh::all();
-        $khoas      = Khoa::all();
+        $theloais = TheLoai::all();
+        $monhocs = MonHoc::all();
+        $nganhs = Nganh::all();
+        $khoas = Khoa::all();
 
         return view('livewire.admin.sach.main', compact(
             'sachs',
