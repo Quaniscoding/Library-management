@@ -83,3 +83,12 @@ Khi pull dự án về bị báo lỗi not found là do :
 
 
 php artisan storage:link : liên kết thư mục storage/app/public với thư mục public/storage, cho phép bạn truy cập hình ảnh qua đường dẫn /storage/.
+
+
+// chỉnh sửa 19/2
+    admin dashboard sửa lại giao diện tiếng việt toàn bộ
+    Màu sắc ko thay đổi
+    người dùng - > người dùng hệ thống
+    sách -> quản lý sách
+        sách -> danh mục sách
+        vị trí sách -> vị trí sách trong thư viện
