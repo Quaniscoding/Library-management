@@ -121,6 +121,7 @@
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Thể Loại</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Năm Xuất Bản</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Số Trang</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Số Lượng</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">ISBN</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Môn</th>
                     <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 dark:text-white">Ngành</th>
@@ -164,6 +165,10 @@
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
+                        {{ $sach->so_luong }}
+                    </td>
+                    <td
+                        class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
                         {{ $sach->isbn }}
                     </td>
                     <td
@@ -172,7 +177,7 @@
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->nganh->ten_nganh }}
+                        {{ $sach->nganh->ten_nganh ??""}}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
@@ -384,11 +389,11 @@
             <!-- Previous Page Button -->
             @if($sachs->onFirstPage())
             <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed">Previous</span>
+                class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed"><i class="fa-solid fa-backward"></i></span>
             @else
             <a href="{{ $sachs->previousPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-500 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </a>
             @endif
 
@@ -404,7 +409,7 @@
             @if($sachs->hasMorePages())
             <a href="{{ $sachs->nextPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-500 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </a>
             @else
             <span class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed">Next</span>

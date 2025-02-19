@@ -121,7 +121,7 @@ class Sach extends Component
             }
         ]);
         // Thực thi query
-        $sachs = $query->paginate(20);
+        $sachs = $query->paginate(10);
         return view('livewire.client.components.sach', [
             'sachs' => $sachs,
             'tacgias' => $this->tacgias,

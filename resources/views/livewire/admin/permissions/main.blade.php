@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200" wire:poll.10s>
     <h1 class="text-center font-bold text-2xl mb-6 dark:text-white">Quản lý Permission</h1>
 
     <!-- Button Tạo Permission Mới -->
@@ -34,9 +34,11 @@
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">{{ $permission->id }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $permission->name }}</td>
+                        {{ $permission->name }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $permission->guard_name }}</td>
+                        {{ $permission->guard_name }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 flex justify-center space-x-2 dark:border-gray-600">
                         <button wire:click="editPermission({{ $permission->id }})"
                             class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700">
@@ -122,12 +124,12 @@
             @if($permissions->onFirstPage())
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </span>
             @else
             <a href="{{ $permissions->previousPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </a>
             @endif
 
@@ -149,12 +151,12 @@
             @if($permissions->hasMorePages())
             <a href="{{ $permissions->nextPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </a>
             @else
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </span>
             @endif
         </div>

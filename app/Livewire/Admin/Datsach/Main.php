@@ -51,8 +51,6 @@ class Main extends Component
     }
     public function resetForm()
     {
-        $this->ten_nganh = null;
-        $this->khoa_id = null;
         $this->isEditMode = false;
     }
 
@@ -61,22 +59,27 @@ class Main extends Component
         $this->validate([
             'sinh_vien_id' => 'required',
             'cuon_sach_id' => 'required',
-            'ngay_dat' => 'required',
-            'tinh_trang' => 'required|in:DangDat,DaNhan,Huy',
+            'ngay_dat'     => 'required',
+            'tinh_trang'   => 'required|in:DangDat,DaNhan,Huy',
         ]);
-        $this->ngay_dat   = Carbon::createFromFormat('d/m/Y', $this->ngay_dat);
+
+        $formattedNgayDat = $this->ngay_dat instanceof \DateTimeInterface
+            ? $this->ngay_dat->format('Y-m-d')
+            : $this->ngay_dat;
 
         DatSach::create([
             'sinh_vien_id' => $this->sinh_vien_id,
             'cuon_sach_id' => $this->cuon_sach_id,
-            'ngay_dat' => $this->ngay_dat,
-            'tinh_trang' => $this->tinh_trang,
+            'ngay_dat'     => $formattedNgayDat,
+            'tinh_trang'   => $this->tinh_trang,
         ]);
+
         $flasher->addSuccess('Tạo đặt sách thành công!');
 
         $this->closeModal();
         $this->resetForm();
     }
+
 
     public function editDatSach($id)
     {
@@ -101,11 +104,13 @@ class Main extends Component
             'tinh_trang' => 'required|in:DangDat,DaNhan,Huy',
         ]);
         $datsach = DatSach::findOrFail($this->id);
-        $this->ngay_dat   = Carbon::createFromFormat('d/m/Y', $this->ngay_dat);
+        $formattedNgayDat = $this->ngay_dat instanceof \DateTimeInterface
+            ? $this->ngay_dat->format('Y-m-d')
+            : $this->ngay_dat;
         $datsach->update([
             'sinh_vien_id' => $this->sinh_vien_id,
             'cuon_sach_id' => $this->cuon_sach_id,
-            'ngay_dat' => $this->ngay_dat,
+            'ngay_dat' => $formattedNgayDat,
             'tinh_trang' => $this->tinh_trang,
         ]);
         $flasher->addSuccess('Cập nhật đặt sách thành công!');

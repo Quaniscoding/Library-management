@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200" wire:poll.10s>
     <h1 class="text-center font-bold text-2xl mb-6 dark:text-white">Quản lý phản hồi sách, tài liệu</h1>
 
     <!-- Bảng Quản lý phản hồi sách, tài liệu -->
@@ -27,9 +27,11 @@
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">{{ $phanhoi->id }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $phanhoi->sinhvien->ho_ten }}</td>
+                        {{ $phanhoi->sinhvien->ho_ten }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $phanhoi->noi_dung }}</td>
+                        {{ $phanhoi->noi_dung }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
                         {{ match ($phanhoi->trang_thai) {
                                 'ChuaXuLy' => 'Chưa xử lý',
@@ -112,10 +114,10 @@
             <!-- Previous Page Button -->
             @if($phanhois->onFirstPage())
             <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300">Previous</span>
+                class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300"><i class="fa-solid fa-backward"></i></span>
             @else
             <a href="{{ $phanhois->previousPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Previous</a>
+                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-backward"></i></a>
             @endif
 
             <!-- Page Numbers -->
@@ -129,10 +131,10 @@
             <!-- Next Page Button -->
             @if($phanhois->hasMorePages())
             <a href="{{ $phanhois->nextPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Next</a>
+                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-forward"></i></a>
             @else
             <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300">Next</span>
+                class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300"><i class="fa-solid fa-forward"></i></span>
             @endif
         </div>
     </div>

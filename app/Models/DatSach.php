@@ -13,7 +13,8 @@ class DatSach extends Model
         'sinh_vien_id',
         'cuon_sach_id',
         'ngay_dat',
-        'tinh_trang'
+        'tinh_trang',
+        'so_luong'
     ];
 
     public function sinh_vien_id()

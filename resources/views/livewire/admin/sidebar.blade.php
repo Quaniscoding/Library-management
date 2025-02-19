@@ -1,4 +1,4 @@
-<div x-data="{ sidebarCollapsed: false }" class="flex flex-col md:flex-row h-screen">
+<div x-data="{ sidebarCollapsed: false }" class="flex flex-col md:flex-row h-screen border rounded-lg">
     <!-- Sidebar -->
     <aside :class="sidebarCollapsed ? 'w-14' : 'w-64'"
         class="bg-white dark:bg-gray-700 dark:text-white min-h-[80vh] flex flex-col justify-between shadow-md rounded-md transition-all duration-300">
@@ -17,17 +17,16 @@
                     <i x-show="!sidebarCollapsed" class="fa-solid fa-circle-chevron-left"></i>
                     <!-- Icon mở khi sidebar đang collapse -->
                     <i x-show="sidebarCollapsed" class="fa-solid fa-circle-chevron-right"></i>
-
                 </button>
             </div>
 
             <!-- Navigation (chỉ hiển thị khi chưa collapse) -->
-            <div x-show="!sidebarCollapsed" class="overflow-y-auto" style="max-height: calc(91vh - 200px);">
+            <div x-show="!sidebarCollapsed" class="overflow-y-auto" style="max-height: calc(88vh - 200px);">
                 <nav class="flex flex-col p-4 space-y-2 overflow-auto">
                     <!-- Dashboard -->
                     <a href="/admin"
                         class="block px-3 py-2 rounded-md 
-        {{ request()->is('admin') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+        {{ request()->is('admin') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                         Dashboard
                     </a>
 
@@ -46,22 +45,22 @@
                         <div x-show="open" class="space-y-2 pl-4">
                             <a href="/admin/manage-user"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-user') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-user') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Users
                             </a>
                             <a href="/admin/manage-roles"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-roles') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-roles') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Roles
                             </a>
                             <a href="/admin/manage-permissions"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-permissions') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-permissions') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Permissions
                             </a>
                             <a href="/admin/manage-rolehaspermission"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-rolehaspermission') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-rolehaspermission') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Role has Permission
                             </a>
                         </div>
@@ -78,7 +77,7 @@
                         <div x-show="open" class="space-y-2 pl-4">
                             <a href="/admin/manage-sinhvien"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-sinhvien') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-sinhvien') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Sinh viên
                             </a>
                         </div>
@@ -98,22 +97,22 @@
                         <div x-show="open" class="space-y-2 pl-4">
                             <a href="/admin/manage-khoa"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-khoa') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-khoa') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Khoa
                             </a>
                             <a href="/admin/manage-nganh"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-nganh') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-nganh') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Ngành
                             </a>
                             <a href="/admin/manage-bophan"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-bophan') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-bophan') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Bộ phận
                             </a>
                             <a href="/admin/manage-nhanvien"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-nhanvien') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-nhanvien') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Nhân viên
                             </a>
                         </div>
@@ -135,28 +134,28 @@
                         <div x-show="open" class="space-y-2 pl-4">
                             <a href="/admin/manage-sach"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-sach') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-sach') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Sách
                             </a>
                             <a href="/admin/manage-datsach"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-datsach') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-datsach') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Đặt sách
                             </a>
                             <a href="/admin/manage-vitrisach"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-vitrisach') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
-                                Vị trí sách
+            {{ request()->is('admin/manage-vitrisach') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+                                Vị trí thư viện
                             </a>
                             <a href="/admin/manage-monhoc"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-monhoc') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-monhoc') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Môn Học
                             </a>
                             <a href="/admin/manage-cuonsach"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-cuonsach') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
-                                Cuốn Sách
+            {{ request()->is('admin/manage-cuonsach') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+                                Vị trí sách trong thư viện
                             </a>
                         </div>
                     </div>
@@ -175,22 +174,22 @@
                         <div x-show="open" class="space-y-2 pl-4">
                             <a href="/admin/manage-phieumuon"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-phieumuon') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-phieumuon') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Phiếu mượn
                             </a>
                             <a href="/admin/manage-phieutra"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-phieutra') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-phieutra') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Phiếu trả
                             </a>
                             <a href="/admin/manage-phat"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-phat') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-phat') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Phạt
                             </a>
                             <a href="/admin/manage-hoadonphat"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-hoadonphat') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-hoadonphat') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Hóa đơn phạt
                             </a>
                         </div>
@@ -207,7 +206,7 @@
                         <div x-show="open" class="space-y-2 pl-4">
                             <a href="/admin/manage-tailieumo"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-tailieumo') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-tailieumo') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Tài liệu mở
                             </a>
                         </div>
@@ -228,27 +227,27 @@
                         <div x-show="open" class="space-y-2 pl-4">
                             <a href="/admin/manage-nhaxuatban"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-nhaxuatban') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-nhaxuatban') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Nhà xuất bản
                             </a>
                             <a href="/admin/manage-tacgia"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-tacgia') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-tacgia') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Tác giả
                             </a>
                             <a href="/admin/manage-theloai"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-theloai') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-theloai') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Thể loại
                             </a>
                             <a href="/admin/manage-dexuat"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-dexuat') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-dexuat') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Quản lý đề xuất sách, tài liệu
                             </a>
                             <a href="/admin/manage-phanhoi"
                                 class="block px-3 py-2 rounded-md 
-            {{ request()->is('admin/manage-phanhoi') ? 'bg-gray-400 text-blue-500 dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+            {{ request()->is('admin/manage-phanhoi') ? 'bg-gray-400 text-white dark:bg-gray-600 dark:text-blue-300' : 'text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700' }}">
                                 Quản lý phản hồi
                             </a>
                         </div>

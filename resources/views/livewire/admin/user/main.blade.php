@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-gray-200" wire:poll.10s>
     <h1 class="text-center font-bold text-2xl mb-6 dark:text-white">Quản lý người dùng</h1>
 
     <!-- Button Tạo Người Dùng Mới -->
@@ -42,9 +42,11 @@
                     </td>
                     <td class="border border-gray-300 px-4 py-2 dark:border-gray-600">{{ $user->password }}</td>
                     <td class="border border-gray-300 px-4 py-2 dark:border-gray-600">
-                        {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}</td>
+                        {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 dark:border-gray-600">
-                        {{ \Carbon\Carbon::parse($user->createdupdated_at_at)->format('d/m/Y') }}</td>
+                        {{ \Carbon\Carbon::parse($user->createdupdated_at_at)->format('d/m/Y') }}
+                    </td>
                     <td class="border border-gray-300 px-4 py-2 flex justify-center space-x-2 dark:border-gray-600">
                         <button wire:click="editUser({{ $user->id }})"
                             class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700">
@@ -135,12 +137,12 @@
             @if($users->onFirstPage())
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </span>
             @else
             <a href="{{ $users->previousPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
-                Previous
+                <i class="fa-solid fa-backward"></i>
             </a>
             @endif
 
@@ -162,12 +164,12 @@
             @if($users->hasMorePages())
             <a href="{{ $users->nextPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </a>
             @else
             <span
                 class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300">
-                Next
+                <i class="fa-solid fa-forward"></i>
             </span>
             @endif
         </div>

@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100" wire:poll.10s>
     <h1 class="text-center font-bold text-2xl mb-6">Quản Lý Môn Học</h1>
 
     <!-- Button Tạo Môn Học Mới -->
@@ -35,7 +35,7 @@
                     <td class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">{{ $monhoc->ten_mon }}
                     </td>
                     <td class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">
-                        {{ $monhoc->nganh->ten_nganh }}
+                        {{ $monhoc->nganh->ten_nganh??"" }}
                     </td>
                     <td class="border border-gray-300 dark:border-gray-600 px-4 py-2 flex justify-center space-x-2">
                         <button wire:click="editMonHoc({{ $monhoc->id }})"
@@ -126,10 +126,10 @@
             <!-- Previous Page Button -->
             @if($monhocs->onFirstPage())
             <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed">Previous</span>
+                class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed"><i class="fa-solid fa-backward"></i></span>
             @else
             <a href="{{ $monhocs->previousPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-500 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600">Previous</a>
+                class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-500 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600"><i class="fa-solid fa-backward"></i></a>
             @endif
 
             <!-- Page Numbers -->
@@ -146,9 +146,9 @@
             <!-- Next Page Button -->
             @if($monhocs->hasMorePages())
             <a href="{{ $monhocs->nextPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-500 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600">Next</a>
+                class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-500 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600"><i class="fa-solid fa-forward"></i></a>
             @else
-            <span class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed">Next</span>
+            <span class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed"><i class="fa-solid fa-forward"></i></span>
             @endif
         </div>
     </div>

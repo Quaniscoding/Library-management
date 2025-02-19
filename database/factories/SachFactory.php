@@ -23,11 +23,11 @@ class SachFactory extends Factory
             'the_loai_id' => \App\Models\TheLoai::inRandomOrder()->first()->id,
             'nam_xuat_ban' => $this->faker->year(),
             'so_trang' => $this->faker->numberBetween(50, 1000),
+            'so_luong' => $this->faker->numberBetween(1, 30),
             'isbn' => $this->faker->unique()->isbn13(),
             'mon_hoc_id' => \App\Models\MonHoc::inRandomOrder()->first()->id,
             'nganh_id' => \App\Models\Nganh::inRandomOrder()->first()->id,
             'khoa_id' => \App\Models\Khoa::inRandomOrder()->first()->id,
         ];
     }
-
 }

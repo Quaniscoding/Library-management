@@ -31,7 +31,9 @@ class TaiKhoan extends Component
     public function updateProfile(FlasherInterface $flasher)
     {
         $sinhVien = Auth::guard('student')->user();
-        $this->ngay_sinh   = Carbon::createFromFormat('d/m/Y', $this->ngay_sinh);
+        if ($this->ngay_sinh) {
+            $this->ngay_sinh   = Carbon::createFromFormat('d/m/Y', $this->ngay_sinh);
+        }
         $sinhVien->update([
             'ho_ten' => $this->ho_ten,
             'ngay_sinh' => $this->ngay_sinh,

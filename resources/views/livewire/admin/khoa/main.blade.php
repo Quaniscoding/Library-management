@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-white">
+<main class="flex-1 overflow-y-auto p-6 bg-white dark:bg-gray-900 dark:text-white" wire:poll.10s>
     <h1 class="text-center font-bold text-2xl mb-6 text-gray-900 dark:text-white">Quản lý Khoa</h1>
 
     <!-- Button Tạo Khoa Mới -->
@@ -34,19 +34,24 @@
                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-800">
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-900 dark:text-gray-100">
-                        {{ $khoa->id }}</td>
+                        {{ $khoa->id }}
+                    </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-900 dark:text-gray-100">
-                        {{ $khoa->ten_khoa }}</td>
+                        {{ $khoa->ten_khoa }}
+                    </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-900 dark:text-gray-100">
-                        {{ $khoa->dia_chi }}</td>
+                        {{ $khoa->dia_chi }}
+                    </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-900 dark:text-gray-100">
-                        {{ $khoa->sdt }}</td>
+                        {{ $khoa->sdt }}
+                    </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-900 dark:text-gray-100">
-                        {{ $khoa->email }}</td>
+                        {{ $khoa->email }}
+                    </td>
                     <td class="border border-gray-300 dark:border-gray-600 px-4 py-2 flex justify-center space-x-2">
                         <button wire:click="editKhoa({{ $khoa->id }})"
                             class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 dark:hover:bg-yellow-600">Sửa</button>
@@ -138,10 +143,10 @@
             <!-- Previous Page Button -->
             @if($khoas->onFirstPage())
             <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed">Previous</span>
+                class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed"><i class="fa-solid fa-backward"></i></span>
             @else
             <a href="{{ $khoas->previousPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700">Previous</a>
+                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"><i class="fa-solid fa-backward"></i></a>
             @endif
 
             <!-- Page Numbers -->
@@ -159,9 +164,9 @@
             <!-- Next Page Button -->
             @if($khoas->hasMorePages())
             <a href="{{ $khoas->nextPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700">Next</a>
+                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"><i class="fa-solid fa-forward"></i></a>
             @else
-            <span class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed">Next</span>
+            <span class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed"><i class="fa-solid fa-forward"></i></span>
             @endif
         </div>
     </div>
