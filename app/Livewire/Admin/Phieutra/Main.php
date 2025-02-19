@@ -64,22 +64,21 @@ class Main extends Component
         // Validate dữ liệu đầu vào
         $this->validate([
             'phieu_muon_id' => 'required|exists:phieu_muons,id',
-            'ngay_tra'      => 'required',
-            'tinh_trang'    => 'required',
+            'ngay_tra' => 'required',
         ]);
-        $this->ngay_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_tra);
+        $this->ngay_tra = Carbon::createFromFormat('d/m/Y', $this->ngay_tra);
         // Tạo phiếu trả
         $phieuTra = PhieuTra::create([
             'phieu_muon_id' => $this->phieu_muon_id,
-            'ngay_tra'      => $this->ngay_tra,
-            'tinh_trang'    => $this->tinh_trang,
+            'ngay_tra' => $this->ngay_tra,
+            'tinh_trang' => 'HoanThanh',
         ]);
 
         // Lấy phiếu mượn tương ứng để so sánh ngày hẹn trả
         $phieuMuon = PhieuMuon::find($this->phieu_muon_id);
 
         // Chuyển đổi ngày trả và ngày hẹn trả sang đối tượng Carbon
-        $ngayTra    = Carbon::parse($this->ngay_tra);
+        $ngayTra = Carbon::parse($this->ngay_tra);
         $ngayHenTra = Carbon::parse($phieuMuon->ngay_hen_tra);
         $phieuMuon->update(['ngay_tra' => $ngayTra, 'tinh_trang' => 'DaTra']);
 
@@ -104,16 +103,16 @@ class Main extends Component
             $phat = Phat::create([
                 'phieu_tra_id' => $phieuTra->id,
                 'sinh_vien_id' => $phieuMuon->sinh_vien_id,
-                'sach_id'      => $sach_id,
-                'so_tien'      => $soTien,
-                'ly_do'        => "Trễ trả sách: {$soNgayTre} ngày",
-                'tinh_trang'   => 'ChuaThanhToan',
+                'sach_id' => $sach_id,
+                'so_tien' => $soTien,
+                'ly_do' => "Trễ trả sách: {$soNgayTre} ngày",
+                'tinh_trang' => 'ChuaThanhToan',
             ]);
             HoaDonPhat::create([
-                'phat_id'         => $phat->id,
-                'ngay_lap'        => Carbon::now(),
+                'phat_id' => $phat->id,
+                'ngay_lap' => Carbon::now(),
                 'ngay_thanh_toan' => null,
-                'trang_thai'      => 'ChuaThanhToan',
+                'trang_thai' => 'ChuaThanhToan',
             ]);
         }
         $flasher->addSuccess('Tạo phiếu trả thành công!');
@@ -128,7 +127,6 @@ class Main extends Component
         $this->id = $phieutra->id;
         $this->phieu_muon_id = $phieutra->phieu_muon_id;
         $this->ngay_tra = $phieutra->ngay_tra;
-        $this->tinh_trang = $phieutra->tinh_trang;
         $this->isEditMode = true;
         $this->openModal();
     }
@@ -138,14 +136,13 @@ class Main extends Component
         $this->validate([
             'phieu_muon_id' => 'required|exists:phieu_muons,id',
             'ngay_tra' => 'required',
-            'tinh_trang' => 'required',
         ]);
         $phieutra = PhieuTra::findOrFail($this->id);
-        $this->ngay_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_tra);
+        $this->ngay_tra = Carbon::createFromFormat('d/m/Y', $this->ngay_tra);
         $phieutra->update([
             'phieu_muon_id' => $this->phieu_muon_id,
             'ngay_tra' => $this->ngay_tra,
-            'tinh_trang' => $this->tinh_trang,
+            'tinh_trang' => 'HoanThanh',
         ]);
         $flasher->addSuccess('Cập nhật phiếu trả thành công!');
         $this->closeModal();

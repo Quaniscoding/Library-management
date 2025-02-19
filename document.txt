@@ -87,3 +87,5 @@ php artisan storage:link : liên kết thư mục storage/app/public với thư 
 
     
     // lúc push code lên sửa lại .env : DB_HOST=mysql-container DB_PASSWORD=1234
+
+

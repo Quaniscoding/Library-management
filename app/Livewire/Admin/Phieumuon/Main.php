@@ -82,16 +82,16 @@ class Main extends Component
         ]);
         $admin = Auth::guard('web')->id();
         $nhan_vien_id = NhanVien::findOrFail($admin);
-        $this->ngay_muon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
-        $this->ngay_hen_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
+        $this->ngay_muon = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
+        $this->ngay_hen_tra = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
         $exists = PhieuMuon::where('sinh_vien_id', $this->sinh_vien_id)->exists();
         if ($exists) {
             // Thêm thông báo lỗi
             $flasher->addError('Phiếu mượn đã tồn tại.');
             return;
         }
-        $this->ngay_muon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
-        $this->ngay_hen_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
+        $this->ngay_muon = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
+        $this->ngay_hen_tra = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
         PhieuMuon::create([
             'sinh_vien_id' => $this->sinh_vien_id,
             'nhan_vien_id' => $nhan_vien_id->id,
@@ -132,8 +132,8 @@ class Main extends Component
         $phieumuon = PhieuMuon::findOrFail($this->id);
         $admin = Auth::guard('web')->id();
         $nhan_vien_id = NhanVien::where('user_id', $admin)->first();
-        $this->ngay_muon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
-        $this->ngay_hen_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
+        // $this->ngay_muon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
+        // $this->ngay_hen_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
         $phieumuon->update([
             'sinh_vien_id' => $this->sinh_vien_id,
             'nhan_vien_id' => $nhan_vien_id->id,
@@ -151,16 +151,16 @@ class Main extends Component
                 : null;
             $phat = Phat::create([
                 'sinh_vien_id' => $this->sinh_vien_id,
-                'sach_id'      => $sach_id,
-                'so_tien'      => 10000,
-                'ly_do'        => "Làm mất sách",
-                'tinh_trang'   => 'ChuaThanhToan',
+                'sach_id' => $sach_id,
+                'so_tien' => 10000,
+                'ly_do' => "Làm mất sách",
+                'tinh_trang' => 'ChuaThanhToan',
             ]);
             HoaDonPhat::create([
-                'phat_id'         => $phat->id,
-                'ngay_lap'        => Carbon::now(),
+                'phat_id' => $phat->id,
+                'ngay_lap' => Carbon::now(),
                 'ngay_thanh_toan' => null,
-                'trang_thai'      => 'ChuaThanhToan',
+                'trang_thai' => 'ChuaThanhToan',
             ]);
         }
         $flasher->addSuccess('Cập nhật phiếu mượn thành công!');

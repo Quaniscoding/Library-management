@@ -105,11 +105,14 @@ class Main extends Component
             'tinh_trang' => $this->tinh_trang,
         ]);
         if ($this->tinh_trang === 'DaThanhToan') {
-            $hoadonphat = HoaDonPhat::findOrFail($this->id);
-            $hoadonphat->update([
-                'ngay_thanh_toan' => Carbon::now(),
-                'trang_thai' => 'DaThanhToan',
-            ]);
+            $hoadonphat = HoaDonPhat::where('phat_id', $this->id)->firstOrFail();
+
+            if ($hoadonphat) {
+                $hoadonphat->update([
+                    'ngay_thanh_toan' => Carbon::now(),
+                    'trang_thai' => 'DaThanhToan',
+                ]);
+            }
         }
         $flasher->addSuccess('Cập nhật phạt thành công!');
         $this->closeModal();
