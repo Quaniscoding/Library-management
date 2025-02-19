@@ -2,7 +2,7 @@
     <!-- Header với tiêu đề và nút điều hướng -->
     <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-bold text-gray-800 dark:text-white">
-            Danh sách sinh viên đặt sách gần đây
+            Sinh viên đặt sách hôm nay ({{$todayCount}})
         </h2>
         <a href="/admin/manage-datsach"
             class="bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 transition">

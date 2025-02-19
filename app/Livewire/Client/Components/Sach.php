@@ -19,6 +19,7 @@ use Livewire\WithPagination;
 class Sach extends Component
 {
     use WithPagination;
+    public $todayCount;
     public $selected_tacgias = [];
     public $selected_nhaxuatbans = [];
     public $selected_mons = [];
@@ -120,6 +121,7 @@ class Sach extends Component
                 $q->where('tinh_trang', 'Con');
             }
         ]);
+
         // Thực thi query
         $sachs = $query->paginate(10);
         return view('livewire.client.components.sach', [
@@ -129,7 +131,7 @@ class Sach extends Component
             'mons' => $this->mons,
             'khoas' => $this->khoas,
             'nganhs' => $this->nganhs,
-            'theloais' => $this->theloais
+            'theloais' => $this->theloais,
         ]);
     }
 }

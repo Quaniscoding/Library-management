@@ -12,8 +12,7 @@ class TaiLieuCount extends Component
     public function mount()
     {
         $this->TaiLieuCount = TaiLieuMo::count();
-        $colors = ['bg-blue-500', 'bg-red-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-pink-500', 'bg-indigo-500'];
-        $this->bgColor = $colors[array_rand($colors)]; // Chọn màu ngẫu nhiên
+        $this->bgColor = 'bg-orange-500';
     }
 
     public function render()
