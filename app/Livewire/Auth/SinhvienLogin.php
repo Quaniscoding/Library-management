@@ -30,11 +30,13 @@ class SinhvienLogin extends Component
             $flasher->addSuccess('Đăng nhập thành công!');
             // Nếu đăng nhập bằng tài khoản sinh viên, chuyển hướng đến trang chủ (hoặc trang phù hợp)
             return redirect()->intended('/');
-        } elseif (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
-            $flasher->addSuccess('Đăng nhập thành công!');
-            // Nếu đăng nhập bằng tài khoản auth (admin), chuyển hướng đến /admin/dashboard
-            return redirect()->intended('/admin');
-        } else {
+        }
+        //  elseif (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        //     $flasher->addSuccess('Đăng nhập thành công!');
+        //     // Nếu đăng nhập bằng tài khoản auth (admin), chuyển hướng đến /admin/dashboard
+        //     return redirect()->intended('/admin');
+        // }
+        else {
             $flasher->addError('Email hoặc mật khẩu không đúng!');
         }
     }

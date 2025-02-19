@@ -43,14 +43,16 @@ class ResetPassword extends Component
             'password' => $this->password,
             'password_confirmation' => $this->password_confirmation,
             'token' => $this->token
-        ], function (User $user, string $password) {
-            $user->forceFill([
-                'password' => Hash::make($password),
-            ])->setRememberToken(Str::random(60));
-            $user->save();
-
-            event(new PasswordReset($user));
+        ], function ($user, string $password) {
+            if ($user instanceof User && $user instanceof \App\Models\SinhVien) {
+                $user->forceFill([
+                    'password' => Hash::make($password),
+                ])->setRememberToken(Str::random(60));
+                $user->save();
+                event(new PasswordReset($user));
+            }
         });
+
 
         if ($status === Password::PASSWORD_RESET) {
             $flasher->addSuccess('Mật khẩu của bạn đã được tạo lại thành công!');

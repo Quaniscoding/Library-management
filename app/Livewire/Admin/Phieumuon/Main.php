@@ -132,8 +132,8 @@ class Main extends Component
         $phieumuon = PhieuMuon::findOrFail($this->id);
         $admin = Auth::guard('web')->id();
         $nhan_vien_id = NhanVien::where('user_id', $admin)->first();
-        $this->ngay_muon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
-        $this->ngay_hen_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
+        // $this->ngay_muon   = Carbon::createFromFormat('d/m/Y', $this->ngay_muon);
+        // $this->ngay_hen_tra   = Carbon::createFromFormat('d/m/Y', $this->ngay_hen_tra);
         $phieumuon->update([
             'sinh_vien_id' => $this->sinh_vien_id,
             'nhan_vien_id' => $nhan_vien_id->id,
