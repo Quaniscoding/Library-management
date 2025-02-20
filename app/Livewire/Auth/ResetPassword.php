@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\SinhVien;
 use App\Models\User;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Auth\Events\PasswordReset;
@@ -36,30 +37,24 @@ class ResetPassword extends Component
             'email.email' => 'Vui lòng nhập một địa chỉ email hợp lệ.',
             'password.required' => 'Mật khẩu là bắt buộc.',
             'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
+            'password.confirm' => "Mật khẩu phải khớp"
+        ]);
+        $user = User::where('email', $this->email)->first();
+        $sinhVien = SinhVien::where('email', $this->email)->first();
+
+        if (!$user && !$sinhVien) {
+            $flasher->addError('Email không tồn tại');
+            return;
+        }
+        $sinhVien->update([
+            'password' => Hash::make($this->password),
+        ]);
+        $user->update([
+            'password' => Hash::make($this->password),
         ]);
 
-        $status = Password::reset([
-            'email' => $this->email,
-            'password' => $this->password,
-            'password_confirmation' => $this->password_confirmation,
-            'token' => $this->token
-        ], function ($user, string $password) {
-            if ($user instanceof User && $user instanceof \App\Models\SinhVien) {
-                $user->forceFill([
-                    'password' => Hash::make($password),
-                ])->setRememberToken(Str::random(60));
-                $user->save();
-                event(new PasswordReset($user));
-            }
-        });
-
-
-        if ($status === Password::PASSWORD_RESET) {
-            $flasher->addSuccess('Mật khẩu của bạn đã được tạo lại thành công!');
-            return redirect('/login');
-        } else {
-            $flasher->addError('Lỗi khi tạo lại mật khẩu!');
-        }
+        $flasher->addSuccess('Mật khẩu của bạn đã được tạo lại thành công!');
+        return redirect('/login');
     }
     public function render()
     {

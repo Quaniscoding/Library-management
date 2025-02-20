@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Client\Components;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Support\Facades\Auth;
@@ -64,7 +65,7 @@ class TaiKhoan extends Component
 
 
         $sinhVien = Auth::guard('student')->user();
-
+        $user = User::where('email', $sinhVien->email)->first();
         // Kiểm tra mật khẩu hiện tại có khớp không
         if (!Hash::check($this->current_password, $sinhVien->password)) {
             $this->addError('current_password', 'Mật khẩu hiện tại không đúng.');
@@ -73,6 +74,9 @@ class TaiKhoan extends Component
 
         // Cập nhật mật khẩu mới
         $sinhVien->update([
+            'password' => Hash::make($this->new_password),
+        ]);
+        $user->update([
             'password' => Hash::make($this->new_password),
         ]);
         $flasher->addSuccess('Thông báo', 'Đổi mật khẩu thành công!');
