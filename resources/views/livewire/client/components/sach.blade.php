@@ -311,10 +311,11 @@
                                 <div class="flex flex-row gap-4">
                                     @if($sach->anh_bia)
                                     <img src="{{ asset('storage/' . $sach->anh_bia) }}" alt="Ảnh bìa"
-                                        class="rounded-lg object-cover w-32 sm:w-40">
+                                        class="rounded-lg object-cover w-40 sm:w-40 sm:m-w-[10rem]">
                                     @else
                                     <img src="https://placehold.co/150x150?text={{$sach->ten_sach}}"
-                                        alt="{{ $sach->ten_sach }}" class="rounded-lg object-cover w-32 sm:w-40">
+                                        alt="{{ $sach->ten_sach }}"
+                                        class="rounded-lg object-cover w-40 sm:w-40 sm:m-w-[10rem]">
                                     @endif
                                     <div class="min-w-[195.77px] sm:w-full">
                                         <h3 class="font-semibold mb-2 text-gray-900 dark:text-white">

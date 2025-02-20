@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Client\Components;
 
+use App\Models\SinhVien;
 use App\Models\User;
 use Carbon\Carbon;
 use Flasher\Prime\FlasherInterface;
@@ -27,6 +28,9 @@ class TaiKhoan extends Component
         $this->sdt = $sinhVien->sdt;
         $this->dia_chi = $sinhVien->dia_chi;
         $this->tai_khoan = $sinhVien->tai_khoan;
+        if ($sinhVien && $sinhVien->ngay_sinh) {
+            $this->ngay_sinh = Carbon::parse($sinhVien->ngay_sinh)->format('d/m/Y');
+        }
     }
 
     public function updateProfile(FlasherInterface $flasher)
@@ -47,6 +51,7 @@ class TaiKhoan extends Component
         ]);
 
         $flasher->addSuccess('Thông báo', 'Cập nhật thông tin thành công!');
+        $this->mount();
     }
 
     public function updatePassword(FlasherInterface $flasher)

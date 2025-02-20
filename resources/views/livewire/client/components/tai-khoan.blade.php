@@ -65,11 +65,11 @@
                 <div x-data="{ open: false }"
                     x-init="window.addEventListener('password-updated', () => { open = false; })">
                     <script>
-                        window.addEventListener('password-updated', () => {
-                            Alpine.store('modal', {
-                                open: false
-                            });
+                    window.addEventListener('password-updated', () => {
+                        Alpine.store('modal', {
+                            open: false
                         });
+                    });
                     </script>
 
                     <!-- Nút mở modal -->
@@ -206,4 +206,12 @@
 
         </div>
     </div>
+    <script>
+    flatpickr("#ngay_sinh", {
+        dateFormat: "d/m/Y",
+        maxDate: "today", // Hoặc bỏ tùy chọn này nếu cần chọn ngày xa hơn
+        locale: "vn",
+        disableMobile: true
+    });
+    </script>
 </div>
