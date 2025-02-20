@@ -187,51 +187,61 @@ class Main extends Component
     public function createSach(FlasherInterface $flasher)
     {
         $this->validate([
-            'anh_bia' => 'nullable|image|max:2048',
-            'ten_sach' => 'required',
-            'tac_gia_id' => 'required',
+            'anh_bia'       => 'nullable|image|max:2048',
+            'ten_sach'      => 'required',
+            'tac_gia_id'    => 'required',
             'nha_xuat_ban_id' => 'required',
-            'the_loai_id' => 'required',
-            'nam_xuat_ban' => 'nullable|regex:/^\d{4}$/',
-            'so_trang' => 'nullable',
-            'so_luong' => 'nullable',
-            'isbn' => 'nullable',
-            'mon_hoc_id' => 'required',
-            'nganh_id' => 'required',
-            'khoa_id' => 'required',
+            'the_loai_id'   => 'required',
+            'nam_xuat_ban'  => 'nullable|regex:/^\d{4}$/',
+            'so_trang'      => 'nullable',
+            'so_luong'      => 'nullable',
+            'isbn'          => 'nullable',
+            'mon_hoc_id'    => 'required',
+            'nganh_id'      => 'required',
+            'khoa_id'       => 'required',
         ]);
 
-        // Kiểm tra trùng lặp tên sách
-        $exists = Sach::where('ten_sach', $this->ten_sach)->exists();
-        if ($exists) {
-            $existsAuthor = Sach::where('ten_sach', $this->ten_sach)->where('tac_gia_id', $this->tac_gia_id)->exists();
-            if ($existsAuthor) {
-                $flasher->addError('Sách đã tồn tại.');
-                return;
-            } else {
-                return;
-            }
-        }
         $path = $this->anh_bia ? $this->anh_bia->store('books', 'public') : null;
-        Sach::create([
-            'anh_bia' => $path,
-            'ten_sach' => $this->ten_sach,
-            'tac_gia_id' => $this->tac_gia_id,
-            'nha_xuat_ban_id' => $this->nha_xuat_ban_id,
-            'the_loai_id' => $this->the_loai_id,
-            'nam_xuat_ban' => $this->nam_xuat_ban,
-            'so_luong' => $this->so_luong,
-            'so_trang' => $this->so_trang,
-            'isbn' => $this->isbn,
-            'mon_hoc_id' => $this->mon_hoc_id,
-            'nganh_id' => $this->nganh_id,
-            'khoa_id' => $this->khoa_id,
-        ]);
 
-        $flasher->addSuccess('Tạo nhân viên thành công!');
+        $sach = Sach::where('ten_sach', $this->ten_sach)->first();
+
+        if ($sach) {
+            $sach->update([
+                'anh_bia'       => $path,
+                'ten_sach'      => $this->ten_sach,
+                'tac_gia_id'    => $this->tac_gia_id,
+                'nha_xuat_ban_id' => $this->nha_xuat_ban_id,
+                'the_loai_id'   => $this->the_loai_id,
+                'nam_xuat_ban'  => $this->nam_xuat_ban,
+                'so_trang'      => $this->so_trang,
+                'so_luong'      => $sach->so_luong + 1,
+                'isbn'          => $this->isbn,
+                'mon_hoc_id'    => $this->mon_hoc_id,
+                'nganh_id'      => $this->nganh_id,
+                'khoa_id'       => $this->khoa_id,
+            ]);
+        } else {
+            Sach::create([
+                'anh_bia'       => $path,
+                'ten_sach'      => $this->ten_sach,
+                'tac_gia_id'    => $this->tac_gia_id,
+                'nha_xuat_ban_id' => $this->nha_xuat_ban_id,
+                'the_loai_id'   => $this->the_loai_id,
+                'nam_xuat_ban'  => $this->nam_xuat_ban,
+                'so_luong'      => 1,
+                'so_trang'      => $this->so_trang,
+                'isbn'          => $this->isbn,
+                'mon_hoc_id'    => $this->mon_hoc_id,
+                'nganh_id'      => $this->nganh_id,
+                'khoa_id'       => $this->khoa_id,
+            ]);
+        }
+
+        $flasher->addSuccess('Tạo sách thành công!');
         $this->closeModal();
         $this->resetForm();
     }
+
 
     public function editSach($id)
     {

@@ -46,7 +46,7 @@
                         {{ $dexuat->tieu_de ?? 'Không có dữ liệu' }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-gray-700 dark:text-gray-200">
-                        {{ $dexuat->tieu_de == 'sach' ? 'Sách' : 'Tài liệu' }}
+                        {{ $dexuat->loai === 'sach' ? 'Sách' : 'Tài liệu' }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-gray-700 dark:text-gray-200">
                         {{ $dexuat->mo_ta ?? 'Không có dữ liệu' }}

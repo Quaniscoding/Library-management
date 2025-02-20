@@ -127,13 +127,16 @@
                                 class="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500" />
                         </div>
                         <div class="ml-3">
-                            <label class="text-sm text-gray-600 dark:text-gray-400">
+                            <label wire:model="terms" class="text-sm text-gray-600 dark:text-gray-400">
                                 Tôi đồng ý với <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">Điều
                                     khoản sử dụng</a>
                                 và <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">Chính sách
                                     bảo mật</a>
                             </label>
                         </div>
+                        @error('terms')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <!-- Register Button -->

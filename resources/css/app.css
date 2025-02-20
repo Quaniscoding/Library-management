@@ -76,3 +76,29 @@
 .cssbuttons-io-button:active .icon {
     transform: scale(0.95);
 }
+
+/* Đối với trình duyệt Webkit */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        to bottom,
+        #00008b,
+        #add8e6
+    ); /* Từ xanh dương đậm đến xanh dương nhạt */
+    border-radius: 6px;
+}
+
+/* Đối với Firefox (chỉ hỗ trợ màu đơn) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #add8e6 transparent;
+}

@@ -9,6 +9,7 @@
         aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
+                <h1 class="dark:text-white">Lọc</h1>
                 <input type="text" wire:model.live="search" placeholder="Nhập tên sách"
                     class="w-full px-4 py-2 mt-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 dark:placeholder-gray-500 dark:focus:ring-blue-500 focus:outline-none" />
                 <!-- Filter: TacGia -->
@@ -276,11 +277,11 @@
                                 <div class="flex gap-4">
                                     @if($tailieumo->anh_bia)
                                     <img src="{{ asset('storage/' . $tailieumo->anh_bia) }}" alt="Ảnh bìa" width="150"
-                                        class="rounded-lg object-cover">
+                                        class="rounded-lg object-cover w-32 sm:w-40">
                                     @else
                                     <img src="https://placehold.co/150x150?text={{$tailieumo->ten_tai_lieu}}"
                                         alt="{{ $tailieumo->ten_tai_lieu }}" width="150"
-                                        class="rounded-lg object-cover">
+                                        class="rounded-lg object-cover w-32 sm:w-40">
                                     @endif
                                     <div>
                                         <h3 class="font-semibold mb-2 line-clamp-2 text-gray-900 dark:text-white">
@@ -610,10 +611,12 @@
                 <!-- Previous Page Button -->
                 @if($tailieumos->onFirstPage())
                 <span
-                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i class="fa-solid fa-backward"></i></span>
+                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i
+                        class="fa-solid fa-backward"></i></span>
                 @else
                 <a href="{{ $tailieumos->previousPageUrl() }}"
-                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-backward"></i></a>
+                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i
+                        class="fa-solid fa-backward"></i></a>
                 @endif
 
                 <!-- Page Numbers -->
@@ -630,10 +633,12 @@
                 <!-- Next Page Button -->
                 @if($tailieumos->hasMorePages())
                 <a href="{{ $tailieumos->nextPageUrl() }}"
-                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-forward"></i></a>
+                    class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i
+                        class="fa-solid fa-forward"></i></a>
                 @else
                 <span
-                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i class="fa-solid fa-forward"></i></span>
+                    class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 dark:text-gray-500 rounded-md cursor-not-allowed"><i
+                        class="fa-solid fa-forward"></i></span>
                 @endif
             </div>
         </div>

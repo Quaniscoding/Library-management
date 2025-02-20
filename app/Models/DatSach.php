@@ -17,20 +17,16 @@ class DatSach extends Model
         'so_luong'
     ];
 
-    public function sinh_vien_id()
-    {
-        return $this->belongsTo(SinhVien::class);
-    }
     public function sinhvien()
     {
         return $this->belongsTo(SinhVien::class, 'sinh_vien_id');
     }
-    public function cuon_sach_id()
-    {
-        return $this->belongsTo(CuonSach::class);
-    }
     public function cuonSach()
     {
         return $this->belongsTo(CuonSach::class, 'cuon_sach_id');
+    }
+    public function sach()
+    {
+        return $this->belongsTo(Sach::class, 'cuon_sach_id');
     }
 }

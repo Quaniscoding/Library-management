@@ -9,7 +9,7 @@
         aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
-                <h1>Lọc</h1>
+                <h1 class="dark:text-white">Lọc</h1>
                 <input type="text" wire:model.live="search" placeholder="Nhập tên sách"
                     class="w-full px-4 py-2 mt-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 dark:placeholder-gray-500 dark:focus:ring-blue-500 focus:outline-none" />
                 <!-- Filter: TacGia -->
@@ -311,11 +311,10 @@
                                 <div class="flex flex-row gap-4">
                                     @if($sach->anh_bia)
                                     <img src="{{ asset('storage/' . $sach->anh_bia) }}" alt="Ảnh bìa"
-                                        class="rounded-lg object-cover w-32 sm:w-40 md:w-48">
+                                        class="rounded-lg object-cover w-32 sm:w-40">
                                     @else
                                     <img src="https://placehold.co/150x150?text={{$sach->ten_sach}}"
-                                        alt="{{ $sach->ten_sach }}"
-                                        class="rounded-lg object-cover w-32 sm:w-40 md:w-48">
+                                        alt="{{ $sach->ten_sach }}" class="rounded-lg object-cover w-32 sm:w-40">
                                     @endif
                                     <div class="min-w-[195.77px] sm:w-full">
                                         <h3 class="font-semibold mb-2 text-gray-900 dark:text-white">
