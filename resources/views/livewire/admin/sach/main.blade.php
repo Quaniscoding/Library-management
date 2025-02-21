@@ -134,54 +134,55 @@
                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-800">
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->id }}
+                        {{ $sach->id ?? '' }}
                     </td>
                     <td class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">
-                        <img src="{{ asset('storage/' . $sach->anh_bia) }}" alt="Ảnh bìa" width="50">
+                        <img src="{{ $sach->anh_bia ? asset('storage/' . $sach->anh_bia) : asset('default-image.jpg') }}"
+                            alt="Ảnh bìa" width="50">
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->ten_sach }}
+                        {{ $sach->ten_sach ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->tacgia->ho_ten }}
+                        {{ $sach->tacgia->ho_ten ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->nhaxuatban->ten_nha_xuat_ban }}
+                        {{ $sach->nhaxuatban->ten_nha_xuat_ban ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->theloai->ten_the_loai }}
+                        {{ $sach->theloai->ten_the_loai ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->nam_xuat_ban }}
+                        {{ $sach->nam_xuat_ban ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->so_trang }}
+                        {{ $sach->so_trang ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->so_luong }}
+                        {{ $sach->so_luong ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->isbn }}
+                        {{ $sach->isbn ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->mon->ten_mon }}
+                        {{ $sach->mon->ten_mon ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->nganh->ten_nganh ??""}}
+                        {{ $sach->nganh->ten_nganh ?? '' }}
                     </td>
                     <td
                         class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center text-gray-800 dark:text-gray-200">
-                        {{ $sach->khoa->ten_khoa }}
+                        {{ $sach->khoa->ten_khoa ?? '' }}
                     </td>
                     <td class="border border-gray-300 dark:border-gray-600 px-4 py-2 flex justify-center space-x-2">
                         <button wire:click="editSach({{ $sach->id }})"
@@ -194,6 +195,7 @@
                         </button>
                     </td>
                 </tr>
+
                 @empty
                 <tr>
                     <td colspan="12"
@@ -388,8 +390,8 @@
         <div class="inline-flex items-center space-x-2">
             <!-- Previous Page Button -->
             @if($sachs->onFirstPage())
-            <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed"><i class="fa-solid fa-backward"></i></span>
+            <span class="px-4 py-2 text-gray-400 bg-gray-200 dark:bg-gray-700 rounded-md cursor-not-allowed"><i
+                    class="fa-solid fa-backward"></i></span>
             @else
             <a href="{{ $sachs->previousPageUrl() }}"
                 class="px-4 py-2 text-white bg-blue-600 dark:bg-blue-500 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600">

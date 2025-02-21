@@ -46,35 +46,35 @@
                         <img src="{{ asset('storage/' . $tailieumo->anh_bia) }}" alt="Ảnh bìa" width="50">
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $tailieumo->ten_tai_lieu }}
+                        {{ $tailieumo->ten_tai_lieu ?? '' }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $tailieumo->tacgia->ho_ten }}
+                        {{ $tailieumo->tacgia->ho_ten ?? '' }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $tailieumo->nha_xuat_ban_id }}
+                        {{ $tailieumo->nha_xuat_ban_id ?? '' }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $tailieumo->nam_phat_hanh }}
+                        {{ $tailieumo->nam_phat_hanh ?? '' }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $tailieumo->so_trang }}
+                        {{ $tailieumo->so_trang ?? '' }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
                         {!! $tailieumo->isbn ? $tailieumo->isbn : '<span class="text-gray-400 dark:text-gray-400">Chưa
                             có</span>' !!}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $tailieumo->link_tai_ve }}
+                        {{ $tailieumo->link_tai_ve ?? '' }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $tailieumo->mon->ten_mon }}
+                        {{ $tailieumo->mon->ten_mon ?? '' }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $tailieumo->nganh->ten_nganh??"" }}
+                        {{ $tailieumo->nganh->ten_nganh??"" ?? '' }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center dark:border-gray-600">
-                        {{ $tailieumo->khoa->ten_khoa }}
+                        {{ $tailieumo->khoa->ten_khoa ?? '' }}
                     </td>
                     <td class="border border-gray-300 px-4 py-2 flex justify-center space-x-2 dark:border-gray-600">
                         <button wire:click="editTaiLieuMo({{ $tailieumo->id }})"
@@ -254,10 +254,12 @@
             <!-- Previous Page Button -->
             @if($tailieumos->onFirstPage())
             <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300"><i class="fa-solid fa-backward"></i></span>
+                class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300"><i
+                    class="fa-solid fa-backward"></i></span>
             @else
             <a href="{{ $tailieumos->previousPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-backward"></i></a>
+                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i
+                    class="fa-solid fa-backward"></i></a>
             @endif
 
             <!-- Page Numbers -->
@@ -271,10 +273,12 @@
             <!-- Next Page Button -->
             @if($tailieumos->hasMorePages())
             <a href="{{ $tailieumos->nextPageUrl() }}"
-                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i class="fa-solid fa-forward"></i></a>
+                class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"><i
+                    class="fa-solid fa-forward"></i></a>
             @else
             <span
-                class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300"><i class="fa-solid fa-forward"></i></span>
+                class="px-4 py-2 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed dark:bg-gray-700 dark:text-gray-300"><i
+                    class="fa-solid fa-forward"></i></span>
             @endif
         </div>
     </div>

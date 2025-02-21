@@ -11,13 +11,25 @@ services:
     networks:
       - laravel-network  # Dùng mạng người dùng
     #command: php artisan serve --host 0.0.0.0 --port 8000
+    # command: >
+    #   sh -c "php artisan serve --host 0.0.0.0 --port 8000 &
+    #          sleep 30 &&
+    #          php artisan migrate &&
+    #          php artisan db:seed &&
+    #          php artisan storage:link &&
+    #          tail -f /dev/null"
+    # entrypoint: ["sh", "/var/www/html/entrypoint.sh"]
     command: >
-      sh -c "php artisan serve --host 0.0.0.0 --port 8000 &
-             sleep 30 &&
-             php artisan migrate &&
-             php artisan db:seed &&
-             php artisan storage:link &&
-             tail -f /dev/null"
+      sh -c "
+      php artisan serve --host 0.0.0.0 --port 8000 &
+      sleep 30 &&
+      if [ ! -f /var/www/html/storage/app/.migrated ]; then
+      php artisan migrate --force &&
+      php artisan db:seed --force &&
+      php artisan storage:link &&
+      touch /var/www/html/storage/app/.migrated
+      fi &&
+      tail -f /dev/null"
   db:
     image: mysql:8.0
     container_name: "mysql-container"

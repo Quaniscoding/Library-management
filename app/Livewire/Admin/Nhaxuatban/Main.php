@@ -84,6 +84,9 @@ class Main extends Component
 
         $this->id = $nhaxuatban->id;
         $this->ten_nha_xuat_ban = $nhaxuatban->ten_nha_xuat_ban;
+        $this->dia_chi = $nhaxuatban->dia_chi;
+        $this->sdt = $nhaxuatban->sdt;
+        $this->email = $nhaxuatban->email;
         $this->isEditMode = true;
         $this->openModal();
     }
