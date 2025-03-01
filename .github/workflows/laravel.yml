@@ -26,7 +26,7 @@ jobs:
         PASS: ${{ secrets.PASS }}
       run: |
         # SSH into VPS
-        sshpass -p $PASS ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_IP << EOF
+        # sshpass -p $PASS ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_IP << EOF
 
           # Navigate to the home directory
           cd /home/$VPS_USER || exit
